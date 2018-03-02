@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Illuminate\Contracts\Events\Dispatcher;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -11,9 +14,41 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Dispatcher $events)
     {
-        //
+      $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            $event->menu->add('MAIN NAVIGATION');
+            $event->menu->add([
+                'text' => 'Blog',
+                'url' => 'admin/blog',
+                'can' => 'manage-blog',
+            ]);
+            $event->menu->add([
+                'text' => 'Transactions',
+                'icon' => 'file',
+                'url' => 'admin/transactions',
+                'can' => 'transactions_manage',
+            ]);
+            $event->menu->add('SETTING');
+            $event->menu->add([
+                'text' => 'Permissions',
+                'icon' => 'lock',
+                'url' => 'admin/permissions',
+                'can' => 'permissions_manage',
+            ]);
+            $event->menu->add([
+                'text' => 'Roles',
+                'icon' => 'briefcase',
+                'url' => 'admin/roles',
+                'can' => 'roles_manage',
+            ]);
+            $event->menu->add([
+                'text' => 'Users',
+                'icon' => 'users',
+                'url' => 'admin/users',
+                'can' => 'users_manage',
+            ]);
+        });
     }
 
     /**
