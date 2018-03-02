@@ -17,4 +17,33 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('permissions', 'Admin\PermissionsController',['only' => [
+    'index', 'create', 'store', 'edit', 'update'
+    ]])
+    ->middleware('can:permissions_manage');
+
+    Route::resource('roles', 'Admin\RolesController',['only' => [
+    'index', 'create', 'store', 'edit', 'update'
+    ]])
+    ->middleware('can:roles_manage');
+
+    Route::resource('users', 'Admin\UsersController',['only' => [
+    'index', 'create', 'store', 'edit', 'update'
+    ]])
+    ->middleware('can:users_manage');
+
+    Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
+    Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');
+
+    Route::resource('transactions', 'Admin\TransactionsController',['only' => [
+    'index', 'show', 'store', 'edit', 'update'
+    ]])
+    ->middleware('can:transactions_manage');
+
+    Route::resource('contracts', 'Admin\ContractsController');
+});
