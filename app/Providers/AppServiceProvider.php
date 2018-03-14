@@ -19,15 +19,10 @@ class AppServiceProvider extends ServiceProvider
       $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $event->menu->add('MAIN NAVIGATION');
             $event->menu->add([
-                'text' => 'Blog',
-                'url' => 'admin/blog',
-                'can' => 'manage-blog',
-            ]);
-            $event->menu->add([
-                'text' => 'Transactions',
+                'text' => 'Contracts',
                 'icon' => 'file',
-                'url' => 'admin/transactions',
-                'can' => 'transactions_manage',
+                'url' => 'admin/contracts',
+                'can' => 'contracts_manage',
             ]);
             $event->menu->add('SETTING');
             $event->menu->add([

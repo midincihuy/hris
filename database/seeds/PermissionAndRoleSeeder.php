@@ -20,7 +20,7 @@ class PermissionAndRoleSeeder extends Seeder
         'permissions_manage',
         'roles_manage',
         'users_manage',
-        'transactions_manage',
+        'contracts_manage',
       );
       foreach ($permissions as $key => $value) {
         Permission::create(['name' => $value]);

@@ -46,4 +46,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:transactions_manage');
 
     Route::resource('contracts', 'Admin\ContractsController');
+    Route::post('import', 'Admin\ContractsController@import')->name('import');
 });
