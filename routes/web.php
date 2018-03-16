@@ -47,4 +47,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::resource('contracts', 'Admin\ContractsController');
     Route::post('import', 'Admin\ContractsController@import')->name('import');
+
+    Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
+    Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');
+    Route::get('panel/change_password', 'Admin\PanelController@change_password')->name('panel.change_password');
+    Route::post('panel/change_password', 'Admin\PanelController@change_passwd')->name('panel.change_passwd');
+
 });
