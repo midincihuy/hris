@@ -59,10 +59,3 @@ class PanelController extends Controller
           ->with('success',"Password changed successfully !");
   }
 }
-
-
-// TIDAK SAMA
-// $2y$10$uq5dLUrAJDsqS5qIX8fFu.6aNpdLjfa3CcOmDVzB6VjAB6ThFp6ha $2y$10$l5rNLJRYJTqX6v3nDhJ8ee.A1MC5KpqPB.hDls712I.3i3W9zQ.CG
-// $2y$10$kEsVZ0ryRarDEe7IWbfp.eOQhDc2Yvnhpzkx/Sj.s8NwNNLjfGefi dan         $2y$10$l5rNLJRYJTqX6v3nDhJ8ee.A1MC5KpqPB.hDls712I.3i3W9zQ.CG
-// TIDAK SAMA
-// $2y$10$AjJf8nENr8HbMsnR032kP.OXKpln3oUJRE9rN9FQUnJxQnQ3NV4Ya dan $2y$10$l5rNLJRYJTqX6v3nDhJ8ee.A1MC5KpqPB.hDls712I.3i3W9zQ.CG
