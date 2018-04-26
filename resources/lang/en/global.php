@@ -55,4 +55,21 @@ return [
 'app_dashboard' => 'Dashboard',
 'app_delete' => 'Delete',
 'global_title' => 'Roles-Permissions Manager',
+
+'contracts' =>
+[
+	'title' => 'Contracts',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
+'employee' =>
+[
+	'title' => 'Employee',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
 ];

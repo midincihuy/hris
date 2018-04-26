@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('start');
 
+Route::get('/admin', function () {
+    return redirect('admin/home');
+});
+Route::get('/home', function () {
+    return redirect('admin/home');
+});
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -37,20 +43,28 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ]])
     ->middleware('can:users_manage');
 
+    Route::resource('menus', 'Admin\MenusController',['only' => [
+    'index', 'create', 'store', 'edit', 'update'
+    ]])
+    ->middleware('can:menus_manage');
+
     Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
     Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');
 
-    Route::resource('transactions', 'Admin\TransactionsController',['only' => [
-    'index', 'show', 'store', 'edit', 'update'
-    ]])
-    ->middleware('can:transactions_manage');
-
-    Route::resource('contracts', 'Admin\ContractsController');
-    Route::post('import', 'Admin\ContractsController@import')->name('import');
+    Route::resource('contracts', 'Admin\ContractsController')
+    ->middleware('can:contracts_manage');
+    Route::post('import', 'Admin\ContractsController@import')->name('import')
+    ->middleware('can:contracts_manage');
 
     Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
     Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');
     Route::get('panel/change_password', 'Admin\PanelController@change_password')->name('panel.change_password');
     Route::post('panel/change_password', 'Admin\PanelController@change_passwd')->name('panel.change_passwd');
+
+    Route::resource('employee', 'Admin\EmployeeController')
+    ->middleware('can:employee_manage');
+
+    Route::post('employee/mass_update', 'Admin\EmployeeController@mass_update')->name('employee.mass_update')
+    ->middleware('can:employee_manage');
 
 });

@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Contract;
+use App\Menu;
 use Yajra\DataTables\Services\DataTable;
 
-class ContractsDataTable extends DataTable
+class MenusDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,8 +16,8 @@ class ContractsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            return '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        ->addColumn('action', function ($menu) {
+            return '<a href="menus/'.$menu->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         });
     }
 
@@ -27,15 +27,10 @@ class ContractsDataTable extends DataTable
      * @param \App\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model)
+    public function query(Menu $model)
     {
-        return $model->newQuery()
-        ->where('employee_status', 'KK')
-        ->where('status_active', 'Aktif')
-        ->select('id', 'nik', 'name', 'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'position', 'reminder', 'created_at', 'updated_at');
+        return $model->newQuery()->select('id', 'text', 'label', 'url', 'can', 'icon', 'parent_id',
+        'created_at', 'updated_at');
     }
 
     /**
@@ -60,20 +55,15 @@ class ContractsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // 'id',
-            'nik',
-            'name',
-            'contract_date',
-            // 'contract_duration',
-            'employee_status',
-            'status_active',
-            // 'status_contract',
-            // 'division',
-            'department',
-            'position',
-            // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            'id',
+            'text',
+            'label',
+            'url',
+            'can',
+            'icon',
+            'parent_id',
+            'created_at',
+            'updated_at'
         ];
     }
 
@@ -84,14 +74,14 @@ class ContractsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Contracts_' . date('YmdHis');
+        return 'Menus_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()
     {
       return [
         'dom'          => 'Bfrtip',
-        'buttons'      => ['excel', 'reset', 'reload'],
+        'buttons'      => ['create', 'reset', 'reload'],
         'pageLength'   => 10,
       ];
     }

@@ -13,6 +13,9 @@ use App\Contract;
 use App\DataTables\ContractsDataTable;
 use App\Events\Event;
 use Auth;
+
+use Illuminate\Support\Facades\Gate;
+
 class ContractsController extends Controller
 {
   public function index(ContractsDataTable $dataTable)
@@ -53,5 +56,26 @@ class ContractsController extends Controller
               return back();
           }
       }
+  }
+
+  public function edit($id)
+  {
+    if (! Gate::allows('contracts_manage')) {
+          return abort(401);
+      }
+      $contract = Contract::findOrFail($id);
+
+      return view('admin.contracts.edit', compact('contract'));
+  }
+
+  public function update(Request $request, $id)
+  {
+    if (! Gate::allows('contracts_manage')) {
+        return abort(401);
+    }
+    $contract = Contract::findOrFail($id);
+    $contract->update($request->all());
+
+    return redirect()->route('admin.contracts.index');
   }
 }

@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Contract;
 use Yajra\DataTables\Services\DataTable;
 
-class ContractsDataTable extends DataTable
+class EmployeeDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -17,7 +17,7 @@ class ContractsDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('action', function ($contracts) {
-            return '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            return '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         });
     }
 
@@ -29,10 +29,7 @@ class ContractsDataTable extends DataTable
      */
     public function query(Contract $model)
     {
-        return $model->newQuery()
-        ->where('employee_status', 'KK')
-        ->where('status_active', 'Aktif')
-        ->select('id', 'nik', 'name', 'gender',
+        return $model->newQuery()->select('id', 'nik', 'name', 'gender',
         'contract_date', 'contract_duration', 'employee_status',
         'status_active', 'status_contract', 'division', 'department',
         'position', 'reminder', 'created_at', 'updated_at');
@@ -84,15 +81,36 @@ class ContractsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Contracts_' . date('YmdHis');
+        return 'Employee_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()
     {
       return [
-        'dom'          => 'Bfrtip',
+        'dom'          => 'Blfrtip',
         'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
+        'rowCallback'  => "function( row, data, index ) {
+            $(row).attr('id', data.nik);
+            if ( $.inArray(data.nik, selected) !== -1 ) {
+                $(row).addClass('selected');
+            }
+        }",
+        'drawCallback' => "function() {
+          $('#dataTableBuilder tbody').on('click', 'tr', function () {
+              var id = this.id;
+              var index = $.inArray(id, selected);
+
+              if ( index === -1 ) {
+                  selected.push( id );
+              } else {
+                  selected.splice( index, 1 );
+              }
+              $('#hide_nik').val(selected.toString());
+              $('#total_nik').text(selected.length);
+              $(this).toggleClass('selected');
+          });
+        }",
       ];
     }
 }
