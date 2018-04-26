@@ -32,7 +32,10 @@
           {!! Form::label('reminder_user', 'Reminder User', ['class' => 'control-label']) !!}
           {!! Form::select('reminder_user', $reminder_status, '', ['class' => 'form-control']) !!}
         </div>
-        <div class="col-xs-12 form-group">
+        <div class="col-xs-1 form-group">
+          <button type="button" name="button" class="btn btn-primary" onclick="$('#dataTableBuilder tbody tr').each(function(){this.click()});">Select All</button>
+        </div>
+        <div class="col-xs-6 form-group">
           <span id="total_nik">0</span> Selected
           {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
         </div>
