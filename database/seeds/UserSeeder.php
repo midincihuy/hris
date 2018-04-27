@@ -20,5 +20,18 @@ class UserSeeder extends Seeder
             'api_token' => str_random(50),
         ]);
       $user->assignRole('administrator');
+      $hr = array(
+        'andriane@ochanneltv.com',
+        'enrico.didi@ochanneltv.com'
+      );
+      foreach($hr as $x){
+        $user = User::create([
+              'name' => $x,
+              'email' => $x,
+              'password' => bcrypt('password'),
+              'api_token' => str_random(50),
+          ]);
+        $user->assignRole('hr_dept');
+      }
     }
 }

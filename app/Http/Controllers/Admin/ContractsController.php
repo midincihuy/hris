@@ -14,6 +14,8 @@ use App\DataTables\ContractsDataTable;
 use App\Events\Event;
 use Auth;
 
+use App\Reference;
+
 use Illuminate\Support\Facades\Gate;
 
 class ContractsController extends Controller
@@ -64,8 +66,10 @@ class ContractsController extends Controller
           return abort(401);
       }
       $contract = Contract::findOrFail($id);
-
-      return view('admin.contracts.edit', compact('contract'));
+      $data['employee_status'] = Reference::where('code','EMPLOYEE_STATUS')->orderBy('sort')->get()->pluck('item','value');
+      $data['status_active'] = Reference::where('code','STATUS_ACTIVE')->orderBy('sort')->get()->pluck('item','value');
+      $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
+      return view('admin.contracts.edit', compact('contract','data'));
   }
 
   public function update(Request $request, $id)

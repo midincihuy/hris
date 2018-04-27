@@ -36,22 +36,22 @@
             <div class="row">
                 <div class="col-xs-2 form-group">
                     {!! Form::label('employee_status', 'Employee Status', ['class' => 'control-label']) !!}
-                    {!! Form::text('employee_status', old('employee_status'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', '']) !!}
+                    {!! Form::select('employee_status', $data['employee_status'], '', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('status_active', 'Status Active', ['class' => 'control-label']) !!}
-                    {!! Form::text('status_active', old('status_active'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', '']) !!}
+                    {!! Form::select('status_active', $data['status_active'], '', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('reminder_hr', 'Reminder HR', ['class' => 'control-label']) !!}
-                    {!! Form::text('reminder_hr', old('reminder_hr'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::select('reminder_hr', $data['reminder_status'], '', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('reminder_user', 'Reminder User', ['class' => 'control-label']) !!}
-                    {!! Form::text('reminder_user', old('reminder_user'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::select('reminder_user', $data['reminder_status'], '', ['class' => 'form-control']) !!}
                 </div>
             </div>
 

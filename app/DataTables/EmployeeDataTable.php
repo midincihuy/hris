@@ -96,7 +96,7 @@ class EmployeeDataTable extends DataTable
                 $(row).addClass('selected');
             }
         }",
-        'drawCallback' => "function() {
+        'initComplete' => "function() {
           $('#dataTableBuilder tbody').on('click', 'tr', function () {
               var id = this.id;
               var index = $.inArray(id, selected);

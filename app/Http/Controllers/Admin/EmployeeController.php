@@ -72,8 +72,11 @@ class EmployeeController extends Controller
             return abort(401);
         }
         $contract = Contract::findOrFail($id);
+        $data['employee_status'] = Reference::where('code','EMPLOYEE_STATUS')->orderBy('sort')->get()->pluck('item','value');
+        $data['status_active'] = Reference::where('code','STATUS_ACTIVE')->orderBy('sort')->get()->pluck('item','value');
+        $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
 
-        return view('admin.employee.edit', compact('contract'));
+        return view('admin.employee.edit', compact('contract', 'data'));
     }
 
     /**

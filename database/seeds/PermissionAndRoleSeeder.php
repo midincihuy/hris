@@ -23,6 +23,7 @@ class PermissionAndRoleSeeder extends Seeder
         'contracts_manage',
         'employee_manage',
         'menus_manage',
+        'main_menu',
       );
       foreach ($permissions as $key => $value) {
         Permission::create(['name' => $value]);
@@ -32,5 +33,9 @@ class PermissionAndRoleSeeder extends Seeder
       foreach ($permissions as $key => $value) {
         $role->givePermissionTo($value);
       }
+      $role = Role::create(['name' => 'hr_dept']);
+      $role->givePermissionTo('contracts_manage');
+      $role->givePermissionTo('employee_manage');
+      $role->givePermissionTo('main_menu');
     }
 }

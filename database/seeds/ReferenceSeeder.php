@@ -29,13 +29,13 @@ class ReferenceSeeder extends Seeder
       Reference::create([
         'code' => 'STATUS_ACTIVE',
         'item' => 'Aktif',
-        'value' => 'AKTIF',
+        'value' => 'Aktif',
         'sort' => '1',
       ]);
       Reference::create([
         'code' => 'STATUS_ACTIVE',
-        'item' => 'Resign',
-        'value' => 'RESIGN',
+        'item' => 'Not Aktif',
+        'value' => 'Not Aktif',
         'sort' => '2',
       ]);
       Reference::create([
@@ -48,6 +48,37 @@ class ReferenceSeeder extends Seeder
         'code' => 'REMINDER_STATUS',
         'item' => 'Done',
         'value' => 'DONE',
+        'sort' => '2',
+      ]);
+
+      Reference::create([
+        'code' => 'REASON_NOT_ACTIVE',
+        'item' => 'Resign',
+        'value' => 'Resign',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'REASON_NOT_ACTIVE',
+        'item' => 'Resign Tidak One Month Notice',
+        'value' => 'Resign Tidak One Month Notice',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'REASON_NOT_ACTIVE',
+        'item' => 'Terminate',
+        'value' => 'Terminate',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'REASON_NOT_ACTIVE',
+        'item' => 'End of Contract',
+        'value' => 'End of Contract',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'REASON_NOT_ACTIVE',
+        'item' => 'Meninggal',
+        'value' => 'Meninggal',
         'sort' => '2',
       ]);
     }

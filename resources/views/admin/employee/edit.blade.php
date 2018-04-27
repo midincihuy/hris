@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
+  {{-- {{ dd($data) }} --}}
     <h3 class="page-title">@lang('global.employee.title')</h3>
 
     {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->id]]) !!}
@@ -36,12 +37,12 @@
             <div class="row">
                 <div class="col-xs-2 form-group">
                     {!! Form::label('employee_status', 'Employee Status', ['class' => 'control-label']) !!}
-                    {!! Form::text('employee_status', old('employee_status'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', '']) !!}
+                    {!! Form::select('employee_status', $data['employee_status'], '', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('status_active', 'Status Active', ['class' => 'control-label']) !!}
-                    {!! Form::text('status_active', old('status_active'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', '']) !!}
+                    {!! Form::select('status_active', $data['status_active'], '', ['class' => 'form-control']) !!}
                 </div>
 
             </div>
