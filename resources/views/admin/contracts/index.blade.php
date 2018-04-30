@@ -26,6 +26,7 @@
         <div class="row">
           <div class="col-xs-2 form-group">
             <input type="submit" class="btn btn-primary btn-lg" style="margin-top: 3%" value="Import">
+            <a href="/uploads/contract_template.xls"><input type="button" class="btn btn-success btn-sm" style="margin-top: 3%" value="Download Template"></a>
           </div>
         </div>
       </div>
