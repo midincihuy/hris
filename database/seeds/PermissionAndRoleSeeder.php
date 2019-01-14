@@ -23,6 +23,7 @@ class PermissionAndRoleSeeder extends Seeder
         'contracts_manage',
         'employee_manage',
         'menus_manage',
+        'schedulers_manage',
         'main_menu',
       );
       foreach ($permissions as $key => $value) {

@@ -66,5 +66,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::post('employee/mass_update', 'Admin\EmployeeController@mass_update')->name('employee.mass_update')
     ->middleware('can:employee_manage');
-
+    
+    Route::resource('schedulers', 'Admin\SchedulersController',['only' => [
+        'index', 'create', 'store', 'edit', 'update'
+        ]])
+    ->middleware('can:schedulers_manage');
 });

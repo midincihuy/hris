@@ -24,8 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        if(Schema::hasTable('schedulers')){
+            $scheduler = Scheduler::where('status','1')->get();
+
+            foreach ($scheduler as $sch) {
+                $schedule->command($sch->command)->cron($sch->cron_expression)->withoutOverlapping();
+            }
+        }
     }
 
     /**
