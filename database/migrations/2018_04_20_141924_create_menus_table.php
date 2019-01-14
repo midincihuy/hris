@@ -17,10 +17,10 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->string('parent_id');
             $table->string('text');
-            $table->string('label');
+            $table->string('label')->nullable();
             $table->string('url');
-            $table->string('can');
-            $table->string('icon');
+            $table->string('can')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

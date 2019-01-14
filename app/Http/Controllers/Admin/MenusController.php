@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Gate;
 use App\DataTables\MenusDataTable;
-
+use App\Menu;
 
 class MenusController extends Controller
 {
@@ -27,7 +28,7 @@ class MenusController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.menus.create');
     }
 
     /**
@@ -38,7 +39,12 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      if (! Gate::allows('menus_manage')) {
+            return abort(401);
+      }
+      Menu::create($request->all());
+
+      return redirect()->route('admin.menus.index');
     }
 
     /**
@@ -60,7 +66,12 @@ class MenusController extends Controller
      */
     public function edit($id)
     {
-        //
+      if (! Gate::allows('menus_manage')) {
+            return abort(401);
+        }
+        $menus = Menu::findOrFail($id);
+
+        return view('admin.menus.edit', compact('menus'));
     }
 
     /**
@@ -72,7 +83,13 @@ class MenusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      if (! Gate::allows('menus_manage')) {
+          return abort(401);
+      }
+      $menu = Menu::findOrFail($id);
+      $menu->update($request->all());
+
+      return redirect()->route('admin.menus.index');
     }
 
     /**
