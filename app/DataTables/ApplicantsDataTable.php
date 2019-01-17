@@ -160,7 +160,7 @@ class ApplicantsDataTable extends DataTable
     protected function getBuilderParameters()
     {
       return [
-        'dom'          => 'Brtip',
+        'dom'          => 'Blrtip',
         'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
         'scrollX'       => 'true',

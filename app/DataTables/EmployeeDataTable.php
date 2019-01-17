@@ -87,30 +87,50 @@ class EmployeeDataTable extends DataTable
     protected function getBuilderParameters()
     {
       return [
-        'dom'          => 'Blfrtip',
+        'dom'          => 'Blrtip',
         'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
-        'rowCallback'  => "function( row, data, index ) {
-            $(row).attr('id', data.nik);
-            if ( $.inArray(data.nik, selected) !== -1 ) {
-                $(row).addClass('selected');
-            }
-        }",
-        'initComplete' => "function() {
-          $('#dataTableBuilder tbody').on('click', 'tr', function () {
-              var id = this.id;
-              var index = $.inArray(id, selected);
+        'scrollX'       => 'true',
+        'initComplete' => 'function () {
+            $("#dataTableBuilder").attr("style","margin-left:0px;width:auto");
+            $("#dataTableBuilder_paginate").attr("style","float:left;");
 
-              if ( index === -1 ) {
-                  selected.push( id );
-              } else {
-                  selected.splice( index, 1 );
-              }
-              $('#hide_nik').val(selected.toString());
-              $('#total_nik').text(selected.length);
-              $(this).toggleClass('selected');
-          });
-        }",
+            // to select from list
+            $("#dataTableBuilder tbody").on("click", "tr", function () {
+                var id = this.id;
+                var index = $.inArray(id, selected);
+  
+                if ( index === -1 ) {
+                    selected.push( id );
+                } else {
+                    selected.splice( index, 1 );
+                }
+                $("#hide_nik").val(selected.toString());
+                $("#total_nik").text(selected.length);
+                $(this).toggleClass("selected");
+            });
+        }',
+        'rowCallback'  => 'function( row, data, index ) {
+            $(row).attr("id", data.nik);
+            if ( $.inArray(data.nik, selected) !== -1 ) {
+                $(row).addClass("selected");
+            }
+            
+            var r = $("#dataTableBuilder_wrapper tfoot tr");
+
+            $("#dataTableBuilder_wrapper thead").append(r);
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                $(input).attr("style","width:100px");
+                $(input).appendTo($(column.footer()).empty())
+                .on("change", function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    column.search(val ? val : "", true, false).draw();
+                });
+            });
+        }',
       ];
     }
 }
