@@ -51,5 +51,13 @@ class MenuSeeder extends Seeder
         'icon' => 'calendar',
         'parent_id' => 1
       ]);
+      Menu::create([
+        'text' => 'Recruitments',
+        'label' => 'upload',
+        'url' => 'admin/recruitments',
+        'can' => 'recruitments_manage',
+        'icon' => 'envelope',
+        'parent_id' => 1
+      ]);
     }
 }

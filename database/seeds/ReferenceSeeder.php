@@ -81,5 +81,38 @@ class ReferenceSeeder extends Seeder
         'value' => 'Meninggal',
         'sort' => '2',
       ]);
+
+      Reference::create([
+        'code' => 'JENIS_PTK',
+        'item' => 'Add',
+        'value' => 'Add',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_PTK',
+        'item' => 'Repl',
+        'value' => 'Repl',
+        'sort' => '2',
+      ]);
+
+      Reference::create([
+        'code' => 'STATUS_RECRUITMENT',
+        'item' => 'Disarankan',
+        'value' => 'Disarankan',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_RECRUITMENT',
+        'item' => 'Dipertimbangkan',
+        'value' => 'Dipertimbangkan',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_RECRUITMENT',
+        'item' => 'Tidak Disarankan',
+        'value' => 'Tidak Disarankan',
+        'sort' => '3',
+      ]);
+
     }
 }
