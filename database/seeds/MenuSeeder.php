@@ -35,5 +35,21 @@ class MenuSeeder extends Seeder
           'icon' => 'file',
           'parent_id' => 1
       ]);
+      Menu::create([
+        'text' => 'Applicants',
+        'label' => 'upload',
+        'url' => 'admin/applicants',
+        'can' => 'applicants_manage',
+        'icon' => 'address-card',
+        'parent_id' => 1
+      ]);
+      Menu::create([
+        'text' => 'Schedulers',
+        'label' => 'ADMIN',
+        'url' => 'admin/schedulers',
+        'can' => 'schedulers_manage',
+        'icon' => 'calendar',
+        'parent_id' => 1
+      ]);
     }
 }

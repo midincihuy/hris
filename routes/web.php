@@ -71,4 +71,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         'index', 'create', 'store', 'edit', 'update'
         ]])
     ->middleware('can:schedulers_manage');
+
+    Route::resource('applicants', 'Admin\ApplicantsController')
+    ->middleware('can:applicants_manage');
+    Route::post('import_applicants', 'Admin\ApplicantsController@import')->name('import_applicants')
+    ->middleware('can:applicants_manage');
 });

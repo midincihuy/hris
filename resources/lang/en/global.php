@@ -72,4 +72,13 @@ return [
 		'name' => 'Name',
 	],
 ],
+
+'applicants' =>
+[
+	'title' => 'Applicants',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
 ];

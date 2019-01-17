@@ -13,9 +13,9 @@
   @endif
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3>Import Contracts From XLS</h3>
+      <h3>Import Applicants From XLS</h3>
     </div>
-    <form action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.import_applicants') }}" method="POST" enctype="multipart/form-data">
       <div class="panel-body">
         <div class="row">
             <div class="col-xs-5 form-group">
@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-primary" style="margin-top: 3%" ><i class="fa fa-upload"></i>&nbsp;Import</button>
           </div>
           <div class="col-md-2 form-group">
-            <a href="/uploads/contract_template.xls"><button class="btn btn-success" style="margin-top: 3%""><i class="fa fa-download"></i>&nbsp;Download Template</button></a>
+            <a href="/uploads/applicant_template.xls"><button class="btn btn-success" style="margin-top: 3%"><i class="fa fa-download"></i>&nbsp;Download Template</button></a>
           </div>
         </div>
       </div>
