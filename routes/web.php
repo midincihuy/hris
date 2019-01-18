@@ -78,4 +78,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:applicants_manage');
     Route::resource('recruitments', 'Admin\RecruitmentsController')
     ->middleware('can:recruitments_manage');
+    
+    Route::get('recruitments/{recruitment}/create_contract', 'Admin\RecruitmentsController@create_contract')
+    ->middleware('can:recruitments_manage');
+    Route::post('recruitments/store_contract', 'Admin\RecruitmentsController@store_contract')
+    ->middleware('can:recruitments_manage')->name('recruitments.store_contract');
+
 });

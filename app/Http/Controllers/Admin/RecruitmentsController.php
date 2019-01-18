@@ -93,4 +93,22 @@ class RecruitmentsController extends Controller
 
         return redirect()->route('admin.recruitments.index');
     }
+
+    public function create_contract($id)
+    {
+        if (! Gate::allows('recruitments_manage')) {
+            return abort(401);
+        }
+        $recruitment = Recruitment::findOrFail($id);
+        return view('admin.recruitments.create_contract', compact('recruitment'));
+    }
+
+    public function store_contract(Request $request)
+    {
+        if (! Gate::allows('recruitments_manage')) {
+            return abort(401);
+        }
+        //  save contract from recruitments
+        return redirect()->route('admin.recruitments.index');
+    }
 }

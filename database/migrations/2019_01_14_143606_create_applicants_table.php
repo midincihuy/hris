@@ -32,6 +32,7 @@ class CreateApplicantsTable extends Migration
             $table->string('kode_pos');
             $table->string('telephone_rumah')->nullable();
             $table->string('handphone');
+            $table->string('email');
             $table->string('skype_id')->nullable();
             $table->string('agama');
             $table->string('golongan_darah');
