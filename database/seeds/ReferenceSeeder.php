@@ -114,5 +114,23 @@ class ReferenceSeeder extends Seeder
         'sort' => '3',
       ]);
 
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'PKWT',
+        'value' => 'PKWT',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Probation',
+        'value' => 'Probation',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'PKWTT',
+        'value' => 'PKWTT',
+        'sort' => '3',
+      ]);
     }
 }

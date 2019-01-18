@@ -17,7 +17,10 @@ class RecruitmentsDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('action', function ($recruitments) {
-            return '<a href="recruitments/'.$recruitments->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-view"></i> View</a>';
+            $view_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'" class="btn btn-xs btn-primary"><i class="fa fa-search"></i> View</a>';
+            $edit_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</a>';
+            $create_contract_btn = $recruitments->status_offering == "Disarankan" ? '<a href="recruitments/'.$recruitments->id.'/create_contract" class="btn btn-xs btn-warning"><i class="fa fa-file"></i> Create Contract</a>' : '';
+            return $view_recruitment_btn." ".$edit_recruitment_btn." ".$create_contract_btn;
         });
     }
 

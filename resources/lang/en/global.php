@@ -81,4 +81,14 @@ return [
 		'name' => 'Name',
 	],
 ],
+
+'recruitments' =>
+[
+	'title' => 'Recruitments',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
+
 ];

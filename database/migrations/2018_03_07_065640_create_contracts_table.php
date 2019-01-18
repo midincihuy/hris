@@ -18,10 +18,10 @@ class CreateContractsTable extends Migration
             $table->string('nik');
             $table->string('name');
             $table->string('gender');
-            $table->date('contract_date');
+            $table->date('contract_date')->comment('Tanggal Mulai Kontrak');
             $table->string('employee_status');
             $table->string('status_active');
-            $table->string('contract_duration')->default(12);
+            $table->string('contract_duration')->default(12)->comment('Jangka Waktu Kontrak');
             $table->string('status_contract')->default('New');
             $table->string('head_1')->nullable();
             $table->string('email_head_1')->nullable();
@@ -31,7 +31,11 @@ class CreateContractsTable extends Migration
             $table->string('department')->nullable();
             $table->string('position')->nullable();
             $table->string('reminder')->nullable();
+            $table->string('reminder_hr')->default('0');
+            $table->string('reminder_user')->default('0');
             $table->string('upload_by')->nullable();
+            $table->string('reason_not_active')->nullable();
+            $table->string('contract_type')->nullable();
             $table->timestamps();
         });
     }

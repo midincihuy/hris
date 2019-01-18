@@ -28,13 +28,12 @@ class RecruitmentsController extends Controller
   public function edit($id)
   {
     if (! Gate::allows('recruitments_manage')) {
-          return abort(401);
-      }
-      $recruitment = Recruitment::findOrFail($id);
-      $data['employee_status'] = Reference::where('code','EMPLOYEE_STATUS')->orderBy('sort')->get()->pluck('item','value');
-      $data['status_active'] = Reference::where('code','STATUS_ACTIVE')->orderBy('sort')->get()->pluck('item','value');
-      $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
-      return view('admin.recruitments.edit', compact('recruitment','data'));
+        return abort(401);
+    }
+    $recruitment = Recruitment::findOrFail($id);
+    $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
+    $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
+    return view('admin.recruitments.edit', compact('recruitment','jenis_ptk', 'status_recruitment'));
   }
 
   public function show($id)
@@ -51,8 +50,12 @@ class RecruitmentsController extends Controller
     if (! Gate::allows('recruitments_manage')) {
         return abort(401);
     }
+    $username = Auth::user()->name;
+
     $recruitment = Recruitment::findOrFail($id);
-    $recruitment->update($request->all());
+    $recruitment->fill($request->all());
+    $recruitment->updated_by = $username;
+    $recruitment->save();
 
     return redirect()->route('admin.recruitments.index');
   }
