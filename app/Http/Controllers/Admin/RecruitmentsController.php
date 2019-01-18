@@ -100,7 +100,9 @@ class RecruitmentsController extends Controller
             return abort(401);
         }
         $recruitment = Recruitment::findOrFail($id);
-        return view('admin.recruitments.create_contract', compact('recruitment'));
+        $contract_type = Reference::where('code','JENIS_KONTRAK')->orderBy('sort')->get()->pluck('item','value');
+        $contract_duration = Reference::where('code','JANGKA_WAKTU')->orderBy('sort')->get()->pluck('item','value');
+        return view('admin.recruitments.create_contract', compact('recruitment', 'contract_type','contract_duration'));
     }
 
     public function store_contract(Request $request)
@@ -108,7 +110,8 @@ class RecruitmentsController extends Controller
         if (! Gate::allows('recruitments_manage')) {
             return abort(401);
         }
-        //  save contract from recruitments
+        // save contract from recruitments
+
         return redirect()->route('admin.recruitments.index');
     }
 }

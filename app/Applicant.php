@@ -24,6 +24,7 @@ class Applicant extends Model
         'kode_pos',
         'telephone_rumah',
         'handphone',
+        'email',
         'skype_id',
         'agama',
         'golongan_darah',

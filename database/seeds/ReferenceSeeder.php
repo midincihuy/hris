@@ -132,5 +132,18 @@ class ReferenceSeeder extends Seeder
         'value' => 'PKWTT',
         'sort' => '3',
       ]);
+
+      Reference::create([
+        'code' => 'JANGKA_WAKTU',
+        'item' => '12',
+        'value' => '12',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'JANGKA_WAKTU',
+        'item' => '6',
+        'value' => '6',
+        'sort' => '2',
+      ]);
     }
 }

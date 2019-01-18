@@ -18,6 +18,7 @@ class CreateContractsTable extends Migration
             $table->string('nik');
             $table->string('name');
             $table->string('gender');
+            $table->string('contract_number')->comment('Nomor Kontrak');
             $table->date('contract_date')->comment('Tanggal Mulai Kontrak');
             $table->string('employee_status');
             $table->string('status_active');
