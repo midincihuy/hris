@@ -90,5 +90,13 @@ return [
 		'name' => 'Name',
 	],
 ],
+'schedulers' =>
+[
+	'title' => 'Schedulers',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
 
 ];
