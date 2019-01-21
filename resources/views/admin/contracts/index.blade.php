@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-primary" style="margin-top: 3%" ><i class="fa fa-upload"></i>&nbsp;Import</button>
           </div>
           <div class="col-md-2 form-group">
-            <a href="/uploads/contract_template.xls"><button class="btn btn-success" style="margin-top: 3%""><i class="fa fa-download"></i>&nbsp;Download Template</button></a>
+            <a href="/uploads/contract_template.xls"><button class="btn btn-success" style="margin-top: 3%" type="button"><i class="fa fa-download"></i>&nbsp;Download Template</button></a>
           </div>
         </div>
       </div>

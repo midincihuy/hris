@@ -15,6 +15,7 @@ class CreateRecruitmentsTable extends Migration
     {
         Schema::create('recruitments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('applicant_id');
             $table->string('no_ptk');
             $table->string('tanggal_ptk');
             $table->string('jenis_ptk');

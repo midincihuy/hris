@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recruitment extends Model
 {
     protected $fillable = [
+        'applicant_id',
         'no_ptk',
         'tanggal_ptk',
         'jenis_ptk',
@@ -26,4 +27,9 @@ class Recruitment extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function applicant()
+    {
+        return $this->hasOne('App\Applicant');
+    }
 }

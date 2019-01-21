@@ -79,7 +79,7 @@ class ReferenceSeeder extends Seeder
         'code' => 'REASON_NOT_ACTIVE',
         'item' => 'Meninggal',
         'value' => 'Meninggal',
-        'sort' => '2',
+        'sort' => '5',
       ]);
 
       Reference::create([
@@ -145,5 +145,252 @@ class ReferenceSeeder extends Seeder
         'value' => '6',
         'sort' => '2',
       ]);
+
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'OFFICER',
+        'value' => 'OFFICER',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'SUPERVISOR',
+        'value' => 'SUPERVISOR',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'SECTION HEAD',
+        'value' => 'SECTION HEAD',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'MANAGER',
+        'value' => 'MANAGER',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'SENIOR MANAGER',
+        'value' => 'SENIOR MANAGER',
+        'sort' => '5',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'GENERAL MANAGER',
+        'value' => 'GENERAL MANAGER',
+        'sort' => '6',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'VICE PRESIDENT',
+        'value' => 'VICE PRESIDENT',
+        'sort' => '7',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'SENIOR VICE PRESIDENT',
+        'value' => 'SENIOR VICE PRESIDENT',
+        'sort' => '8',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'DEPUTY DIRECTOR',
+        'value' => 'DEPUTY DIRECTOR',
+        'sort' => '9',
+      ]);
+      Reference::create([
+        'code' => 'GOLONGAN',
+        'item' => 'DIRECTOR',
+        'value' => 'DIRECTOR',
+        'sort' => '10',
+      ]);
+
+      Reference::create([
+        'code' => 'STATUS_KARYAWAN',
+        'item' => 'PERMANENT',
+        'value' => 'PERMANENT',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_KARYAWAN',
+        'item' => 'PROBATION',
+        'value' => 'PROBATION',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_KARYAWAN',
+        'item' => 'CONTRACT',
+        'value' => 'CONTRACT',
+        'sort' => '3',
+      ]);
+
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Senayan City',
+        'value' => 'Senayan City',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Daan Mogot',
+        'value' => 'Daan Mogot',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Radio Dalam',
+        'value' => 'Radio Dalam',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Pulomas',
+        'value' => 'Pulomas',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Kebayoran',
+        'value' => 'Kebayoran',
+        'sort' => '5',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Bandung',
+        'value' => 'Bandung',
+        'sort' => '6',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Solo',
+        'value' => 'Solo',
+        'sort' => '7',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Kalianda',
+        'value' => 'Kalianda',
+        'sort' => '8',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Pontianak',
+        'value' => 'Pontianak',
+        'sort' => '9',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'Banjarmasin',
+        'value' => 'Banjarmasin',
+        'sort' => '10',
+      ]);
+
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'TK',
+        'value' => 'TK',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'K0',
+        'value' => 'K0',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'K1',
+        'value' => 'K1',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'K2',
+        'value' => 'K2',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'K3',
+        'value' => 'K3',
+        'sort' => '5',
+      ]);
+      Reference::create([
+        'code' => 'STATUS_PAJAK',
+        'item' => 'Janda/Duda',
+        'value' => 'Janda/Duda',
+        'sort' => '6',
+      ]);
+
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 200',
+        'value' => 'IP 200',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 350',
+        'value' => 'IP 350',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 450',
+        'value' => 'IP 450',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 650',
+        'value' => 'IP 650',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 800',
+        'value' => 'IP 800',
+        'sort' => '5',
+      ]);
+      Reference::create([
+        'code' => 'PLAN_ASURANSI',
+        'item' => 'IP 1050',
+        'value' => 'IP 1050',
+        'sort' => '6',
+      ]);
+      
+      Reference::create([
+        'code' => 'RESIGN_CAUSE',
+        'item' => 'Resign',
+        'value' => 'Resign',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'RESIGN_CAUSE',
+        'item' => 'Resign - personal reason',
+        'value' => 'Resign - personal reason',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'RESIGN_CAUSE',
+        'item' => 'Manage Out',
+        'value' => 'Manage Out',
+        'sort' => '3',
+      ]);
+      Reference::create([
+        'code' => 'RESIGN_CAUSE',
+        'item' => 'End of Contract',
+        'value' => 'End of Contract',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'RESIGN_CAUSE',
+        'item' => 'Tidak 1 Month Notice',
+        'value' => 'Tidak 1 Month Notice',
+        'sort' => '5',
+      ]);
+
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="page-title">@lang('global.applicants.title')</h3>
 
-    {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.applicants.update', $contract->id]]) !!}
+    {!! Form::model($applicant, ['method' => 'PUT', 'route' => ['admin.applicants.update', $applicant->id]]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">

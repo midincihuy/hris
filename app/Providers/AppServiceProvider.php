@@ -38,10 +38,21 @@ class AppServiceProvider extends ServiceProvider
         $event->menu->add($result);
 
         $event->menu->add([
-          'text' => 'Schedulers',
-          'url' => 'admin/schedulers',
-          'can' => 'schedulers_manage',
-          'icon' => 'calendar',
+          'text' => 'Configuration',
+          'can' => 'configuration_manage',
+          'icon' => 'gears',
+          'submenu' => [
+            'text' => 'Schedulers',
+            'url' => 'admin/schedulers',
+            'can' => 'schedulers_manage',
+            'icon' => 'calendar',
+          ],
+          [
+            'text' => 'Reference',
+            'url' => 'admin/references',
+            'can' => 'references_manage',
+            'icon' => 'gear',
+          ],
         ]);
         $event->menu->add([
           'text' => 'Setting',
