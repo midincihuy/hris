@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/home');
 })->name('start');
 
 Route::get('/admin', function () {

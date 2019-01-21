@@ -36,6 +36,13 @@ class AppServiceProvider extends ServiceProvider
           }
         }
         $event->menu->add($result);
+
+        $event->menu->add([
+          'text' => 'Schedulers',
+          'url' => 'admin/schedulers',
+          'can' => 'schedulers_manage',
+          'icon' => 'calendar',
+        ]);
         $event->menu->add([
           'text' => 'Setting',
           'icon' => 'wrench',

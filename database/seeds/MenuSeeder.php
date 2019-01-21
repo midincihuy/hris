@@ -44,14 +44,6 @@ class MenuSeeder extends Seeder
         'parent_id' => 1
       ]);
       Menu::create([
-        'text' => 'Schedulers',
-        'label' => 'ADMIN',
-        'url' => 'admin/schedulers',
-        'can' => 'schedulers_manage',
-        'icon' => 'calendar',
-        'parent_id' => 1
-      ]);
-      Menu::create([
         'text' => 'Recruitments',
         'label' => 'upload',
         'url' => 'admin/recruitments',
