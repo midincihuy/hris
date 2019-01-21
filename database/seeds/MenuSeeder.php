@@ -45,7 +45,7 @@ class MenuSeeder extends Seeder
       ]);
       Menu::create([
         'text' => 'Recruitments',
-        'label' => 'upload',
+        // 'label' => 'upload',
         'url' => 'admin/recruitments',
         'can' => 'recruitments_manage',
         'icon' => 'envelope',

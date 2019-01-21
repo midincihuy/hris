@@ -98,5 +98,13 @@ return [
 		'name' => 'Name',
 	],
 ],
+'references' =>
+[
+	'title' => 'References',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
 
 ];

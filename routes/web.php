@@ -84,4 +84,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('recruitments/store_contract', 'Admin\RecruitmentsController@store_contract')
     ->middleware('can:recruitments_manage')->name('recruitments.store_contract');
 
+    Route::resource('references', 'Admin\ReferencesController',['only' => [
+        'index', 'create', 'store', 'edit', 'update'
+        ]])
+    ->middleware('can:references_manage');
 });
