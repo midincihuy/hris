@@ -91,4 +91,12 @@ class ApplicantsController extends Controller
 
     return redirect()->route('admin.applicants.index');
   }
+
+  public function recruit($id)
+  {
+    $applicant = Applicant::findOrFail($id);
+    $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
+    $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
+    return view('admin.applicants.recruit', compact('applicant', 'jenis_ptk', 'status_recruitment'));
+  }
 }

@@ -140,7 +140,7 @@ class RecruitmentsDataTable extends DataTable
     {
       return [
         'dom'          => 'Blrtip',
-        'buttons'      => ['create', 'excel', 'reset', 'reload'],
+        'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
         'scrollX'       => 'true',
         'initComplete' => 'function () {

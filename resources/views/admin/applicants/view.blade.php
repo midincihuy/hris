@@ -25,6 +25,9 @@
             </div>
             @php endforeach;
             @endphp
+            <a href="{{$applicant->id}}/recruit">
+                <button class="btn btn-success">Create Recruitment</button>
+            </a>
         </div>
     </div>
 

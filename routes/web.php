@@ -76,6 +76,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:applicants_manage');
     Route::post('import_applicants', 'Admin\ApplicantsController@import')->name('import_applicants')
     ->middleware('can:applicants_manage');
+    Route::get('applicants/{applicant}/recruit', 'Admin\ApplicantsController@recruit')
+    ->middleware('can:applicants_manage');
+
     Route::resource('recruitments', 'Admin\RecruitmentsController')
     ->middleware('can:recruitments_manage');
     

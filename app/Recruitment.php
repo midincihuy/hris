@@ -30,6 +30,6 @@ class Recruitment extends Model
 
     public function applicant()
     {
-        return $this->hasOne('App\Applicant');
+        return $this->hasOne('App\Applicant', 'id', 'applicant_id');
     }
 }

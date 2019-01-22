@@ -20,6 +20,7 @@ class CreateRecruitmentsTable extends Migration
             $table->string('tanggal_ptk');
             $table->string('jenis_ptk');
             $table->string('tanggal_interview_hr')->nullable();
+            $table->string('pic_interview_hr')->nullable();
             $table->string('status_interview_hr')->nullable();
             $table->string('tanggal_test_bidang')->nullable();
             $table->string('status_test_bidang')->nullable();
@@ -28,6 +29,7 @@ class CreateRecruitmentsTable extends Migration
             $table->string('pauli')->nullable();
             $table->string('hasil_psikotest')->nullable();
             $table->string('tanggal_interview_user')->nullable();
+            $table->string('pic_interview_user')->nullable();
             $table->string('status_interview_user')->nullable();
             $table->string('tanggal_offering')->nullable();
             $table->string('status_offering')->nullable();

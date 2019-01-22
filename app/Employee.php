@@ -61,5 +61,10 @@ class Employee extends Model
     {
         return $this->hasMany('App\Family');
     }
+
+    public function contract()
+    {
+        return $this->belongsTo('App\Contract');
+    }
     
 }

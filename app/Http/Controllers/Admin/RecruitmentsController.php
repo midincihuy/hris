@@ -15,6 +15,8 @@ use App\Events\Event;
 use Auth;
 
 use App\Reference;
+use App\Contract;
+use App\Employee;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -110,7 +112,50 @@ class RecruitmentsController extends Controller
         if (! Gate::allows('recruitments_manage')) {
             return abort(401);
         }
+        $recruitment = Recruitment::findOrFail($request->recruitment_id);
+        
         // save contract from recruitments
+        $contract = new Contract();
+        $contract->fill($request->all());
+
+        // Additional parameter For New Employee
+        $contract->name = $recruitment->applicant->nama;
+        $contract->employee_status = "KK";
+        $contract->status_active = "Aktif";
+        $contract->position = $recruitment->jabatan_final;
+        $contract->save();
+
+        $contract_id = $contract->id;
+
+        $employee = new Employee();
+        $employee->contract_id = $contract_id;
+        $employee->nama = $recruitment->applicant->nama;
+        $employee->no_ktp = $recruitment->applicant->no_ktp;
+        $employee->alamat_ktp = $recruitment->applicant->alamat_ktp;
+        $employee->rt = $recruitment->applicant->rt;
+        $employee->rw = $recruitment->applicant->rw;
+        $employee->kelurahan = $recruitment->applicant->kelurahan;
+        $employee->kecamatan = $recruitment->applicant->kecamatan;
+        $employee->kota = $recruitment->applicant->kota;
+        $employee->kode_pos = $recruitment->applicant->kode_pos;
+        $employee->telephone_rumah = $recruitment->applicant->telephone_rumah;
+        $employee->handphone = $recruitment->applicant->handphone;
+        $employee->email = $recruitment->applicant->email;
+        $employee->skype_id = $recruitment->applicant->skype_id;
+        $employee->agama = $recruitment->applicant->agama;
+        $employee->golongan_darah = $recruitment->applicant->golongan_darah;
+        $employee->pendidikan_terakhir = $recruitment->applicant->pendidikan_terakhir;
+        $employee->institusi_pendidikan = $recruitment->applicant->institusi_pendidikan;
+        $employee->jurusan = $recruitment->applicant->jurusan;
+        $employee->tahun_masuk = $recruitment->applicant->tahun_masuk;
+        $employee->tahun_keluar = $recruitment->applicant->tahun_keluar;
+        $employee->informasi_lowongan = $recruitment->applicant->informasi_lowongan;
+        $employee->jenis_kelamin = $recruitment->applicant->jenis_kelamin;
+        $employee->tempat_lahir = $recruitment->applicant->tempat_lahir;
+        $employee->tanggal_lahir = $recruitment->applicant->tanggal_lahir;
+        $employee->kewarganegaraan = $recruitment->applicant->kewarganegaraan;
+        $employee->save();
+        // End parameter
 
         return redirect()->route('admin.recruitments.index');
     }

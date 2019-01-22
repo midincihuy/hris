@@ -20,22 +20,6 @@ class MenuSeeder extends Seeder
           'icon' => 'home'
       ]);
       Menu::create([
-          'text' => 'Employee',
-          'label' => '',
-          'url' => 'admin/employee',
-          'can' => 'employee_manage',
-          'icon' => 'address-book',
-          'parent_id' => 1
-      ]);
-      Menu::create([
-          'text' => 'Contracts',
-          'label' => 'upload',
-          'url' => 'admin/contracts',
-          'can' => 'contracts_manage',
-          'icon' => 'file',
-          'parent_id' => 1
-      ]);
-      Menu::create([
         'text' => 'Applicants',
         'label' => 'upload',
         'url' => 'admin/applicants',
@@ -50,6 +34,22 @@ class MenuSeeder extends Seeder
         'can' => 'recruitments_manage',
         'icon' => 'envelope',
         'parent_id' => 1
+      ]);
+      Menu::create([
+          'text' => 'Contracts',
+          'label' => 'upload',
+          'url' => 'admin/contracts',
+          'can' => 'contracts_manage',
+          'icon' => 'file',
+          'parent_id' => 1
+      ]);
+      Menu::create([
+          'text' => 'Employee',
+          'label' => '',
+          'url' => 'admin/employee',
+          'can' => 'employee_manage',
+          'icon' => 'address-book',
+          'parent_id' => 1
       ]);
     }
 }
