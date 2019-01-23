@@ -120,8 +120,8 @@ class RecruitmentsController extends Controller
 
         // Additional parameter For New Employee
         $contract->name = $recruitment->applicant->nama;
-        $contract->employee_status = "KK";
-        $contract->status_active = "Aktif";
+        $contract->employee_status = "Draft";
+        $contract->status_active = "Draft";
         $contract->position = $recruitment->jabatan_final;
         $contract->save();
 

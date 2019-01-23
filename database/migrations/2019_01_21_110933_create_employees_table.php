@@ -25,6 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->string('no_va_dana')->default('-');
             $table->string('alamat')->default('-');
             $table->string('nama_ayah')->default('-');
+            $table->string('no_ktp_ibu')->default('-');
             $table->string('nama_ibu')->default('-');
             $table->string('nik');
             $table->string('golongan');

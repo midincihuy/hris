@@ -23,7 +23,7 @@ class CreateContractsTable extends Migration
             $table->date('contract_date')->comment('Tanggal Mulai Kontrak');
             $table->string('employee_status');
             $table->string('status_active');
-            $table->string('contract_duration')->default(12)->comment('Jangka Waktu Kontrak');
+            $table->string('contract_duration')->default(12)->comment('Jangka Waktu Kontrak')->nullable();
             $table->string('status_contract')->default('New');
             $table->string('head_1')->nullable();
             $table->string('email_head_1')->nullable();

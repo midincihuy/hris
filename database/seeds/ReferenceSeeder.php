@@ -145,6 +145,12 @@ class ReferenceSeeder extends Seeder
         'value' => '6',
         'sort' => '2',
       ]);
+      Reference::create([
+        'code' => 'JANGKA_WAKTU',
+        'item' => '3',
+        'value' => '3',
+        'sort' => '3',
+      ]);
 
       Reference::create([
         'code' => 'GOLONGAN',
@@ -391,6 +397,14 @@ class ReferenceSeeder extends Seeder
         'value' => 'Tidak 1 Month Notice',
         'sort' => '5',
       ]);
-
+      $code = 'KELAS';
+      foreach (range(7,22) as $key => $value){
+        Reference::create([
+          'code' => $code,
+          'item' => $value,
+          'value' => $value,
+          'sort' => $key+1,
+        ]);
+      }
     }
 }
