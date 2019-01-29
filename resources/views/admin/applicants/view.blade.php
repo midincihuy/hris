@@ -25,9 +25,11 @@
             </div>
             @php endforeach;
             @endphp
+            @if (count($applicant->recruitment) < 1)
             <a href="{{$applicant->id}}/recruit">
                 <button class="btn btn-success">Create Recruitment</button>
             </a>
+            @endif
         </div>
     </div>
 

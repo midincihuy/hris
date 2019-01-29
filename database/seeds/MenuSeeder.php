@@ -36,6 +36,14 @@ class MenuSeeder extends Seeder
         'parent_id' => 1
       ]);
       Menu::create([
+          'text' => 'Draft Contracts',
+          'label' => 'Draft',
+          'url' => 'admin/draft_contracts',
+          'can' => 'draft_contracts_manage',
+          'icon' => 'file-text',
+          'parent_id' => 1
+      ]);
+      Menu::create([
           'text' => 'Contracts',
           'label' => 'upload',
           'url' => 'admin/contracts',
@@ -51,5 +59,6 @@ class MenuSeeder extends Seeder
           'icon' => 'address-book',
           'parent_id' => 1
       ]);
+      
     }
 }

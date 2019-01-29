@@ -107,4 +107,13 @@ return [
 	],
 ],
 
+'draft_contracts' =>
+[
+	'title' => 'Draft Contracts',
+	'created_at' => 'Time',
+	'fields' => [
+		'name' => 'Name',
+	],
+],
+
 ];

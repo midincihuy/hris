@@ -5,7 +5,9 @@
     <h3 class="page-title">@lang('global.employee.title')</h3>
 
     {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->id]]) !!}
-
+@php
+    $readonly = $contract->nik == "" ? "" : "readonly";
+@endphp
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('global.app_edit')
@@ -15,7 +17,7 @@
             <div class="row">
                 <div class="col-xs-2 form-group">
                     {!! Form::label('nik', 'NIK', ['class' => 'control-label']) !!}
-                    {!! Form::text('nik', old('nik'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::text('nik', old('nik'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', $readonly ]) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
@@ -46,10 +48,38 @@
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="col-xs-2 form-group">
+                    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+                </div>
+                <div class="col-xs-2 form-group">
+                    <a href="detail"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Detail</button></a>
+                </div>
+            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 
-    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Anggota Keluarga
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    {!! $dataTable->table([], true) !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
+
+@push('js')
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+  <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+<script src="/vendor/datatables/buttons.server-side.js"></script>
+<script type="text/javascript">
+var selected = [];
+</script>
+{!! $dataTable->scripts() !!}
+@endpush

@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 
 use App\Contract;
 use App\DataTables\EmployeeDataTable;
+use App\DataTables\FamilyDataTable;
 
 use Illuminate\Support\Facades\Gate;
 
 use App\Reference;
+use App\Employee;
 
 class EmployeeController extends Controller
 {
@@ -66,7 +68,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FamilyDataTable $dataTable, $id)
     {
       if (! Gate::allows('contracts_manage')) {
             return abort(401);
@@ -76,7 +78,10 @@ class EmployeeController extends Controller
         $data['status_active'] = Reference::where('code','STATUS_ACTIVE')->orderBy('sort')->get()->pluck('item','value');
         $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
 
-        return view('admin.employee.edit', compact('contract', 'data'));
+        $employee = Employee::where('contract_id', $id)->first();
+        // return view('admin.employee.edit', compact('contract', 'data'));
+        return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('contract', 'data'));
+
     }
 
     /**
@@ -92,9 +97,9 @@ class EmployeeController extends Controller
           return abort(401);
       }
       $contract = Contract::findOrFail($id);
-      $contract->update($request->all());
-      // $roles = $request->input('roles') ? $request->input('roles') : [];
-      // $user->syncRoles($roles);
+      $contract->fill($request->all());
+
+      $contract->save();
 
       return redirect()->route('admin.employee.index');
     }
@@ -128,5 +133,23 @@ class EmployeeController extends Controller
       }else{
         return redirect()->back()->with('error', 'No Data Selected');
       }
+    }
+
+    public function detail($id)
+    {
+        $contract = Contract::findOrFail($id);
+        $employee = Employee::where('contract_id',$contract->id)->first();
+        return view('admin.employee.detail', compact('contract', 'employee'));
+    }
+
+    public function update_detail(Request $request, $id)
+    {
+        // return $request;
+        $contract = Contract::findOrFail($id);
+        $employee = Employee::where('contract_id',$contract->id)->first();
+        $employee->fill($request->all());
+        $employee->save();
+        // return $employee;
+        return redirect()->route('admin.employee.index');
     }
 }

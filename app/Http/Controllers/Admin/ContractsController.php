@@ -39,16 +39,9 @@ class ContractsController extends Controller
                 foreach ($reader->toArray() as $row) {
                     $row['upload_by'] = $username;
                     \Log::info($row);
-                    $exist = Contract::where('nik',$row['nik'])->first();
-                    if($exist){
-                      // update data here
-                      $exist->update($row);
-                      $contract = $exist;
-                    }else{
-                      // insert data here
-                      $contract = Contract::firstOrCreate($row);
-                    }
-                    event(new Event($contract));
+                    $contract = Contract::firstOrNew(['nik' => $row['nik']]);
+                    $contract->fill($row);
+                    $contract->save();
                 }
               })->get();
               return back();

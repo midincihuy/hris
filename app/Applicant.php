@@ -36,4 +36,9 @@ class Applicant extends Model
         'informasi_lowongan',
         'upload_by',
     ];
+
+    public function recruitment()
+    {
+        return $this->hasOne('App\Recruitment');
+    }
 }

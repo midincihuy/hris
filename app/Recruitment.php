@@ -30,7 +30,7 @@ class Recruitment extends Model
 
     public function applicant()
     {
-        return $this->hasOne('App\Applicant', 'id', 'applicant_id');
+        return $this->belongsTo('App\Applicant');
     }
 
     public function contract()

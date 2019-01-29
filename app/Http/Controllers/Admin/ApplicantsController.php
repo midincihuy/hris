@@ -39,16 +39,9 @@ class ApplicantsController extends Controller
                     $row['upload_by'] = $username;
                     unset($row[0]);
                     \Log::info($row);
-                    $exist = Applicant::where('id_pelamar',$row['id_pelamar'])->first();
-                    if($exist){
-                      // update data here
-                      $exist->update($row);
-                      $applicant = $exist;
-                    }else{
-                      // insert data here
-                      $applicant = Applicant::firstOrCreate($row);
-                    }
-                    // event(new Event($applicant));
+                    $applicant = Applicant::firstOrNew(['id_pelamar' => $row['id_pelamar']]);
+                    $applicant->fill($row);
+                    $applicant->save();
                 }
               })->get();
               return back();

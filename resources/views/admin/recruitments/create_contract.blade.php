@@ -109,5 +109,16 @@
         }
         
     });
+
+    $("#contract_type").change(function(){
+        switch($(this).val()){
+            case "PKWTT" :
+                $("#contract_duration").removeAttr('required');
+                break;
+            default:
+                $("#contract_duration").attr('required','');
+                break;
+        }
+    });
 </script>
 @endpush

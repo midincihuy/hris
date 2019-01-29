@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Contract;
+use App\Family;
 use Yajra\DataTables\Services\DataTable;
 
-class EmployeeDataTable extends DataTable
+class FamilyDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,25 +16,28 @@ class EmployeeDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            $edit = '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            $button = $edit;
-            return $button;
-        });
+            ->addColumn('action', 'familydatatable.action');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Family $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model)
+    public function query(Family $model)
     {
-        return $model->newQuery()->select('id', 'nik', 'name', 'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'position', 'reminder', 'created_at', 'updated_at');
+        return $model->newQuery()
+        ->where('employee_id', $this->employee_id)
+        ->select('id', 
+        'relation',
+        'nik',
+        'name',
+        'gender',
+        'place_of_birth',
+        'date_of_birth',
+        'created_at',
+        'updated_at');
     }
 
     /**
@@ -59,20 +62,15 @@ class EmployeeDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // 'id',
+            'id',
+            'relation',
             'nik',
             'name',
-            'contract_date',
-            // 'contract_duration',
-            'employee_status',
-            'status_active',
-            // 'status_contract',
-            // 'division',
-            'department',
-            'position',
-            // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            'gender',
+            'place_of_birth',
+            'date_of_birth',
+            'created_at',
+            'updated_at'
         ];
     }
 
@@ -83,14 +81,14 @@ class EmployeeDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Employee_' . date('YmdHis');
+        return 'Family_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()
     {
       return [
         'dom'          => 'Blrtip',
-        'buttons'      => ['excel', 'reset', 'reload'],
+        'buttons'      => ['create', 'excel', 'reset', 'reload'],
         'pageLength'   => 10,
         'scrollX'       => 'true',
         'initComplete' => 'function () {

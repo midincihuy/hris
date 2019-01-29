@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Contract;
 use Yajra\DataTables\Services\DataTable;
 
-class EmployeeDataTable extends DataTable
+class DraftContractsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,25 +16,30 @@ class EmployeeDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            $edit = '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            $button = $edit;
-            return $button;
-        });
+            ->addColumn('action', function ($contracts) {
+
+                $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Assign NIK</a>';
+                $button = $edit;
+                return $button;
+            });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Contract $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Contract $model)
     {
-        return $model->newQuery()->select('id', 'nik', 'name', 'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'position', 'reminder', 'created_at', 'updated_at');
+        return $model->newQuery()
+        ->where('employee_status', 'Draft')
+        ->where('status_active', 'Draft')
+        ->select('id',
+        'nik',
+        'name',
+        'created_at',
+        'updated_at');
     }
 
     /**
@@ -59,20 +64,11 @@ class EmployeeDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // 'id',
+            'id',
             'nik',
             'name',
-            'contract_date',
-            // 'contract_duration',
-            'employee_status',
-            'status_active',
-            // 'status_contract',
-            // 'division',
-            'department',
-            'position',
-            // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            'created_at',
+            'updated_at'
         ];
     }
 
@@ -83,7 +79,7 @@ class EmployeeDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Employee_' . date('YmdHis');
+        return 'DraftContracts_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()
@@ -98,25 +94,25 @@ class EmployeeDataTable extends DataTable
             $("#dataTableBuilder_paginate").attr("style","float:left;");
 
             // to select from list
-            $("#dataTableBuilder tbody").on("click", "tr", function () {
-                var id = this.id;
-                var index = $.inArray(id, selected);
+            // $("#dataTableBuilder tbody").on("click", "tr", function () {
+            //     var id = this.id;
+            //     var index = $.inArray(id, selected);
   
-                if ( index === -1 ) {
-                    selected.push( id );
-                } else {
-                    selected.splice( index, 1 );
-                }
-                $("#hide_nik").val(selected.toString());
-                $("#total_nik").text(selected.length);
-                $(this).toggleClass("selected");
-            });
+            //     if ( index === -1 ) {
+            //         selected.push( id );
+            //     } else {
+            //         selected.splice( index, 1 );
+            //     }
+            //     $("#hide_nik").val(selected.toString());
+            //     $("#total_nik").text(selected.length);
+            //     $(this).toggleClass("selected");
+            // });
         }',
         'rowCallback'  => 'function( row, data, index ) {
-            $(row).attr("id", data.nik);
-            if ( $.inArray(data.nik, selected) !== -1 ) {
-                $(row).addClass("selected");
-            }
+            // $(row).attr("id", data.nik);
+            // if ( $.inArray(data.nik, selected) !== -1 ) {
+            //     $(row).addClass("selected");
+            // }
             
             var r = $("#dataTableBuilder_wrapper tfoot tr");
 

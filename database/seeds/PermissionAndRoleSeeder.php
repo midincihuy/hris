@@ -20,6 +20,7 @@ class PermissionAndRoleSeeder extends Seeder
         'permissions_manage',
         'roles_manage',
         'users_manage',
+        'draft_contracts_manage',
         'contracts_manage',
         'employee_manage',
         'menus_manage',
