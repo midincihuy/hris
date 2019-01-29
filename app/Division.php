@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Division extends Model
 {
     protected $fillable = [
-        'name'
+        'name',
+        'company',
     ];
 
     public function departments()
