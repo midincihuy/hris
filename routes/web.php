@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
     Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');
 
+    Route::resource('draft_contracts', 'Admin\DraftContractsController')
+    ->middleware('can:draft_contracts_manage');
+
     Route::resource('contracts', 'Admin\ContractsController')
     ->middleware('can:contracts_manage');
     Route::post('import', 'Admin\ContractsController@import')->name('import')
@@ -65,6 +68,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:employee_manage');
 
     Route::post('employee/mass_update', 'Admin\EmployeeController@mass_update')->name('employee.mass_update')
+    ->middleware('can:employee_manage');
+    Route::get('employee/{contract}/detail', 'Admin\EmployeeController@detail')->name('employee.detail')
+    ->middleware('can:employee_manage');
+    Route::put('employee/{contract}/update_detail', 'Admin\EmployeeController@update_detail')->name('employee.update_detail')
+    ->middleware('can:employee_manage');
+    Route::get('employee/{contract}/family', 'Admin\EmployeeController@family')->name('employee.family')
+    ->middleware('can:employee_manage');
+    Route::put('employee/{contract}/update_family', 'Admin\EmployeeController@update_family')->name('employee.update_family')
     ->middleware('can:employee_manage');
     
     Route::resource('schedulers', 'Admin\SchedulersController',['only' => [

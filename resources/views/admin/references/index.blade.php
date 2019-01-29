@@ -1,6 +1,11 @@
 @extends('adminlte::page')
 
 @section('content')
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>References</h3>
+  </div>
+</div>
 {!! $dataTable->table([], true) !!}
 @endsection
 
