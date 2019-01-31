@@ -15,6 +15,7 @@ use App\Events\Event;
 use Auth;
 
 use App\Reference;
+use App\Position;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -90,6 +91,9 @@ class ApplicantsController extends Controller
     $applicant = Applicant::findOrFail($id);
     $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
     $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
-    return view('admin.applicants.recruit', compact('applicant', 'jenis_ptk', 'status_recruitment'));
+    $list_jabatan = Position::with('division')->get()->each(function($x){
+        $x->position_name = $x->company." - ".$x->name;
+    })->pluck('position_name','id');
+    return view('admin.applicants.recruit', compact('applicant', 'jenis_ptk', 'status_recruitment', 'list_jabatan'));
   }
 }

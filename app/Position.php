@@ -27,4 +27,13 @@ class Position extends Model
     {
         return $this->belongsTo('App\Division');
     }
+
+    public function getCompanyAttribute()
+    {
+        if( ! array_key_exists('division', $this->relations)){
+            $this->load('division');
+        }
+        $division = $this->getRelation('division');
+        return $division->company ? $division->company : "";
+    }
 }

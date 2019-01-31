@@ -88,9 +88,22 @@ class DraftContractsController extends Controller
             return abort(401);
         }
         $contract = Contract::findOrFail($id);
+        switch($contract->contract_type){
+            case "PKWT":
+                $employee_status = "KK";
+                break;
+            case "Probation":
+                $employee_status = "KP";
+                break;
+            case "PKWTT":
+                $employee_status = "KT";
+                break;
+            default:
+                break;
+        }
         $contract->fill($request->all());
         $contract->fill([
-            'employee_status' => 'KK',
+            'employee_status' => $employee_status,
             'status_active' => 'Aktif',
         ]);
   

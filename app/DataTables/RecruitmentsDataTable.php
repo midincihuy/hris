@@ -34,7 +34,7 @@ class RecruitmentsDataTable extends DataTable
     public function query(Recruitment $model)
     {
         return $model->newQuery()
-        ->select('id', 
+        ->select('recruitments.id', 
         'no_ptk',
         'tanggal_ptk',
         'jenis_ptk',
@@ -51,10 +51,12 @@ class RecruitmentsDataTable extends DataTable
         'tanggal_offering',
         'status_offering',
         'jabatan_final',
+        'positions.name as jabatan',
         'created_by',
         'updated_by',
-        'created_at', 
-        'updated_at');
+        'recruitments.created_at', 
+        'recruitments.updated_at')
+        ->leftJoin('positions', 'jabatan_final', '=', 'positions.id');
     }
 
     /**
@@ -95,7 +97,8 @@ class RecruitmentsDataTable extends DataTable
             'status_interview_user',
             'tanggal_offering',
             'status_offering',
-            'jabatan_final',
+            // 'jabatan_final',
+            'jabatan',
             'created_by',
             'updated_by',
             // 'created_at',
@@ -120,7 +123,7 @@ class RecruitmentsDataTable extends DataTable
             'status_interview_user',
             'tanggal_offering',
             'status_offering',
-            'jabatan_final',
+            'jabatan',
             'created_by',
             'updated_by',
             // 'created_at',

@@ -791,13 +791,13 @@ class PositionSeeder extends Seeder
       // Insert Position
       $positions = [
         [
-          // 'division_id' => '',
+          'division_id' => '1',
           // 'department_id' => '',
           // 'section_id' => '',
           'name' => 'Director',
         ],
         [
-          // 'division_id' => '',
+          'division_id' => '1',
           // 'department_id' => '',
           // 'section_id' => '',
           'name' => 'Deputy Director',

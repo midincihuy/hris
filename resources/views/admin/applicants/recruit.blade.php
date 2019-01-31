@@ -261,7 +261,7 @@
                   {!! Form::label('jabatan_final', 'Jabatan Final', ['class' => 'control-label']) !!}
               </div>
               <div class="col-xs-3 form-group">
-                  {!! Form::text('jabatan_final', old('jabatan_final'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                  {!! Form::select('jabatan_final',$list_jabatan,'', ['class' => 'form-control', 'placeholder' => '']) !!}
                   <p class="help-block"></p>
                   @if($errors->has('jabatan_final'))
                       <p class="help-block">
@@ -278,3 +278,9 @@
   {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-danger']) !!}
   {!! Form::close() !!}
 @endsection
+
+@push('js')
+<script type="text/javascript">
+    $("select[name='jabatan_final']").select2();
+</script>
+@endpush
