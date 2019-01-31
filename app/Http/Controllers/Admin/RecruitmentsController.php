@@ -127,6 +127,9 @@ class RecruitmentsController extends Controller
         $contract->employee_status = "Draft";
         $contract->status_active = "Draft";
         $contract->position = $recruitment->jabatan_final;
+        $contract->division = $recruitment->position->division->name;
+        $contract->department = isset($recruitment->position->department->name) ? $recruitment->position->department->name : "";
+        $contract->section = isset($recruitment->position->section->name) ? $recruitment->position->section->name : "";
         $contract->save();
 
         $contract_id = $contract->id;

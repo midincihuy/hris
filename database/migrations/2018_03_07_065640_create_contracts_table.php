@@ -31,6 +31,7 @@ class CreateContractsTable extends Migration
             $table->string('email_head_2')->nullable();
             $table->string('division')->nullable();
             $table->string('department')->nullable();
+            $table->string('section')->nullable();
             $table->string('position')->nullable();
             $table->string('reminder')->nullable();
             $table->string('reminder_hr')->default('0');
