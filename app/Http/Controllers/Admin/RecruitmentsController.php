@@ -17,6 +17,7 @@ use Auth;
 use App\Reference;
 use App\Contract;
 use App\Employee;
+use App\Position;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -35,7 +36,10 @@ class RecruitmentsController extends Controller
     $recruitment = Recruitment::findOrFail($id);
     $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
     $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
-    return view('admin.recruitments.edit', compact('recruitment','jenis_ptk', 'status_recruitment'));
+    $list_jabatan = Position::with('division')->get()->each(function($x){
+        $x->position_name = $x->company." - ".$x->name;
+    })->pluck('position_name','id');
+    return view('admin.recruitments.edit', compact('recruitment','jenis_ptk', 'status_recruitment','list_jabatan'));
   }
 
   public function show($id)

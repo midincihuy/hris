@@ -11,6 +11,9 @@
             @php foreach($recruitment->toArray() as $k => $v):
             $label = strtoupper($k);
             $label = str_replace($label, '_', '');
+            if($k == 'jabatan_final'){
+                $v = App\Position::find($v)->name;
+            }
             @endphp
             <div class="row">
                 <div class="col-md-4 form-group">

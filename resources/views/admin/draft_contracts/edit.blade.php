@@ -32,7 +32,7 @@
                     {!! Form::label('position', 'Position', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('position', old('position'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::text('position', $contract->jabatan, ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly', 'disabled']) !!}
                 </div>
             </div>
             <div class="row">
