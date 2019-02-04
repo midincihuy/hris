@@ -16,6 +16,10 @@ class RecruitmentsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+        ->addColumn('jabatan', function ($recruitments) {
+            $jabatan = isset($recruitments->position) ? $recruitments->position->name : "";
+            return $jabatan;
+        })
         ->addColumn('action', function ($recruitments) {
             $display_btn = ($recruitments->status_offering == "Disarankan") && (count($recruitments->contract) < 1) ? true : false;
             $view_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'" class="btn btn-xs btn-primary"><i class="fa fa-search"></i> View</a>';
@@ -51,12 +55,10 @@ class RecruitmentsDataTable extends DataTable
         'tanggal_offering',
         'status_offering',
         'jabatan_final',
-        'positions.name as jabatan',
         'created_by',
         'updated_by',
         'recruitments.created_at', 
-        'recruitments.updated_at')
-        ->leftJoin('positions', 'jabatan_final', '=', 'positions.id');
+        'recruitments.updated_at');
     }
 
     /**
@@ -98,7 +100,11 @@ class RecruitmentsDataTable extends DataTable
             'tanggal_offering',
             'status_offering',
             // 'jabatan_final',
-            'jabatan',
+            [
+                'data' => 'jabatan',
+                'title' => 'jabatan',
+                'searchable' => false,
+            ],
             'created_by',
             'updated_by',
             // 'created_at',
