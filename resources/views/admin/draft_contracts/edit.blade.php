@@ -40,7 +40,7 @@
                     {!! Form::label('contract_date', 'Contract Date', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('contract_date', old('contract_date'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::date('contract_date', $contract->contract_date, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                 </div>
             </div>
         </div>

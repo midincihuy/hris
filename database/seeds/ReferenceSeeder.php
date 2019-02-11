@@ -406,5 +406,25 @@ class ReferenceSeeder extends Seeder
           'sort' => $key+1,
         ]);
       }
+
+
+      Reference::create([
+        'code' => 'HUBUNGAN_KELUARGA',
+        'item' => 'Suami',
+        'value' => 'Suami',
+        'sort' => '1',
+      ]);
+      Reference::create([
+        'code' => 'HUBUNGAN_KELUARGA',
+        'item' => 'Istri',
+        'value' => 'Istri',
+        'sort' => '2',
+      ]);
+      Reference::create([
+        'code' => 'HUBUNGAN_KELUARGA',
+        'item' => 'Anak',
+        'value' => 'Anak',
+        'sort' => '3',
+      ]);
     }
 }

@@ -71,6 +71,11 @@
                 </div>
             </div>
         </div>
+        <div class="panel-footer">
+            <a href="{{ route('admin.employee.family.create', $contract->id) }}">
+                <i class="btn btn-success fa fa-plus"> Add</i>
+            </a>
+        </div>
     </div>
 @stop
 

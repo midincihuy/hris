@@ -102,4 +102,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         'index', 'create', 'store', 'edit', 'update'
         ]])
     ->middleware('can:references_manage');
+
+    Route::resource('employee.family', 'Admin\FamilyController')
+    ->middleware('can:employee_manage');
 });

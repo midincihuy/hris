@@ -69,14 +69,14 @@
 
             <div class="row">
                 <div class="col-xs-3 form-group">
-                    {!! Form::label('tanggal_akhir', 'Tanggal Akhir', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_expire_date', 'Tanggal Akhir', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('tanggal_akhir', old('tanggal_akhir'), ['class' => 'form-control', 'placeholder' => '', 'readonly']) !!}
+                    {!! Form::text('contract_expire_date', old('contract_expire_date'), ['class' => 'form-control', 'placeholder' => '', 'readonly']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('tanggal_akhir'))
+                    @if($errors->has('contract_expire_date'))
                         <p class="help-block">
-                            {{ $errors->first('tanggal_akhir') }}
+                            {{ $errors->first('contract_expire_date') }}
                         </p>
                     @endif
                 </div>
@@ -97,17 +97,13 @@
         contract_date = $("#contract_date").val();
         if(contract_date != ""){
             tgl_mulai = new Date(contract_date);
-            console.log(tgl_mulai);
-            tgl_akhir = new Date(tgl_mulai.setMonth(tgl_mulai.getMonth()+duration));
-            console.log(tgl_akhir);
-            
-            $("#tanggal_akhir").val(tgl_akhir.toJSON().substr(0,10));
+            tgl_mulai.setMonth(tgl_mulai.getMonth()+parseInt(duration));
+            $("#contract_expire_date").val(tgl_mulai.toISOString().substr(0,10));
         }else{
             alert("Tanggal Mulai Kosong");
             $("#contract_date").focus();
             $(this).val('')
         }
-        
     });
 
     $("#contract_type").change(function(){

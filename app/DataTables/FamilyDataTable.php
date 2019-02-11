@@ -16,7 +16,11 @@ class FamilyDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action', 'familydatatable.action');
+        ->addColumn('action', function ($family) {
+            $edit = '<a href="family/'.$family->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $button = $edit;
+            return $button;
+        });
     }
 
     /**
@@ -88,7 +92,7 @@ class FamilyDataTable extends DataTable
     {
       return [
         'dom'          => 'Blrtip',
-        'buttons'      => ['create', 'excel', 'reset', 'reload'],
+        'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
         'scrollX'       => 'true',
         'initComplete' => 'function () {

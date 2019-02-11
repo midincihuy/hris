@@ -60,7 +60,7 @@
                     {!! Form::label('tanggal_interview_hr', 'Tanggal Interview HR', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('tanggal_interview_hr', old('tanggal_interview_hr'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::date('tanggal_interview_hr', old('tanggal_interview_hr'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('tanggal_interview_hr'))
                         <p class="help-block">

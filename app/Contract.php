@@ -22,19 +22,26 @@ class Contract extends Model
     'status_active',
     'status_contract',
     'contract_duration',
+
     'head_1',
     'email_head_1',
     'head_2',
     'email_head_2',
+    
     'division',
     'department',
     'position',
     'reminder',
     'upload_by',
     'contract_type',
-    'contract_duration',
+    'contract_expire_date',
 
   ];
+
+  protected $dates = [
+    'contract_date',
+    'contract_expire_date',
+];
 
   public function employee()
   {

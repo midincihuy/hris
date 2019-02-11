@@ -32,7 +32,11 @@ class ContractsDataTable extends DataTable
         return $model->newQuery()
         ->where('employee_status', 'KK')
         ->where('status_active', 'Aktif')
-        ->select('contracts.id', 'nik', 'contracts.name', 'gender',
+        ->select('contracts.id', 
+        'nik', 
+        'contracts.name', 
+        'contract_number', 
+        'gender',
         'contract_date', 'contract_duration', 'employee_status',
         'status_active', 'status_contract', 'division', 'department',
         'positions.name as position', 'reminder', 'contracts.created_at', 'contracts.updated_at')
@@ -64,6 +68,7 @@ class ContractsDataTable extends DataTable
             // 'id',
             'nik',
             'name',
+            'contract_number', 
             'contract_date',
             // 'contract_duration',
             'employee_status',
