@@ -18,7 +18,7 @@ class CreateReferencesTable extends Migration
             $table->string('code');
             $table->string('item');
             $table->string('value');
-            $table->string('sort');
+            $table->integer('sort');
             $table->timestamps();
         });
     }
