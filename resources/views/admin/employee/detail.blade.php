@@ -163,7 +163,7 @@
                     {!! Form::label('kode_kecamatan', 'Kode Kecamatan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('kode_kecamatan', old('kode_kecamatan'), ['class' => 'form-control', 'placeholder' => 'kode_kecamatan']) !!}
+                    {!! Form::text('kode_kecamatan', old('kode_kecamatan'), ['class' => 'form-control', 'placeholder' => 'Kode Kecamatan']) !!}
                 </div>
             </div>
 
@@ -172,7 +172,7 @@
                     {!! Form::label('nama_kecamatan', 'Nama Kecamatan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('nama_kecamatan', old('nama_kecamatan'), ['class' => 'form-control', 'placeholder' => 'nama_kecamatan']) !!}
+                    {!! Form::text('nama_kecamatan', old('nama_kecamatan'), ['class' => 'form-control', 'placeholder' => 'Nama Kecamatan']) !!}
                 </div>
             </div>
 
@@ -181,7 +181,7 @@
                     {!! Form::label('kode_desa', 'Kode Desa', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('kode_desa', old('kode_desa'), ['class' => 'form-control', 'placeholder' => 'kode_desa']) !!}
+                    {!! Form::text('kode_desa', old('kode_desa'), ['class' => 'form-control', 'placeholder' => 'Kode Desa']) !!}
                 </div>
             </div>
 
@@ -190,7 +190,7 @@
                     {!! Form::label('nama_desa', 'Nama Desa', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('nama_desa', old('nama_desa'), ['class' => 'form-control', 'placeholder' => 'nama_desa']) !!}
+                    {!! Form::text('nama_desa', old('nama_desa'), ['class' => 'form-control', 'placeholder' => 'Nama Desa']) !!}
                 </div>
             </div>
 
@@ -199,7 +199,7 @@
                     {!! Form::label('kode_pos', 'Kode Pos', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('kode_pos', old('kode_pos'), ['class' => 'form-control', 'placeholder' => 'kode_pos']) !!}
+                    {!! Form::text('kode_pos', old('kode_pos'), ['class' => 'form-control', 'placeholder' => 'Kode Pos']) !!}
                 </div>
             </div>
 
@@ -208,7 +208,7 @@
                     {!! Form::label('kode_faskes_tk_1', 'Kode Faskes TK 1', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('kode_faskes_tk_1', old('kode_faskes_tk_1'), ['class' => 'form-control', 'placeholder' => 'kode_faskes_tk_1']) !!}
+                    {!! Form::text('kode_faskes_tk_1', old('kode_faskes_tk_1'), ['class' => 'form-control', 'placeholder' => 'Kode Faskes TK 1']) !!}
                 </div>
             </div>
 
@@ -217,7 +217,7 @@
                     {!! Form::label('faskes_tk_1', 'Faskes TK 1', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('faskes_tk_1', old('faskes_tk_1'), ['class' => 'form-control', 'placeholder' => 'faskes_tk_1']) !!}
+                    {!! Form::text('faskes_tk_1', old('faskes_tk_1'), ['class' => 'form-control', 'placeholder' => 'Faskes TK 1']) !!}
                 </div>
             </div>
 
