@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:employee_manage');
     Route::get('employee/{contract}/detail', 'Admin\EmployeeController@detail')->name('employee.detail')
     ->middleware('can:employee_manage');
+    Route::get('employee/{contract}/detailemployee', 'Admin\EmployeeController@detailemployee')->name('employee.detailemployee')
+    ->middleware('can:employee_manage');
     Route::put('employee/{contract}/update_detail', 'Admin\EmployeeController@update_detail')->name('employee.update_detail')
     ->middleware('can:employee_manage');
     Route::get('employee/{contract}/family', 'Admin\EmployeeController@family')->name('employee.family')

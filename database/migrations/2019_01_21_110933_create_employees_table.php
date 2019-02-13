@@ -16,17 +16,17 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('contract_id');
-            $table->string('no_kk')->default('-');
+            $table->string('no_kk')->nullable();
             $table->string('no_bpjs_ketenagakerjaan')->nullable();
             $table->string('no_bpjs_kesehatan')->nullable();
             $table->string('no_bpjs_pensiun')->nullable();
-            $table->string('no_npwp')->default('-');
-            $table->string('no_rek_bca')->default('-');
-            $table->string('no_va_dana')->default('-');
-            $table->string('alamat')->default('-');
-            $table->string('nama_ayah')->default('-');
-            $table->string('no_ktp_ibu')->default('-');
-            $table->string('nama_ibu')->default('-');
+            $table->string('no_npwp')->nullable();
+            $table->string('no_rek_bca')->nullable();
+            $table->string('no_va_dana')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('nama_ayah')->nullable();
+            $table->string('no_ktp_ibu')->nullable();
+            $table->string('nama_ibu')->nullable();
             $table->string('nik');
             $table->string('golongan');
             $table->string('kelas');

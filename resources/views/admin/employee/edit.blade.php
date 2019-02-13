@@ -53,7 +53,10 @@
                     {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
                 </div>
                 <div class="col-xs-2 form-group">
-                    <a href="detail"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Detail</button></a>
+                    <a href="detailemployee"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By Employee</button></a>
+                </div>
+                <div class="col-xs-2 form-group">
+                    <a href="detail"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By HR</button></a>
                 </div>
             </div>
             {!! Form::close() !!}

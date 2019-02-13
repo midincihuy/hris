@@ -17,8 +17,10 @@ class EmployeeDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('action', function ($contracts) {
-            $edit = '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            $button = $edit;
+            $edit = '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
+            $edit_detail_employee = '<a href="employee/'.$contracts->id.'/detailemployee" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
+            $edit_detail_hr = '<a href="employee/'.$contracts->id.'/detail" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
+            $button = $edit.$edit_detail_employee.$edit_detail_hr;
             return $button;
         });
     }

@@ -159,4 +159,18 @@ class EmployeeController extends Controller
         // return $employee;
         return redirect()->route('admin.employee.index');
     }
+
+    public function detailemployee($id)
+    {
+      $contract = Contract::findOrFail($id);
+      $employee = Employee::where('contract_id',$contract->id)->first();
+      $data['golongan']         = Reference::where('code','GOLONGAN')->orderBy('sort')->get()->pluck('item','value');
+      $data['kelas']            = Reference::where('code','KELAS')->orderBy('sort')->get()->pluck('item','value');
+      $data['status_karyawan']  = Reference::where('code','STATUS_KARYAWAN')->orderBy('sort')->get()->pluck('item','value');
+      $data['lokasi_kerja']     = Reference::where('code','LOKASI_KERJA')->orderBy('sort')->get()->pluck('item','value');
+      $data['status_pajak']     = Reference::where('code','STATUS_PAJAK')->orderBy('sort')->get()->pluck('item','value');
+      $data['plan_asuransi']    = Reference::where('code','PLAN_ASURANSI')->orderBy('sort')->get()->pluck('item','value');
+      $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
+      return view('admin.employee.detailemployee', compact('contract', 'employee', 'data'));
+    }
 }
