@@ -48,17 +48,17 @@ class Contract extends Model
       return $this->hasOne('App\Employee');
   }
 
-  public function position()
+  public function position_role()
   {
       return $this->belongsTo('App\Position','position', 'id');
   }
 
   public function getJabatanAttribute()
   {
-      if( ! array_key_exists('position', $this->relations)){
-          $this->load('position');
+      if( ! array_key_exists('position_role', $this->relations)){
+          $this->load('position_role');
       }
-      $position = $this->getRelation('position');
+      $position = $this->getRelation('position_role');
       return $position->name ? $position->name : "";
   }
 

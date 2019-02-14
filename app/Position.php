@@ -36,4 +36,9 @@ class Position extends Model
         $division = $this->getRelation('division');
         return $division->company ? $division->company : "";
     }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Position', 'parent_id');
+    }
 }

@@ -18,6 +18,7 @@ class CreatePositionsTable extends Migration
             $table->integer('division_id')->nullable();
             $table->integer('department_id')->nullable();
             $table->integer('section_id')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->string('name');
             $table->timestamps();
         });
