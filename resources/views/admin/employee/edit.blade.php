@@ -27,7 +27,7 @@
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('position', 'Position', ['class' => 'control-label']) !!}
-                    {!! Form::text('position', old('position'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::text('position', $contract->jabatan, ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">
@@ -50,13 +50,16 @@
             </div>
             <div class="row">
                 <div class="col-xs-2 form-group">
-                    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+                    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
                 </div>
                 <div class="col-xs-2 form-group">
                     <a href="detailemployee"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By Employee</button></a>
                 </div>
                 <div class="col-xs-2 form-group">
                     <a href="detail"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By HR</button></a>
+                </div>
+                <div class="col-xs-2 form-group">
+                    <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
                 </div>
             </div>
             {!! Form::close() !!}

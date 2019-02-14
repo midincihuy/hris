@@ -173,4 +173,20 @@ class EmployeeController extends Controller
       $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
       return view('admin.employee.detailemployee', compact('contract', 'employee', 'data'));
     }
+
+    public function resign($id)
+    {
+      $contract = Contract::findOrFail($id);
+      $employee = $contract->employee;
+      $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
+      return view('admin.employee.resign', compact('employee', 'contract', 'data'));
+    }
+
+    public function store_resign(Request $request, $id)
+    {
+      $employee = Contract::findOrFail($id)->employee;
+      $employee->fill($request->all());
+      $employee->save();
+      return redirect(route('admin.employee.edit',$id));
+    }
 }

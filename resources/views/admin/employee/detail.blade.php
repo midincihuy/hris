@@ -150,28 +150,11 @@
                     {!! Form::date('tanggal_efektif_asuransi', old('tanggal_efektif_asuransi'), ['class' => 'form-control', 'placeholder' => 'tanggal_efektif_asuransi']) !!}
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xs-3 form-group">
-                    {!! Form::label('tanggal_berhenti', 'Tanggal Berhenti', ['class' => 'control-label']) !!}
-                </div>
-                <div class="col-xs-3 form-group">
-                    {!! Form::date('tanggal_berhenti', old('tanggal_berhenti'), ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti']) !!}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-3 form-group">
-                    {!! Form::label('alasan_berhenti', 'Alasan Berhenti', ['class' => 'control-label']) !!}
-                </div>
-                <div class="col-xs-3 form-group">
-                    {!! Form::select('alasan_berhenti', $data['resign_cause'], old('alasan_berhenti'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                </div>
-            </div>
-            
+        </div>
+        <div class="panel-footer">
+            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
         </div>
     </div>
-    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
 
     {!! Form::close() !!}
 @stop

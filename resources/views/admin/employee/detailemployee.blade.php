@@ -81,8 +81,10 @@
                 </div>
             </div>
         </div>
+        <div class="panel-footer">
+            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+        </div>
     </div>
-    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
 
     {!! Form::close() !!}
 @stop

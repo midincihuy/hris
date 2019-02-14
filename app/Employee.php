@@ -35,6 +35,7 @@ class Employee extends Model
         'tanggal_efektif_asuransi',
         'tanggal_berhenti',
         'alasan_berhenti',
+        'last_day',
         'no_ktp',
         'alamat_ktp',
         'rt',
