@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Contract;
+use App\Section;
 use Yajra\DataTables\Services\DataTable;
 
-class ContractsDataTable extends DataTable
+class SectionsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,31 +16,24 @@ class ContractsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            return '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-        });
+            ->addColumn('division', function ($section) {
+                return $section->department->division->name;
+            })
+            ->addColumn('department', function ($section) {
+                return $section->department->name;
+            })
+            ->addColumn('action', 'sectionsdatatable.action');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Section $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model)
+    public function query(Section $model)
     {
-        return $model->newQuery()
-        ->where('employee_status', 'KK')
-        ->where('status_active', 'Aktif')
-        ->select('contracts.id', 
-        'nik', 
-        'contracts.name', 
-        'contract_number', 
-        'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'positions.name as position', 'reminder', 'contracts.created_at', 'contracts.updated_at')
-        ->leftJoin('positions', 'position', '=', 'positions.id');
+        return $model->newQuery()->select('id', 'name', 'department_id', 'created_at', 'updated_at');
     }
 
     /**
@@ -65,26 +58,22 @@ class ContractsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // 'id',
-            'nik',
+            'id',
             'name',
-            'contract_number', 
-            'contract_date',
-            // 'contract_duration',
-            'employee_status',
-            'status_active',
-            // 'status_contract',
-            // 'division',
-            'department',
             [
-                'data' => 'position',
-                'title' => 'position',
+                'data' => 'division',
+                'title' => 'Division',
                 'searchable' => false,
                 'orderable' => false,
             ],
-            // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            [
+                'data' => 'department',
+                'title' => 'Department',
+                'searchable' => false,
+                'orderable' => false,
+            ],
+            'created_at',
+            'updated_at'
         ];
     }
 
@@ -95,7 +84,7 @@ class ContractsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Contracts_' . date('YmdHis');
+        return 'Sections_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()

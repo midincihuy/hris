@@ -20,4 +20,9 @@ class Department extends Model
     {
         return $this->hasMany('App\Section');
     }
+    
+    public function positions()
+    {
+        return $this->hasMany('App\Position')->whereNull('section_id');
+    }
 }

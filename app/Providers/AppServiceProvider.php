@@ -54,6 +54,19 @@ class AppServiceProvider extends ServiceProvider
             'can' => 'references_manage',
             'icon' => 'gear',
             ],
+            [
+            'text' => 'Division',
+            'url' => 'admin/divisions',
+            'can' => 'positions_manage',
+            'icon' => 'sitemap',
+            ],
+            [
+            'text' => 'Position',
+            'url' => 'admin/positions',
+            'can' => 'positions_manage',
+            'label' => 'Job',
+            'icon' => 'suitcase',
+            ],
           ]
         ]);
         $event->menu->add([

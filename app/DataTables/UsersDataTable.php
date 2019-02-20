@@ -66,7 +66,12 @@ class UsersDataTable extends DataTable
           'id',
           'name',
           'email',
-          'roles',
+          [
+              'data' => 'roles',
+              'title' => 'roles',
+              'searchable' => false,
+              'orderable' => false,
+          ],
           'created_at',
           'updated_at'
         ];

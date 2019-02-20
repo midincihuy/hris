@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Contract;
+use App\Position;
 use Yajra\DataTables\Services\DataTable;
 
-class ContractsDataTable extends DataTable
+class PositionsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,31 +16,51 @@ class ContractsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            return '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-        });
+            ->addColumn('division', function ($position) {
+                if($position->division)
+                    return $position->division->name;
+                else
+                    return "-";
+            })
+            ->addColumn('department', function ($position) {
+                if($position->department)
+                    return $position->department->name;
+                else
+                    return "-";
+            })
+            ->addColumn('section', function ($position) {
+                if($position->section)
+                    return $position->section->name;
+                else
+                    return "-";
+            })
+            ->addColumn('head', function ($position) {
+                if($position->parent)
+                    return $position->parent->name;
+                else
+                    return "-";
+            })
+            ->addColumn('action', function($position){
+                return '<a href="positions/'.$position->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Position $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model)
+    public function query(Position $model)
     {
-        return $model->newQuery()
-        ->where('employee_status', 'KK')
-        ->where('status_active', 'Aktif')
-        ->select('contracts.id', 
-        'nik', 
-        'contracts.name', 
-        'contract_number', 
-        'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'positions.name as position', 'reminder', 'contracts.created_at', 'contracts.updated_at')
-        ->leftJoin('positions', 'position', '=', 'positions.id');
+        return $model->newQuery()->select('id', 
+        'name', 
+        'division_id', 
+        'department_id', 
+        'section_id', 
+        'parent_id', 
+        'created_at', 
+        'updated_at');
     }
 
     /**
@@ -65,26 +85,34 @@ class ContractsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // 'id',
-            'nik',
+            'id',
             'name',
-            'contract_number', 
-            'contract_date',
-            // 'contract_duration',
-            'employee_status',
-            'status_active',
-            // 'status_contract',
-            // 'division',
-            'department',
             [
-                'data' => 'position',
-                'title' => 'position',
+                'data' => 'division',
+                'title' => 'Division',
                 'searchable' => false,
                 'orderable' => false,
             ],
-            // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            [
+                'data' => 'department',
+                'title' => 'Department',
+                'searchable' => false,
+                'orderable' => false,
+            ],
+            [
+                'data' => 'section',
+                'title' => 'Section',
+                'searchable' => false,
+                'orderable' => false,
+            ],
+            [
+                'data' => 'head',
+                'title' => 'Head',
+                'searchable' => false,
+                'orderable' => false,
+            ],
+            'created_at',
+            'updated_at'
         ];
     }
 
@@ -95,14 +123,14 @@ class ContractsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Contracts_' . date('YmdHis');
+        return 'Positions_' . date('YmdHis');
     }
 
     protected function getBuilderParameters()
     {
       return [
         'dom'          => 'Blrtip',
-        'buttons'      => ['excel', 'reset', 'reload'],
+        'buttons'      => ['create', 'excel', 'reset', 'reload'],
         'pageLength'   => 10,
         'scrollX'       => 'true',
         'initComplete' => 'function () {

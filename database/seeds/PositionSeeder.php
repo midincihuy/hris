@@ -869,7 +869,7 @@ class PositionSeeder extends Seeder
           'positions' => [
             [
               'name' => 'Technical Division Head',
-              'head' => 'Deputy Director',
+              'head' => 'Director',
             ],
           ]
         ],

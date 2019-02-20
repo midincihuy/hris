@@ -15,4 +15,9 @@ class Division extends Model
     {
         return $this->hasMany('App\Department');
     }
+
+    public function positions()
+    {
+        return $this->hasMany('App\Position')->whereNull('department_id')->whereNull('section_id');
+    }
 }

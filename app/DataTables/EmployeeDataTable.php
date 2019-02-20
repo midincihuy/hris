@@ -72,7 +72,12 @@ class EmployeeDataTable extends DataTable
             // 'status_contract',
             // 'division',
             'department',
-            'position',
+            [
+                'data' => 'position',
+                'title' => 'position',
+                'searchable' => false,
+                'orderable' => false,
+            ],
             // 'reminder',
             // 'created_at',
             // 'updated_at'

@@ -10,6 +10,7 @@ class Position extends Model
         'division_id',
         'department_id',
         'section_id',
+        'parent_id',
         'name',
     ];
 

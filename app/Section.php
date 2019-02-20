@@ -15,4 +15,9 @@ class Section extends Model
     {
         return $this->belongsTo('App\Department');
     }
+    
+    public function positions()
+    {
+        return $this->hasMany('App\Position');
+    }
 }

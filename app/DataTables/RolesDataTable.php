@@ -64,7 +64,12 @@ class RolesDataTable extends DataTable
         return [
             'id',
             'name',
-            'permissions',
+            [
+                'data' => 'permissions',
+                'title' => 'permissions',
+                'searchable' => false,
+                'orderable' => false,
+            ],
             'created_at',
             'updated_at'
         ];

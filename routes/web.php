@@ -111,4 +111,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::resource('employee.family', 'Admin\FamilyController')
     ->middleware('can:employee_manage');
+
+    Route::resource('divisions', 'Admin\DivisionsController')->middleware('can:positions_manage');
+    Route::resource('positions', 'Admin\PositionsController')->middleware('can:positions_manage');
+    Route::resource('divisions.departments', 'Admin\DivisionDepartmentsController');
+    Route::resource('divisions.departments.sections', 'Admin\DivisionDepartmentSectionsController');
 });

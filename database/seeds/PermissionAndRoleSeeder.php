@@ -29,6 +29,7 @@ class PermissionAndRoleSeeder extends Seeder
         'recruitments_manage',
         'configuration_manage',
         'references_manage',
+        'positions_manage',
         'main_menu',
       );
       foreach ($permissions as $key => $value) {
