@@ -39,7 +39,7 @@
 
                 <div class="col-xs-3 form-group">
                     {!! Form::label('parent_id', 'Head', ['class' => 'control-label']) !!}
-                    {!! Form::select('parent_id',App\Position::all()->pluck('name', 'id'), old('parent_id'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('parent_id',$list_jabatan, old('parent_id'), ['class' => 'form-control', 'placeholder' => '']) !!}
                 </div>
                 
             </div>
