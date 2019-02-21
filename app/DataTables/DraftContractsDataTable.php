@@ -19,7 +19,9 @@ class DraftContractsDataTable extends DataTable
             ->addColumn('action', function ($contracts) {
 
                 $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Assign NIK</a>';
-                $button = $edit;
+
+                $print = '<a href="draft_contracts/'.$contracts->id.'/print" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                $button = $edit.$print;
                 return $button;
             });
     }
