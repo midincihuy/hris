@@ -1073,4 +1073,138 @@ class DraftContractsController extends Controller
 
         PDF::Output("$contract->contract_type.pdf");
     }
+
+    public function ptomniintivision_pkwtt($contract)
+    {
+        $x = 1;
+        $y = 1;
+        PDF::SetTitle('Print '.$contract->contract_type);
+        PDF::SetAutoPageBreak(true);
+       
+        PDF::AddPage();
+        
+        PDF::SetFont('helvetica', 'BU', 14);
+        PDF::SetXY($x+21, $y);
+        PDF::MultiCell(170,5,"SURAT KEPUTUSAN PENGANGKATAN KARYAWAN TETAP",0,'C');
+
+        PDF::SetFont('helvetica', 'B', 12);
+        $y=PDF::getY();
+        PDF::SetXY($x+21, $y);
+        PDF::MultiCell(170,5,"No. ".$contract->contract_number,0,'C');
+
+        PDF::SetFont('helvetica', '', 10);
+        $x += 19;
+        $y=PDF::getY()+15;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(20,5,"Mengingat",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+20, $y);
+        PDF::MultiCell(20,5,":",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+40, $y);
+        PDF::MultiCell(20,5,"1. ",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(110,5,"Optimalisasi sumber daya manusia yang ada dalam hirarki organisasi PT. Omni Intivision.",0,'J',0,1,'','',true,0,true);
+        
+        $y=PDF::getY();
+        PDF::SetXY($x+40, $y);
+        PDF::MultiCell(20,5,"2. ",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(110,5,"Kebutuhan Operasional Departemen ".$contract->position_role->department->name.", Divisi ".$contract->position_role->division->name.", PT Omni Intivision.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+40, $y);
+        PDF::MultiCell(20,5,"3. ",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(110,5,"Dibutuhkannya Surat Keputusan dalam rangka pengangkatan sebagai Karyawan Tetap pada PT. Omni Intivision demi terselenggaranya tertib administrasi.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(30,5,"Menimbang",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+20, $y);
+        PDF::MultiCell(20,5,":",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+40, $y);
+        PDF::MultiCell(110,5,"Usulan Status Karyawan No. XXX/XXX // Referensi dari mana ini? ",1,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+15;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(100,5,"Dengan ini perusahaan memutuskan bahwa :",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(160,5,"Terhitung mulai tanggal ".$contract->contract_date->formatLocalized('%d %B %Y').", Saudara/i yang tersebut di bawah ini diangkat menjadi <b><u>Karyawan Tetap</u></b> pada PT. Omni Intivision.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x+10, $y);
+        PDF::MultiCell(40,5,"Nama",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(100,5,": ".$contract->name,0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+10, $y);
+        PDF::MultiCell(40,5,"EM",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(100,5,": ".$contract->nik,0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+10, $y);
+        PDF::MultiCell(40,5,"Tempat/Tanggal Lahir",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(100,5,": ".$contract->employee->tempat_lahir.", ".$contract->employee->tanggal_lahir->formatLocalized('%d %B %Y'),0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+10, $y);
+        PDF::MultiCell(40,5,"Departemen / Divisi",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(100,5,": ".$contract->position_role->department->name." / ".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+10, $y);
+        PDF::MultiCell(40,5,"Jabatan",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+50, $y);
+        PDF::MultiCell(100,5,": ".$contract->jabatan,0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Dengan ketentuan sebagai berikut :",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(150,5,"a. Melaksanakan tugas dengan sebaik-baiknya dan penuh tanggung jawab",0,'L',0,1,'','',true,0,true);
+        
+        $y=PDF::getY();
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(150,5,"b. Mematuhi ketentuan dan Peraturan Perusahaan yang berlaku",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Keputusan ini berlaku sejak tanggal ditetapkan, apabila di kemudian hari terdapat kekeliruan dalam Surat Keputusan ini akan diadakan pembetulan sebagaimana mestinya.",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+10;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Ditetapkan di : Jakarta",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Pada Tanggal : ".$contract->contract_date->formatLocalized('%d %B %Y'),0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Atas Nama PT Omni Intivision",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+20;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Sutanto Hartono",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"Director",0,'L',0,1,'','',true,0,true);
+
+        PDF::Output("$contract->contract_type.pdf");
+    }
 }

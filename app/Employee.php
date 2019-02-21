@@ -58,6 +58,10 @@ class Employee extends Model
         'informasi_lowongan',
     ];
 
+    protected $dates = [
+        'tanggal_lahir'
+    ];
+
     public function family()
     {
         return $this->hasMany('App\Family');
