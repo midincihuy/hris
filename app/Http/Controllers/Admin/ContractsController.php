@@ -100,7 +100,6 @@ class ContractsController extends Controller
         $employee->save();
         
 
-
-        return $request;
+        return redirect()->route('admin.contracts.index');
   }
 }

@@ -2274,4 +2274,132 @@ class DraftContractsController extends Controller
 
         PDF::Output("$contract->contract_type.pdf");
     }
+
+    public function ptomniintivision_add($contract)
+    {
+        $x = 1;
+        $y = 30;
+        PDF::SetTitle('Print '.$contract->contract_type);
+        PDF::SetAutoPageBreak(true);
+       
+        PDF::AddPage();
+        
+        PDF::SetFont('helvetica', 'B', 10);
+        PDF::SetXY($x+21, $y);
+        PDF::MultiCell(170,5,"Addendum I",0,'C');
+
+        $y=PDF::getY();
+        PDF::SetXY($x+21, $y);
+        PDF::MultiCell(170,5,"Perjanjian Kerja Untuk Waktu Tertentu",0,'C');
+
+        PDF::SetFont('helvetica', 'B', 10);
+        $y += 5;
+        PDF::SetXY($x+21, $y);
+        PDF::MultiCell(170,5,$contract->contract_number,0,'C');
+
+        $y += 5;
+        PDF::Line($x+19,$y+5,$x+189,$y+5);
+
+        PDF::SetFont('helvetica', '', 10);
+        $x += 19;
+        $y+=5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Kami yang bertandatangani di bawah ini:",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(5,5,"1.",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(165,5,"<b>PT. OMNI INTIVISION</b>, SCTV Tower, Jalan Asia Afrika Lot 19, Jakarta 10270, diwakili oleh <b>Andriane Tjepaka Dewi</b> yang bertindak dalam jabatannya selaku <b><italic>HRGA Division Head</italic></b> dari dan oleh karenanya sah bertindak untuk dan atas nama serta mewakili kepentingan PT Omni Intivision (untuk selanjutnya disebut <b>\"Pihak Pertama/ Pengusaha\"</b>); dan ",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(5,5,"2.",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"<b>Pihak Pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Para Pihak dengan ini menerangkan terlebih dahulu hal-hal sebagai berikut:",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(6,5,"A.",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(165,5,"bahwa Para Pihak telah menandatangani Perjanjian Kerja Waktu Tertentu No. $contract->contract_reference_no tanggal ".$contract->contract_date->formatLocalized('%d %B %Y')." (untuk selanjutnya disebut \"Perjanjian\") tentang penunjukan <b>Pihak Kedua</b> untuk bekerja di perusahaan <b>Pihak Pertama</b> sebagai karyawan tidak tetap sebagai <b>".$contract->position_role->name."</b> pada <b>$contract->department Department, $contract->division Division</b> untuk jangka waktu ".$contract->parent->contract_duration." bulan, yaitu tanggal ".$contract->parent->contract_date->formatLocalized("%d %B %Y")." sampai dengan ".$contract->parent->contract_expire_date->formatLocalized("%d %B %Y")."; dan",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(6,5,"B.",0,'L',0,1,'','',true,0,true);
+        PDF::SetXY($x+5, $y);
+        PDF::MultiCell(165,5,"bahwa Para Pihak Pertama bermaksud mengaddendum jangka waktu Perjanjian untuk $contract->contract_duration bulan berikutnya.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Berdasarkan hal-hal tersebut di atas Para Pihak telah sepakat untuk mengikatkan diri dalam Perjanjian ini dengan ketentuan-ketentuan dan syarat-syarat sebagai berikut:",0,'J',0,1,'','',true,0,true);
+
+        PDF::SetFont('helvetica', 'BU', 10);
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Pasal 1",0,'C');
+
+        $y=PDF::getY();
+        PDF::SetFont('helvetica', '', 10);
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(165,5,"Para Pihak sepakat memperpanjang jangka waktu Perjanjian untuk $contract->contract_duration bulan lamanya, terhitung sejak tanggal <b>".$contract->contract_date->formatLocalized("%d %B %Y")."</b> sampai dengan tanggal <b>".$contract->contract_expire_date->formatLocalized("%d %B %Y")."</b>.",0,'J',0,1,'','',true,0,true);
+        
+        PDF::SetFont('helvetica', 'BU', 10);
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Pasal 2",0,'C');
+
+        $y=PDF::getY();
+        PDF::SetFont('helvetica', '', 10);
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(165,5,"<b>Pihak Pertama</b> sepakat tidak merubah imbalan yang diberikan atas pekerjaan yang dilaksanakan <b>Pihak Kedua</b>, sesuai dengan yang tercantum dalam lampiran perjanjian ini, dan dibayarkan sesuai dengan jadwal yang ditetapkan oleh <b>Pihak Pertama</b>.",0,'J',0,1,'','',true,0,true);
+
+        PDF::SetFont('helvetica', 'BU', 10);
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(170,5,"Pasal 3",0,'C');
+
+        $y=PDF::getY();
+        PDF::SetFont('helvetica', '', 10);
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(165,5,"Seluruh pasal-pasal dan ketentuan-ketentuan lain yang tercantum dalam Perjanjian selama tidak diadakan perubahan denga Addendum ini, dinyatakan tetap berlaku.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(165,5,"Demikianlah Addendum I ini dibuat dalam rangkap 2 (dua) yang sama bunyinya dan masing-masing serta ditandatangani oleh Para Pihak di Jakarta pada tanggal ".$contract->contract_date->formatLocalized("%d %B %Y")." sehingga keduanya memiliki kekuatan hukum yang sama bagi Para Pihak.",0,'J',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+5;
+        PDF::SetFont('helvetica', 'B', 10);
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(50,5,"Pihak Pertama,",0,'L',0,1,'','',true,0,true);
+        
+        PDF::SetXY($x+100, $y);
+        PDF::MultiCell(50,5,"Pihak Kedua,",0,'C',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"PT OMNI INTIVISION",0,'L',0,1,'','',true,0,true);
+
+        $y=PDF::getY()+15;
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(50,5,"<u>Andriane Tjepaka Dewi</u>",0,'L',0,1,'','',true,0,true);
+
+        PDF::SetXY($x+100, $y);
+        PDF::MultiCell(50,5,$contract->name,0,'C',0,1,'','',true,0,true);
+
+        $y=PDF::getY();
+        PDF::SetXY($x, $y);
+        PDF::MultiCell(150,5,"<i>HRGA Division Head</i>",0,'L',0,1,'','',true,0,true);
+
+        
+        PDF::Output("$contract->contract_type.pdf");
+    }
 }

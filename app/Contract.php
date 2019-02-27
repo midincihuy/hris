@@ -63,4 +63,9 @@ class Contract extends Model
       return $position->name ? $position->name : "";
   }
 
+  public function parent()
+  {
+    return $this->hasOne('App\Contract', 'contract_number', 'contract_reference_no');
+  }
+
 }
