@@ -20,7 +20,7 @@ class DraftContractsDataTable extends DataTable
 
                 $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Assign NIK</a>';
 
-                $print = '<a href="draft_contracts/'.$contracts->id.'/print" target="_blank" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                $print = '<a href="draft_contracts/'.$contracts->id.'/print" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
                 $button = $edit.$print;
                 return $button;
             });
