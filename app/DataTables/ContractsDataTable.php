@@ -17,7 +17,11 @@ class ContractsDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('action', function ($contracts) {
-            return '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $edit = '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $renew = ' <a href="contracts/'.$contracts->id.'/renew" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-new"></i> Renew</a>';
+            $print = ' <a href="draft_contracts/'.$contracts->id.'/print" class="btn btn-xs btn-success" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>';
+            $button = $edit.$renew.$print;
+            return $button;
         });
     }
 

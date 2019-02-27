@@ -110,6 +110,10 @@ class DraftContractsController extends Controller
         ]);
   
         $contract->save();
+
+        $employee = $contract->employee;
+        $employee->nik = $contract->nik;
+        $employee->save();
   
         return redirect()->route('admin.contracts.index');
     }
@@ -182,7 +186,7 @@ class DraftContractsController extends Controller
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
-        PDF::MultiCell(170,5,"<b>Pihak pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(170,5,"<b>Pihak Pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -649,7 +653,7 @@ class DraftContractsController extends Controller
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
-        PDF::MultiCell(170,5,"<b>Pihak pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(170,5,"<b>Pihak Pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1383,7 +1387,7 @@ class DraftContractsController extends Controller
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
-        PDF::MultiCell(170,5,"<b>Pihak pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(170,5,"<b>Pihak Pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1844,7 +1848,7 @@ class DraftContractsController extends Controller
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
-        PDF::MultiCell(170,5,"<b>Pihak pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(170,5,"<b>Pihak Pertama</b> dan <b>Pihak Kedua</b> untuk selanjutnya secara bersama-sama disebut \"Para Pihak\" dan masing-masing disebut \"Pihak\".",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);

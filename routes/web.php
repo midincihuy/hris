@@ -60,6 +60,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:contracts_manage');
     Route::post('import', 'Admin\ContractsController@import')->name('import')
     ->middleware('can:contracts_manage');
+    Route::get('contracts/{contract_id}/renew', 'Admin\ContractsController@renew')->name('contracts.renew');
+    Route::post('contracts/{contract_id}/renew_store', 'Admin\ContractsController@renew_store')->name('contracts.renew_store');
 
     Route::get('panel/account', 'Admin\PanelController@account')->name('panel.account');
     Route::post('panel/account', 'Admin\PanelController@update')->name('panel.update');

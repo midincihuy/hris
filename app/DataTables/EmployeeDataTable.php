@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Contract;
+use App\Employee;
 use Yajra\DataTables\Services\DataTable;
 
 class EmployeeDataTable extends DataTable
@@ -31,12 +32,21 @@ class EmployeeDataTable extends DataTable
      * @param \App\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model)
+    public function query(Employee $model)
     {
-        return $model->newQuery()->select('contracts.id', 'nik', 'contracts.name', 'gender',
-        'contract_date', 'contract_duration', 'employee_status',
-        'status_active', 'status_contract', 'division', 'department',
-        'positions.name as position', 'reminder', 'contracts.created_at', 'contracts.updated_at')
+        return $model->newQuery()
+        ->select('employees.id', 
+        'employees.nik', 
+        'nama', 
+        'jenis_kelamin',
+        'contract_date',
+        'employee_status',
+        'status_active',
+        'department',
+        'positions.name as position',
+        'employees.created_at', 
+        'employees.updated_at')
+        ->join('contracts','contract_id', '=', 'contracts.id')
         ->leftJoin('positions', 'position', '=', 'positions.id');
     }
 
@@ -64,23 +74,23 @@ class EmployeeDataTable extends DataTable
         return [
             // 'id',
             'nik',
-            'name',
+            'nama',
             'contract_date',
-            // 'contract_duration',
+            // // 'contract_duration',
             'employee_status',
             'status_active',
-            // 'status_contract',
-            // 'division',
+            // // 'status_contract',
+            // // 'division',
             'department',
             [
                 'data' => 'position',
-                'title' => 'position',
+                'title' => 'Position',
                 'searchable' => false,
                 'orderable' => false,
             ],
             // 'reminder',
-            // 'created_at',
-            // 'updated_at'
+            'created_at',
+            'updated_at'
         ];
     }
 

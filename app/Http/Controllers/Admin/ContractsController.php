@@ -15,6 +15,7 @@ use App\Events\Event;
 use Auth;
 
 use App\Reference;
+use App\Employee;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -74,5 +75,32 @@ class ContractsController extends Controller
     $contract->update($request->all());
 
     return redirect()->route('admin.contracts.index');
+  }
+
+  public function renew($id)
+  {
+      $contract = Contract::findOrFail($id);
+      $contract_type = Reference::where('code','JENIS_KONTRAK')->orderBy('sort')->get()->pluck('item','value');
+      $contract_duration = Reference::where('code','JANGKA_WAKTU')->orderBy('sort')->get()->pluck('item','value');
+      return view('admin.contracts.renew', compact('contract', 'contract_type', 'contract_duration'));
+  }
+
+  public function renew_store(Request $request, $id)
+  {
+        $old_contract = Contract::findOrFail($id)->toArray();
+
+        // save contract from recruitments
+        $contract = new Contract();
+        $contract->fill($old_contract);
+        $contract->fill($request->all());
+        $contract->save();
+
+        $employee = Employee::where('contract_id', $id)->first();
+        $employee->contract_id = $contract->id;
+        $employee->save();
+        
+
+
+        return $request;
   }
 }
