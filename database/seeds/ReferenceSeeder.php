@@ -132,7 +132,48 @@ class ReferenceSeeder extends Seeder
         'value' => 'PKWTT',
         'sort' => '3',
       ]);
-
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'ADD',
+        'value' => 'ADD',
+        'sort' => '4',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'PKWT2',
+        'value' => 'PKWT2',
+        'sort' => '5',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Mutasi',
+        'value' => 'Mutasi',
+        'sort' => '6',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Promosi',
+        'value' => 'Promosi',
+        'sort' => '7',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Penetapan',
+        'value' => 'Penetapan',
+        'sort' => '8',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Pengangkatan',
+        'value' => 'Pengangkatan',
+        'sort' => '9',
+      ]);
+      Reference::create([
+        'code' => 'JENIS_KONTRAK',
+        'item' => 'Demosi',
+        'value' => 'Demosi',
+        'sort' => '10',
+      ]);
       Reference::create([
         'code' => 'JANGKA_WAKTU',
         'item' => '12',

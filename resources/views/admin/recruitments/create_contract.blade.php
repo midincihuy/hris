@@ -81,6 +81,20 @@
                     @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    {!! Form::label('contract_reference_no', 'No Referensi', ['class' => 'control-label']) !!}
+                </div>
+                <div class="col-xs-3 form-group">
+                    {!! Form::text('contract_reference_no', old('contract_reference_no'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('contract_reference_no'))
+                        <p class="help-block">
+                            {{ $errors->first('contract_reference_no') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
 
 
         </div>
@@ -110,9 +124,11 @@
         switch($(this).val()){
             case "PKWTT" :
                 $("#contract_duration").removeAttr('required');
+                $("#contract_reference_no").attr('required','');
                 break;
             default:
                 $("#contract_duration").attr('required','');
+                $("#contract_reference_no").removeAttr('required');
                 break;
         }
     });

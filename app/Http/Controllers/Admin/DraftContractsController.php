@@ -144,7 +144,7 @@ class DraftContractsController extends Controller
     public function ptomniintivision_pkwt($contract)
     {
         $x = 1;
-        $y = 1;
+        $y = 30;
         PDF::SetTitle('Print '.$contract->contract_type);
         PDF::SetAutoPageBreak(true);
        
@@ -610,7 +610,7 @@ class DraftContractsController extends Controller
     public function ptelangprimaretailindo_pkwt($contract)
     {
         $x = 1;
-        $y = 1;
+        $y = 30;
         PDF::SetTitle('Print '.$contract->contract_type);
         PDF::SetAutoPageBreak(true);
        
@@ -1077,7 +1077,7 @@ class DraftContractsController extends Controller
     public function ptomniintivision_pkwtt($contract)
     {
         $x = 1;
-        $y = 1;
+        $y = 30;
         PDF::SetTitle('Print '.$contract->contract_type);
         PDF::SetAutoPageBreak(true);
        
@@ -1129,7 +1129,7 @@ class DraftContractsController extends Controller
         PDF::MultiCell(20,5,":",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+40, $y);
-        PDF::MultiCell(110,5,"Usulan Status Karyawan No. XXX/XXX // Referensi dari mana ini? ",1,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(120,5,"Usulan Status Karyawan No. ".$contract->contract_reference_no,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+15;
         PDF::SetXY($x, $y);
@@ -1137,7 +1137,7 @@ class DraftContractsController extends Controller
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
-        PDF::MultiCell(160,5,"Terhitung mulai tanggal ".$contract->contract_date->formatLocalized('%d %B %Y').", Saudara/i yang tersebut di bawah ini diangkat menjadi <b><u>Karyawan Tetap</u></b> pada PT. Omni Intivision.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(160,5,"Terhitung mulai tanggal <b>".$contract->contract_date->formatLocalized('%d %B %Y')."</b>, Saudara/i yang tersebut di bawah ini diangkat menjadi <b><u>Karyawan Tetap</u></b> pada PT. Omni Intivision.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x+10, $y);
@@ -1211,7 +1211,7 @@ class DraftContractsController extends Controller
     public function ptelangprimaretailindo_pkwtt($contract)
     {
         $x = 1;
-        $y = 1;
+        $y = 30;
         PDF::SetTitle('Print '.$contract->contract_type);
         PDF::SetAutoPageBreak(true);
        
@@ -1263,7 +1263,7 @@ class DraftContractsController extends Controller
         PDF::MultiCell(20,5,":",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+40, $y);
-        PDF::MultiCell(110,5,"Usulan Status Karyawan No. XXX/XXX // Referensi dari mana ini? ",1,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(120,5,"Usulan Status Karyawan No. ".$contract->contract_reference_no,1,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+15;
         PDF::SetXY($x, $y);
