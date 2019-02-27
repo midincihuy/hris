@@ -73,12 +73,12 @@ class EmployeeController extends Controller
       if (! Gate::allows('contracts_manage')) {
             return abort(401);
         }
-        $contract = Contract::findOrFail($id);
         $data['employee_status'] = Reference::where('code','EMPLOYEE_STATUS')->orderBy('sort')->get()->pluck('item','value');
         $data['status_active'] = Reference::where('code','STATUS_ACTIVE')->orderBy('sort')->get()->pluck('item','value');
         $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
 
-        $employee = Employee::where('contract_id', $id)->first();
+        $employee = Employee::findOrFail($id);
+        $contract = $employee->contract;
         // return view('admin.employee.edit', compact('contract', 'data'));
         return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('contract', 'data'));
 
@@ -96,7 +96,9 @@ class EmployeeController extends Controller
       if (! Gate::allows('contracts_manage')) {
           return abort(401);
       }
-      $contract = Contract::findOrFail($id);
+      $employee = Employee::findOrFail($id);
+      
+      $contract = $employee->contract;
       $contract->fill($request->all());
 
       $contract->save();
@@ -137,8 +139,8 @@ class EmployeeController extends Controller
 
     public function detail($id)
     {
-        $contract = Contract::findOrFail($id);
-        $employee = Employee::where('contract_id',$contract->id)->first();
+        $employee = Employee::findOrFail($id);
+        $contract = $employee->contract;
         $data['golongan']         = Reference::where('code','GOLONGAN')->orderBy('sort')->get()->pluck('item','value');
         $data['kelas']            = Reference::where('code','KELAS')->orderBy('sort')->get()->pluck('item','value');
         $data['status_karyawan']  = Reference::where('code','STATUS_KARYAWAN')->orderBy('sort')->get()->pluck('item','value');
@@ -152,8 +154,7 @@ class EmployeeController extends Controller
     public function update_detail(Request $request, $id)
     {
         // return $request;
-        $contract = Contract::findOrFail($id);
-        $employee = Employee::where('contract_id',$contract->id)->first();
+        $employee = Employee::findOrFail($id);
         $employee->fill($request->all());
         $employee->save();
         // return $employee;
@@ -162,8 +163,8 @@ class EmployeeController extends Controller
 
     public function detailemployee($id)
     {
-      $contract = Contract::findOrFail($id);
-      $employee = Employee::where('contract_id',$contract->id)->first();
+      $employee = Employee::findOrFail($id);
+      $contract = $employee->contract;
       $data['golongan']         = Reference::where('code','GOLONGAN')->orderBy('sort')->get()->pluck('item','value');
       $data['kelas']            = Reference::where('code','KELAS')->orderBy('sort')->get()->pluck('item','value');
       $data['status_karyawan']  = Reference::where('code','STATUS_KARYAWAN')->orderBy('sort')->get()->pluck('item','value');
@@ -176,15 +177,15 @@ class EmployeeController extends Controller
 
     public function resign($id)
     {
-      $contract = Contract::findOrFail($id);
-      $employee = $contract->employee;
+      $employee = Employee::findOrFail($id);
+      $contract = $employee->contract;
       $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
       return view('admin.employee.resign', compact('employee', 'contract', 'data'));
     }
 
     public function store_resign(Request $request, $id)
     {
-      $employee = Contract::findOrFail($id)->employee;
+      $employee = Employee::findOrFail($id);
       $employee->fill($request->all());
       $employee->save();
       return redirect(route('admin.employee.edit',$id));
