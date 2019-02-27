@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:draft_contracts_manage');
     Route::get('draft_contracts/{contract}/print', 'Admin\DraftContractsController@print')
     ->middleware('can:draft_contracts_manage');
+    Route::get('draft_contracts/{contract}/cancel', 'Admin\DraftContractsController@cancel')
+    ->middleware('can:draft_contracts_manage');
 
     Route::resource('contracts', 'Admin\ContractsController')
     ->middleware('can:contracts_manage');

@@ -129,6 +129,14 @@ class DraftContractsController extends Controller
         //
     }
 
+    public function cancel(Contract $contract)
+    {
+        $contract->status_active = 'Cancel';
+        $contract->employee_status = 'Cancel';
+        $contract->save();
+
+        return redirect()->route('admin.draft_contracts.index');
+    }
     protected $terbilang = [];
     public function print(Contract $contract)
     {

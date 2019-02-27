@@ -35,6 +35,8 @@ class EmployeeDataTable extends DataTable
     public function query(Employee $model)
     {
         return $model->newQuery()
+        ->whereNotIn('employee_status', ['Draft','Cancel'])
+        ->whereNotIn('status_active', ['Draft','Cancel'])
         ->select('employees.id', 
         'employees.nik', 
         'nama', 
