@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Gate;
 
 use App\Reference;
 use App\Employee;
+use App\Position;
+use App\Sk;
 
 class EmployeeController extends Controller
 {
@@ -189,5 +191,29 @@ class EmployeeController extends Controller
       $employee->fill($request->all());
       $employee->save();
       return redirect(route('admin.employee.edit',$id));
+    }
+
+    public function sk($id)
+    {
+      $employee = Employee::findOrFail($id);
+      $contract = $employee->contract;
+      $position = Position::all();
+      
+      $data['list_jabatan'] = Position::list_position();
+      $data['jenis_surat'] = Reference::where('code','JENIS_SK')->orderBy('sort')->get()->pluck('item','value');
+      return view('admin.employee.sk', compact('employee', 'contract', 'data'));
+    }
+
+    public function store_sk(Request $request, $id)
+    {
+      $sk = new Sk();
+      $sk->fill($request->all());
+      $sk->employee_id = $id;
+      $sk->save();
+      return $request;
+      // $employee = Employee::findOrFail($id);
+      // $employee->fill($request->all());
+      // $employee->save();
+      // return redirect(route('admin.employee.edit',$id));
     }
 }

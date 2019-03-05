@@ -61,6 +61,9 @@
                 <div class="col-xs-2 form-group">
                     <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
                 </div>
+                <div class="col-xs-2 form-group">
+                    <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
+                </div>
             </div>
             {!! Form::close() !!}
         </div>

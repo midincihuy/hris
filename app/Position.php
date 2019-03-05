@@ -42,4 +42,18 @@ class Position extends Model
     {
         return $this->belongsTo('App\Position', 'parent_id');
     }
+
+    public static function list_position()
+    {
+        foreach(Position::all() as $list){
+            $value = $list->where('division_id',$list->division->id)->orderBy('name')->get()->each(function($x){
+                $department_name = isset($x->department) ? $x->department->name." " : "";
+                $section_name = isset($x->section) ? " / ".$x->section->name." " : "";
+                $additional_info = $department_name.$section_name;
+                $x->position_name = "[".$x->name."] ".$additional_info;
+            })->pluck('position_name', 'id')->toArray();
+            $list_jabatan[$list->division->company." | ".$list->division->name] = $value;
+        }
+        return $list_jabatan;
+    }
 }

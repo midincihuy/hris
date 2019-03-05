@@ -1,10 +1,12 @@
 @extends('adminlte::page')
 
 @section('content')
-  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_resign', $contract->id]]) !!}
-    <div class="panel panel-danger">
+  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_sk', $employee->id]]) !!}
+    <div class="panel panel-warning">
         <div class="panel-heading">
-            Resign {{ $employee->contract->position_role->division->company }}
+            Create SK
+            <br/>
+            <h4>{{ $employee->contract->position_role->division->company }}</h4>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -41,34 +43,64 @@
             </div>
             <div class="row">
                 <div class="col-xs-3 form-group">
-                    {!! Form::label('tanggal_berhenti', 'Tanggal Berhenti', ['class' => 'control-label']) !!}
+                    {!! Form::label('ref_no', 'Nomor Surat Usulan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('tanggal_berhenti', old('tanggal_berhenti'), ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti']) !!}
+                    {!! Form::text('ref_no', '', ['class' => 'form-control', 'placeholder' => 'Nomor Surat Usulan', 'required']) !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-3 form-group">
-                    {!! Form::label('last_day', 'Last Day at Office', ['class' => 'control-label']) !!}
+                    {!! Form::label('jenis_surat', 'Jenis Surat', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('last_day', old('last_day'), ['class' => 'form-control', 'placeholder' => 'Last Day']) !!}
+                    {!! Form::select('jenis_surat', $data['jenis_surat'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Surat']) !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    {!! Form::label('no_surat', 'Nomor Surat', ['class' => 'control-label']) !!}
+                </div>
+                <div class="col-xs-3 form-group">
+                    {!! Form::text('no_surat', '', ['class' => 'form-control', 'placeholder' => 'Nomor Surat']) !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    {!! Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) !!}
+                </div>
+                <div class="col-xs-3 form-group">
+                    {!! Form::select('jabatan', $data['list_jabatan'], '', ['class' => 'form-control', 'placeholder' => 'Jabatan']) !!}
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-3 form-group">
-                    {!! Form::label('alasan_berhenti', 'Alasan Berhenti', ['class' => 'control-label']) !!}
+                    {!! Form::label('start_date', 'Mulai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::select('alasan_berhenti', $data['resign_cause'], old('alasan_berhenti'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::date('start_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    {!! Form::label('end_date', 'Sampai Tanggal', ['class' => 'control-label']) !!}
+                </div>
+                <div class="col-xs-3 form-group">
+                    {!! Form::date('end_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
                 </div>
             </div>
         </div>
         <div class="panel-footer">
-          {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+          {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-warning']) !!}
         </div>
     </div>
 
     {!! Form::close() !!}
 @stop
+@push('js')
+<script type="text/javascript">
+    $("select[name='jabatan']").select2();
+</script>
+@endpush

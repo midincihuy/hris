@@ -162,6 +162,9 @@ class RecruitmentsController extends Controller
         $employee->tanggal_lahir = $recruitment->applicant->tanggal_lahir;
         $employee->kewarganegaraan = $recruitment->applicant->kewarganegaraan;
         $employee->save();
+
+        $contract->employee_id = $employee->id;
+        $contract->save();
         // End parameter
 
         return redirect()->route('admin.recruitments.index');

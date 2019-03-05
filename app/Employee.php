@@ -71,5 +71,15 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Contract');
     }
+
+    public function all_contracts()
+    {
+        return $this->hasMany('App\Contract');
+    }
+
+    public function sk()
+    {
+        return $this->hasMany('App\Sk')->orderBy('id','desc');
+    }
     
 }

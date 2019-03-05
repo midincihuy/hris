@@ -13,6 +13,7 @@ class Contract extends Model
    */
   protected $fillable = [
     'recruitment_id',
+    'employee_id',
     'nik',
     'name',
     'gender',
@@ -46,7 +47,7 @@ class Contract extends Model
 
   public function employee()
   {
-      return $this->hasOne('App\Employee');
+      return $this->belongsTo('App\Employee');
   }
 
   public function position_role()

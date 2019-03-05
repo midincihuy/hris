@@ -13,7 +13,7 @@
   @endif
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3>Employee</h3>
+      <h3>Employee List</h3>
     </div>
     <div class="panel-body">
       {!! Form::open(['method' => 'POST', 'route' => ['admin.employee.mass_update']]) !!}

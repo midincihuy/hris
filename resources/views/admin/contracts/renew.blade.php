@@ -3,7 +3,7 @@
 @section('content')
   <h3 class="page-title">RENEW Contract</h3>
   {!! Form::open(['method' => 'POST', 'route' => ['admin.contracts.renew_store', $contract->id]]) !!}
-  {!! Form::hidden('contract_id', $contract->id) !!}
+  {!! Form::hidden('parent_contract_id', $contract->id) !!}
   <div class="panel panel-default">
         <div class="panel-heading">
             @lang('global.app_create')

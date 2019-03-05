@@ -15,6 +15,7 @@ class AddRefNoToContractsTable extends Migration
     {
         Schema::table('contracts', function (Blueprint $table) {
             $table->string('contract_reference_no')->nullable();
+            $table->integer('employee_id')->unsigned();
         });
     }
 
@@ -27,6 +28,7 @@ class AddRefNoToContractsTable extends Migration
     {
         Schema::table('contracts', function (Blueprint $table) {
             $table->dropColumn('contract_reference_no');
+            $table->dropColumn('employee_id');
         });
     }
 }
