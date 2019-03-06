@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Division;
 class Position extends Model
 {
     protected $fillable = [
@@ -45,14 +46,14 @@ class Position extends Model
 
     public static function list_position()
     {
-        foreach(Position::all() as $list){
-            $value = $list->where('division_id',$list->division->id)->orderBy('name')->get()->each(function($x){
+        foreach(Division::all() as $division){
+            $value = Position::where('division_id',$division->id)->orderBy('name')->get()->each(function($x){
                 $department_name = isset($x->department) ? $x->department->name." " : "";
                 $section_name = isset($x->section) ? " / ".$x->section->name." " : "";
                 $additional_info = $department_name.$section_name;
                 $x->position_name = "[".$x->name."] ".$additional_info;
             })->pluck('position_name', 'id')->toArray();
-            $list_jabatan[$list->division->company." | ".$list->division->name] = $value;
+            $list_jabatan[$division->company." | ".$division->name] = $value;
         }
         return $list_jabatan;
     }
