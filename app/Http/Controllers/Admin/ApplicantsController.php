@@ -91,17 +91,7 @@ class ApplicantsController extends Controller
     $applicant = Applicant::findOrFail($id);
     $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
     $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
-    $position = Position::get();
-    
-    foreach($position as $list){
-        $value = $list->where('division_id',$list->division->id)->orderBy('name')->get()->each(function($x){
-            $department_name = isset($x->department) ? $x->department->name." " : "";
-            $section_name = isset($x->section) ? " / ".$x->section->name." " : "";
-            $additional_info = $department_name.$section_name;
-            $x->position_name = "[".$x->name."] ".$additional_info;
-        })->pluck('position_name', 'id')->toArray();
-        $list_jabatan[$list->division->company." | ".$list->division->name] = $value;
-    }
+    $list_jabatan = Position::list_position();
     return view('admin.applicants.recruit', compact('applicant', 'jenis_ptk', 'status_recruitment', 'list_jabatan'));
   }
 }

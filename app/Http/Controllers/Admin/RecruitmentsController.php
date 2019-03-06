@@ -36,9 +36,7 @@ class RecruitmentsController extends Controller
     $recruitment = Recruitment::findOrFail($id);
     $jenis_ptk = Reference::where('code','JENIS_PTK')->orderBy('sort')->get()->pluck('item','value');
     $status_recruitment = Reference::where('code','STATUS_RECRUITMENT')->orderBy('sort')->get()->pluck('item','value');
-    $list_jabatan = Position::with('division')->get()->each(function($x){
-        $x->position_name = $x->company." - ".$x->name;
-    })->pluck('position_name','id');
+    $list_jabatan = Position::list_position();
     return view('admin.recruitments.edit', compact('recruitment','jenis_ptk', 'status_recruitment','list_jabatan'));
   }
 
@@ -126,10 +124,7 @@ class RecruitmentsController extends Controller
         $contract->name = $recruitment->applicant->nama;
         $contract->employee_status = "Draft";
         $contract->status_active = "Draft";
-        $contract->position = $recruitment->jabatan_final;
-        $contract->division = $recruitment->position->division->name;
-        $contract->department = isset($recruitment->position->department->name) ? $recruitment->position->department->name : "";
-        $contract->section = isset($recruitment->position->section->name) ? $recruitment->position->section->name : "";
+        $contract->position_id = $recruitment->jabatan_final;
         $contract->save();
 
         $contract_id = $contract->id;
@@ -161,6 +156,7 @@ class RecruitmentsController extends Controller
         $employee->tempat_lahir = $recruitment->applicant->tempat_lahir;
         $employee->tanggal_lahir = $recruitment->applicant->tanggal_lahir;
         $employee->kewarganegaraan = $recruitment->applicant->kewarganegaraan;
+        $employee->position_id = $recruitment->jabatan_final;
         $employee->save();
 
         $contract->employee_id = $employee->id;

@@ -29,9 +29,7 @@ class Contract extends Model
     'head_2',
     'email_head_2',
     
-    'division',
-    'department',
-    'position',
+    'position_id',
     'reminder',
     'upload_by',
     'contract_type',
@@ -50,9 +48,9 @@ class Contract extends Model
       return $this->belongsTo('App\Employee');
   }
 
-  public function position_role()
+  public function position()
   {
-      return $this->belongsTo('App\Position','position', 'id');
+      return $this->belongsTo('App\Position');
   }
 
   public function getJabatanAttribute()

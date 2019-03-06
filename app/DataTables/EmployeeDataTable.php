@@ -17,10 +17,22 @@ class EmployeeDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-        ->addColumn('action', function ($contracts) {
-            $edit = '<a href="employee/'.$contracts->id.'/edit" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
-            $edit_detail_employee = '<a href="employee/'.$contracts->id.'/detailemployee" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
-            $edit_detail_hr = '<a href="employee/'.$contracts->id.'/detail" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
+        ->addColumn('division', function ($employee) {
+            return $employee->position->division->name;
+        })
+        ->addColumn('department', function ($employee) {
+            return ($employee->position->department ? $employee->position->department->name : "-");
+        })
+        ->addColumn('section', function ($employee) {
+            return ($employee->position->section ? $employee->position->section->name : "-");
+        })
+        ->addColumn('position', function($employee){
+            return $employee->position->name;
+        })
+        ->addColumn('action', function ($employee) {
+            $edit = '<a href="employee/'.$employee->id.'/edit" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
+            $edit_detail_employee = '<a href="employee/'.$employee->id.'/detailemployee" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
+            $edit_detail_hr = '<a href="employee/'.$employee->id.'/detail" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
             $button = $edit.$edit_detail_employee.$edit_detail_hr;
             return $button;
         });
@@ -35,23 +47,22 @@ class EmployeeDataTable extends DataTable
     public function query(Employee $model)
     {
         return $model->newQuery()
-        ->whereNotIn('employee_status', ['Draft','Cancel'])
-        ->whereNotIn('status_active', ['Draft','Cancel'])
+        // ->whereNotIn('employee_status', ['Draft','Cancel'])
+        // ->whereNotIn('status_active', ['Draft','Cancel'])
         ->select('employees.id', 
         'employees.nik', 
         'nama', 
         'jenis_kelamin',
-        'contract_date',
-        'contract_number',
-        'contract_type',
-        'employee_status',
-        'status_active',
-        'department',
-        'positions.name as position',
+        'position_id',
+        // 'contract_date',
+        // 'contract_number',
+        // 'contract_type',
         'employees.created_at', 
         'employees.updated_at')
-        ->join('contracts','contract_id', '=', 'contracts.id')
-        ->leftJoin('positions', 'position', '=', 'positions.id');
+        ->join('positions','employees.position_id', '=', 'positions.id')
+        ->leftJoin('sections', 'positions.section_id', '=', 'sections.id')
+        ->leftJoin('departments', 'positions.department_id', '=', 'departments.id')
+        ->join('divisions', 'positions.division_id', '=', 'divisions.id');
     }
 
     /**
@@ -79,19 +90,39 @@ class EmployeeDataTable extends DataTable
             // 'id',
             'nik',
             'nama',
-            'contract_date',
-            'contract_number',
-            'contract_type',
+            // 'contract_date',
+            // 'contract_number',
+            // 'contract_type',
             // // 'contract_duration',
-            'employee_status',
-            'status_active',
+            // 'employee_status',
+            // 'status_active',
             // // 'status_contract',
-            // // 'division',
-            'department',
+            [
+                'data' => 'division',
+                'name' => 'divisions.name',
+                'title' => 'Division',
+                'searchable' => true,
+                'orderable' => false,
+            ],
+            [
+                'data' => 'department',
+                'name' => 'departments.name',
+                'title' => 'Department',
+                'searchable' => true,
+                'orderable' => false,
+            ],
+            [
+                'data' => 'section',
+                'name' => 'sections.name',
+                'title' => 'Section',
+                'searchable' => true,
+                'orderable' => false,
+            ],
             [
                 'data' => 'position',
+                'name' => 'positions.name',
                 'title' => 'Position',
-                'searchable' => false,
+                'searchable' => true,
                 'orderable' => false,
             ],
             // 'reminder',

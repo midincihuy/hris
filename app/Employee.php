@@ -60,7 +60,10 @@ class Employee extends Model
     ];
 
     protected $dates = [
-        'tanggal_lahir'
+        'tanggal_lahir',
+        'tanggal_berhenti',
+        'last_day',
+        'tanggal_efektif_asuransi',
     ];
 
     public function family()
@@ -76,6 +79,11 @@ class Employee extends Model
     public function sk()
     {
         return $this->hasMany('App\Sk')->orderBy('id','desc');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo('App\Position');
     }
     
 }
