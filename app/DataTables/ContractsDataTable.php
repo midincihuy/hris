@@ -63,7 +63,8 @@ class ContractsDataTable extends DataTable
         return $model->newQuery()
         ->where('employee_status', 'KK')
         ->where('status_active', 'Aktif')
-        ->whereDate('contract_expire_date', '>=', date("Y-m-d 23:59:59"))
+        ->whereDate('contract_date', '<=', date("Y-m-d"))
+        ->whereDate('contract_expire_date', '>', date("Y-m-d"))
         ->select('contracts.id', 
         'nik', 
         'contracts.name', 
