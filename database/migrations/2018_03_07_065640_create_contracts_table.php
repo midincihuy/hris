@@ -16,6 +16,8 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('recruitment_id');
+            $table->integer('employee_id')->unsigned();
+            $table->string('contract_reference_no')->nullable();
             $table->string('nik');
             $table->string('name');
             $table->string('gender');

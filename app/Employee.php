@@ -56,6 +56,7 @@ class Employee extends Model
         'tahun_masuk',
         'tahun_keluar',
         'informasi_lowongan',
+        'position',
     ];
 
     protected $dates = [
@@ -69,12 +70,7 @@ class Employee extends Model
 
     public function contract()
     {
-        return $this->belongsTo('App\Contract');
-    }
-
-    public function all_contracts()
-    {
-        return $this->hasMany('App\Contract');
+        return $this->hasMany('App\Contract')->orderBy('id','desc');
     }
 
     public function sk()

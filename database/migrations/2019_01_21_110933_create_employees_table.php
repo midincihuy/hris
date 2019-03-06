@@ -45,7 +45,7 @@ class CreateEmployeesTable extends Migration
             $table->string('tanggal_efektif_asuransi')->nullable();
             $table->string('tanggal_berhenti')->nullable();
             $table->string('alasan_berhenti')->nullable();
-
+            $table->string('last_day')->nullable()->comment('Last Work Day in Office');
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
@@ -71,6 +71,7 @@ class CreateEmployeesTable extends Migration
             $table->string('tahun_masuk');
             $table->string('tahun_keluar');
             $table->string('informasi_lowongan');
+            $table->string('position');
             $table->timestamps();
         });
     }
