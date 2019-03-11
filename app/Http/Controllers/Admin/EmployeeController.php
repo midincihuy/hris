@@ -80,7 +80,7 @@ class EmployeeController extends Controller
         $data['reminder_status'] = Reference::where('code','REMINDER_STATUS')->orderBy('sort')->get()->pluck('item','value');
 
         $employee = Employee::findOrFail($id);
-        $contract = $employee->contract;
+        $contract = $employee->contract->first();
         // return view('admin.employee.edit', compact('contract', 'data'));
         return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('contract', 'data'));
 
@@ -142,7 +142,7 @@ class EmployeeController extends Controller
     public function detail($id)
     {
         $employee = Employee::findOrFail($id);
-        $contract = $employee->contract;
+        $contract = $employee->contract->first();
         $data['golongan']         = Reference::where('code','GOLONGAN')->orderBy('sort')->get()->pluck('item','value');
         $data['kelas']            = Reference::where('code','KELAS')->orderBy('sort')->get()->pluck('item','value');
         $data['status_karyawan']  = Reference::where('code','STATUS_KARYAWAN')->orderBy('sort')->get()->pluck('item','value');
@@ -166,7 +166,7 @@ class EmployeeController extends Controller
     public function detailemployee($id)
     {
       $employee = Employee::findOrFail($id);
-      $contract = $employee->contract;
+      $contract = $employee->contract->first();
       $data['golongan']         = Reference::where('code','GOLONGAN')->orderBy('sort')->get()->pluck('item','value');
       $data['kelas']            = Reference::where('code','KELAS')->orderBy('sort')->get()->pluck('item','value');
       $data['status_karyawan']  = Reference::where('code','STATUS_KARYAWAN')->orderBy('sort')->get()->pluck('item','value');
@@ -180,7 +180,7 @@ class EmployeeController extends Controller
     public function resign($id)
     {
       $employee = Employee::findOrFail($id);
-      $contract = $employee->contract;
+      $contract = $employee->contract->first();
       $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
       return view('admin.employee.resign', compact('employee', 'contract', 'data'));
     }
@@ -190,13 +190,15 @@ class EmployeeController extends Controller
       $employee = Employee::findOrFail($id);
       $employee->fill($request->all());
       $employee->save();
+
+      // Do Nonaktif Employee
       return redirect(route('admin.employee.edit',$id));
     }
 
     public function sk($id)
     {
       $employee = Employee::findOrFail($id);
-      $contract = $employee->contract;
+      $contract = $employee->contract->first();
       $position = Position::all();
       
       $data['list_jabatan'] = Position::list_position();
@@ -210,6 +212,8 @@ class EmployeeController extends Controller
       $sk->fill($request->all());
       $sk->employee_id = $id;
       $sk->save();
+
+      echo "PRINT SK";
       return $request;
       // $employee = Employee::findOrFail($id);
       // $employee->fill($request->all());

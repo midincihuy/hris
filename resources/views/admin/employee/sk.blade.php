@@ -6,7 +6,7 @@
         <div class="panel-heading">
             Create SK
             <br/>
-            <h4>{{ $employee->contract->position_role->division->company }}</h4>
+            <h4>{{ $employee->position->division->company }}</h4>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -30,7 +30,7 @@
                     {!! Form::label('division', 'Division', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('division', $employee->contract->division, ['class' => 'form-control', 'placeholder' => 'division', 'readonly']) !!}
+                    {!! Form::text('division', $employee->position->division->name, ['class' => 'form-control', 'placeholder' => 'division', 'readonly']) !!}
                 </div>
             </div>
             <div class="row">
@@ -38,7 +38,7 @@
                     {!! Form::label('department', 'Department', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('department', $employee->contract->department, ['class' => 'form-control', 'placeholder' => 'department', 'readonly']) !!}
+                    {!! Form::text('department', $employee->position->department->name, ['class' => 'form-control', 'placeholder' => 'department', 'readonly']) !!}
                 </div>
             </div>
             <div class="row">

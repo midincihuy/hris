@@ -27,7 +27,7 @@
 
                 <div class="col-xs-2 form-group">
                     {!! Form::label('position', 'Position', ['class' => 'control-label']) !!}
-                    {!! Form::text('position', $contract->jabatan, ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::text('position', $contract->position->name, ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">

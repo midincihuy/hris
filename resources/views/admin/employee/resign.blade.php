@@ -4,7 +4,9 @@
   {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_resign', $contract->id]]) !!}
     <div class="panel panel-danger">
         <div class="panel-heading">
-            Resign {{ $employee->contract->position_role->division->company }}
+            Resign 
+            <br/>
+            <h4>{{ $employee->position->division->company }}</h4>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -28,7 +30,7 @@
                     {!! Form::label('division', 'Division', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('division', $employee->contract->division, ['class' => 'form-control', 'placeholder' => 'division', 'readonly']) !!}
+                    {!! Form::text('division', $employee->position->division->name, ['class' => 'form-control', 'placeholder' => 'division', 'readonly']) !!}
                 </div>
             </div>
             <div class="row">
@@ -36,7 +38,7 @@
                     {!! Form::label('department', 'Department', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::text('department', $employee->contract->department, ['class' => 'form-control', 'placeholder' => 'department', 'readonly']) !!}
+                    {!! Form::text('department', $employee->position->department->name, ['class' => 'form-control', 'placeholder' => 'department', 'readonly']) !!}
                 </div>
             </div>
             <div class="row">
@@ -44,7 +46,7 @@
                     {!! Form::label('tanggal_berhenti', 'Tanggal Berhenti', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('tanggal_berhenti', old('tanggal_berhenti'), ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti']) !!}
+                    {!! Form::date('tanggal_berhenti', $employee->tanggal_berhenti, ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti']) !!}
                 </div>
             </div>
             <div class="row">
@@ -52,7 +54,7 @@
                     {!! Form::label('last_day', 'Last Day at Office', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-xs-3 form-group">
-                    {!! Form::date('last_day', old('last_day'), ['class' => 'form-control', 'placeholder' => 'Last Day']) !!}
+                    {!! Form::date('last_day', $employee->last_day, ['class' => 'form-control', 'placeholder' => 'Last Day']) !!}
                 </div>
             </div>
 
