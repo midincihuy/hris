@@ -128,4 +128,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('positions', 'Admin\PositionsController')->middleware('can:positions_manage');
     Route::resource('divisions.departments', 'Admin\DivisionDepartmentsController');
     Route::resource('divisions.departments.sections', 'Admin\DivisionDepartmentSectionsController');
+
+    Route::get('do_print/{type}/{id}', 'Admin\PrintController@do_print')->name('do_print');
 });

@@ -22,7 +22,10 @@ class SkDataTable extends DataTable
             ->editColumn('end_date', function($sk){
                 return $sk->end_date->formatLocalized('%d %B %Y');
             })
-            ->addColumn('action', 'skdatatable.action');
+            ->addColumn('action', function($sk){
+                $print = '<a href="'.route('admin.do_print', ['sk', $sk->id]).'" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                return $print;
+            });
     }
 
     /**
@@ -97,27 +100,8 @@ class SkDataTable extends DataTable
         'initComplete' => 'function () {
             $("#dataTableBuilder").attr("style","margin-left:0px;width:auto");
             $("#dataTableBuilder_paginate").attr("style","float:left;");
-
-            // to select from list
-            $("#dataTableBuilder tbody").on("click", "tr", function () {
-                var id = this.id;
-                var index = $.inArray(id, selected);
-  
-                if ( index === -1 ) {
-                    selected.push( id );
-                } else {
-                    selected.splice( index, 1 );
-                }
-                $("#hide_nik").val(selected.toString());
-                $("#total_nik").text(selected.length);
-                $(this).toggleClass("selected");
-            });
         }',
         'rowCallback'  => 'function( row, data, index ) {
-            $(row).attr("id", data.nik);
-            if ( $.inArray(data.nik, selected) !== -1 ) {
-                $(row).addClass("selected");
-            }
             
             var r = $("#dataTableBuilder_wrapper tfoot tr");
 
