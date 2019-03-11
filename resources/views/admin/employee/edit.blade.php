@@ -2,73 +2,85 @@
 
 @section('content')
   {{-- {{ dd($data) }} --}}
-    <h3 class="page-title">@lang('global.employee.title')</h3>
+    <h3 class="page-title">{{ $contract->position->division->company }}</h3>
 
     {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->id]]) !!}
 @php
     $readonly = $contract->nik == "" ? "" : "readonly";
 @endphp
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('global.app_edit')
+
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Profile Image -->
+            <div class="box box-primary box-outline">
+                <div class="box-body box-profile">
+                <div class="text-muted text-center">
+                    {{ $contract->nik }}
+                    {{-- <img class="profile-user-img img-fluid img-circle"
+                        src="/uploads/avatar/profile.png"
+                        alt="User profile picture"> --}}
+                </div>
+
+                <h3 class="profile-username text-center">
+                    {{ $contract->name }}
+                </h3>
+
+                <p class="text-muted text-center">
+                    {{ $contract->position->name }}
+                </p>
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                    <b>Division</b>
+                    {{ $contract->position->division->name }}
+                    </li>
+                    <li class="list-group-item">
+                    <b>Department</b>
+                    @if($contract->position->department)
+                    {{ $contract->position->department->name }}
+                    @else 
+                    -
+                    @endif
+                    </li>
+                    <li class="list-group-item">
+                    <b>Section</b>
+                    @if($contract->position->section)
+                    {{ $contract->position->section->name }}
+                    @else 
+                    -
+                    @endif
+                    </li>
+
+                    <li class="list-group-item">
+                    <b>Head</b>
+                    {{ $contract->position->parent->name }}
+                    </li>
+                </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
         </div>
-
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('nik', 'NIK', ['class' => 'control-label']) !!}
-                    {!! Form::text('nik', old('nik'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', $readonly ]) !!}
-                </div>
-
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
-                    {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
-                </div>
-
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('position', 'Position', ['class' => 'control-label']) !!}
-                    {!! Form::text('position', $contract->position->name, ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
-                </div>
-
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('contract_date', 'Contract Date', ['class' => 'control-label']) !!}
-                    {!! Form::text('contract_date', old('contract_date'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+        <div class="col-md-9">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5 form-group">
+                            <div class="btn-group">
+                                <a href="detailemployee" class="btn btn-primary"><i class="fa fa-edit"></i> Edit By Employee</a>
+                                <a href="detail" class="btn btn-danger"><i class="fa fa-edit"></i> Edit By HR</a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('employee_status', 'Employee Status', ['class' => 'control-label']) !!}
-                    {!! Form::select('employee_status', $data['employee_status'], '', ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="col-xs-2 form-group">
-                    {!! Form::label('status_active', 'Status Active', ['class' => 'control-label']) !!}
-                    {!! Form::select('status_active', $data['status_active'], '', ['class' => 'form-control']) !!}
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-xs-2 form-group">
-                    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
-                </div>
-                <div class="col-xs-2 form-group">
-                    <a href="detailemployee"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By Employee</button></a>
-                </div>
-                <div class="col-xs-2 form-group">
-                    <a href="detail"><button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Update By HR</button></a>
-                </div>
-                <div class="col-xs-2 form-group">
-                    <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
-                </div>
-                <div class="col-xs-2 form-group">
-                    <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
-                </div>
-            </div>
-            {!! Form::close() !!}
         </div>
     </div>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             Anggota Keluarga

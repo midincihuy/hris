@@ -214,11 +214,6 @@ class EmployeeController extends Controller
       $sk->employee_id = $id;
       $sk->save();
 
-      echo "PRINT SK";
-      return $request;
-      // $employee = Employee::findOrFail($id);
-      // $employee->fill($request->all());
-      // $employee->save();
-      // return redirect(route('admin.employee.edit',$id));
+      return redirect(route('admin.employee.edit',$id));
     }
 }

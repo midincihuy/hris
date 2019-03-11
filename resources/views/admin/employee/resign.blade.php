@@ -68,7 +68,9 @@
             </div>
         </div>
         <div class="panel-footer">
-          {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+          {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-danger']) 
+          !!}
+          {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>
     </div>
 

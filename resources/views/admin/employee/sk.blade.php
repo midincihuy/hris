@@ -94,6 +94,8 @@
         </div>
         <div class="panel-footer">
           {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-warning']) !!}
+
+          {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>
     </div>
 
