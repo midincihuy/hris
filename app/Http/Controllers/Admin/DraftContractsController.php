@@ -143,7 +143,7 @@ class DraftContractsController extends Controller
     public function print(Contract $contract)
     {
         $contract_type = Str::slug(Str::studly($contract->contract_type));
-        $company = Str::slug(Str::studly($contract->position_role->company));
+        $company = Str::slug(Str::studly($contract->position->division->company));
         setLocale(LC_TIME, 'id_ID.utf8');
         $this->terbilang = [
             '3' => 'tiga',
@@ -248,15 +248,15 @@ class DraftContractsController extends Controller
         PDF::MultiCell(30,5,"Department/Divisi",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+45, $y);
-        PDF::MultiCell(150,5,": ".$contract->position_role->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->name,0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+45, $y+5);
-        PDF::MultiCell(150,5,": ".$contract->position_role->department->name."/".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->department->name."/".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
         PDF::MultiCell(10,5,"1.2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+10, $y);
-        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position_role->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -715,15 +715,15 @@ class DraftContractsController extends Controller
         PDF::MultiCell(30,5,"Department/Divisi",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+45, $y);
-        PDF::MultiCell(150,5,": ".$contract->position_role->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->name,0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+45, $y+5);
-        PDF::MultiCell(150,5,": ".$contract->position_role->department->name."/".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->department->name."/".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
         PDF::MultiCell(10,5,"1.2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+10, $y);
-        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position_role->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1126,7 +1126,7 @@ class DraftContractsController extends Controller
         PDF::MultiCell(20,5,"2. ",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(110,5,"Kebutuhan Operasional Departemen ".$contract->position_role->department->name.", Divisi ".$contract->position_role->division->name.", PT Omni Intivision.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(110,5,"Kebutuhan Operasional Departemen ".$contract->position->department->name.", Divisi ".$contract->position->division->name.", PT Omni Intivision.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+40, $y);
@@ -1175,7 +1175,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x+10, $y);
         PDF::MultiCell(40,5,"Departemen / Divisi",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(100,5,": ".$contract->position_role->department->name." / ".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(100,5,": ".$contract->position->department->name." / ".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+10, $y);
@@ -1260,7 +1260,7 @@ class DraftContractsController extends Controller
         PDF::MultiCell(20,5,"2. ",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(110,5,"Kebutuhan Operasional Departemen ".$contract->position_role->department->name.", Divisi ".$contract->position_role->division->name.", PT Elang Prima Retailindo.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(110,5,"Kebutuhan Operasional Departemen ".$contract->position->department->name.", Divisi ".$contract->position->division->name.", PT Elang Prima Retailindo.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+40, $y);
@@ -1309,7 +1309,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x+10, $y);
         PDF::MultiCell(40,5,"Departemen / Divisi",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(100,5,": ".$contract->position_role->department->name." / ".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(100,5,": ".$contract->position->department->name." / ".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+10, $y);
@@ -1449,15 +1449,15 @@ class DraftContractsController extends Controller
         PDF::MultiCell(30,5,"Department/Divisi",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+45, $y);
-        PDF::MultiCell(150,5,": ".$contract->position_role->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->name,0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+45, $y+5);
-        PDF::MultiCell(150,5,": ".$contract->position_role->department->name."/".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->department->name."/".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
         PDF::MultiCell(10,5,"1.2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+10, $y);
-        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position_role->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1910,15 +1910,15 @@ class DraftContractsController extends Controller
         PDF::MultiCell(30,5,"Department/Divisi",0,'L',0,1,'','',true,0,true);
 
         PDF::SetXY($x+45, $y);
-        PDF::MultiCell(150,5,": ".$contract->position_role->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->name,0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+45, $y+5);
-        PDF::MultiCell(150,5,": ".$contract->position_role->department->name."/".$contract->position_role->division->name,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(150,5,": ".$contract->position->department->name."/".$contract->position->division->name,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
         PDF::MultiCell(10,5,"1.2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+10, $y);
-        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position_role->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"Dalam melaksanakan pekerjaannya, <b>Pihak Kedua</b> wajib melapor dan bertanggung jawab kepada <b>".$contract->position->parent->name."</b> sebagai atasan dari <b>Pihak Kedua</b>.",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -2332,7 +2332,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(6,5,"A.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"bahwa Para Pihak telah menandatangani Perjanjian Kerja Waktu Tertentu No. $contract->contract_reference_no tanggal ".$contract->contract_date->formatLocalized('%d %B %Y')." (untuk selanjutnya disebut \"Perjanjian\") tentang penunjukan <b>Pihak Kedua</b> untuk bekerja di perusahaan <b>Pihak Pertama</b> sebagai karyawan tidak tetap sebagai <b>".$contract->position_role->name."</b> pada <b>$contract->department Department, $contract->division Division</b> untuk jangka waktu ".$contract->parent->contract_duration." bulan, yaitu tanggal ".$contract->parent->contract_date->formatLocalized("%d %B %Y")." sampai dengan ".$contract->parent->contract_expire_date->formatLocalized("%d %B %Y")."; dan",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"bahwa Para Pihak telah menandatangani Perjanjian Kerja Waktu Tertentu No. $contract->contract_reference_no tanggal ".$contract->contract_date->formatLocalized('%d %B %Y')." (untuk selanjutnya disebut \"Perjanjian\") tentang penunjukan <b>Pihak Kedua</b> untuk bekerja di perusahaan <b>Pihak Pertama</b> sebagai karyawan tidak tetap sebagai <b>".$contract->position->name."</b> pada <b>$contract->department Department, $contract->division Division</b> untuk jangka waktu ".$contract->parent->contract_duration." bulan, yaitu tanggal ".$contract->parent->contract_date->formatLocalized("%d %B %Y")." sampai dengan ".$contract->parent->contract_expire_date->formatLocalized("%d %B %Y")."; dan",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
