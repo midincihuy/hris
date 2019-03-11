@@ -93,14 +93,35 @@
             </div>
         </div>
         <div class="panel-footer">
-          {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-warning']) !!}
+          {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-warning']) !!}
         </div>
     </div>
 
     {!! Form::close() !!}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            SK List
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    {!! $dataTable->table([], true) !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 @push('js')
 <script type="text/javascript">
     $("select[name='jabatan']").select2();
 </script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+<script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+<script src="/vendor/datatables/buttons.server-side.js"></script>
+<script type="text/javascript">
+var selected = [];
+</script>
+{!! $dataTable->scripts() !!}
+
 @endpush

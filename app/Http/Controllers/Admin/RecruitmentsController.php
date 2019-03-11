@@ -157,6 +157,8 @@ class RecruitmentsController extends Controller
         $employee->tanggal_lahir = $recruitment->applicant->tanggal_lahir;
         $employee->kewarganegaraan = $recruitment->applicant->kewarganegaraan;
         $employee->position_id = $recruitment->jabatan_final;
+        $employee->employee_status = "Draft";
+        $employee->status_active = "Draft";
         $employee->save();
 
         $contract->employee_id = $employee->id;

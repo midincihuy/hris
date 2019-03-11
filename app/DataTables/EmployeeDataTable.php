@@ -32,8 +32,9 @@ class EmployeeDataTable extends DataTable
         ->addColumn('action', function ($employee) {
             $edit = '<a href="employee/'.$employee->id.'/edit" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
             $edit_detail_employee = '<a href="employee/'.$employee->id.'/detailemployee" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
-            $edit_detail_hr = '<a href="employee/'.$employee->id.'/detail" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
-            $button = $edit.$edit_detail_employee.$edit_detail_hr;
+            $edit_detail_hr = '<a href="employee/'.$employee->id.'/detail" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
+            $btn_group = '<div class="btn-group">'.$edit_detail_employee.$edit_detail_hr.'</div>';
+            $button = $edit.$btn_group;
             return $button;
         });
     }
@@ -47,16 +48,13 @@ class EmployeeDataTable extends DataTable
     public function query(Employee $model)
     {
         return $model->newQuery()
-        // ->whereNotIn('employee_status', ['Draft','Cancel'])
-        // ->whereNotIn('status_active', ['Draft','Cancel'])
+        ->whereNotIn('employee_status', ['Draft','Cancel'])
+        ->whereNotIn('status_active', ['Draft','Cancel'])
         ->select('employees.id', 
         'employees.nik', 
         'nama', 
         'jenis_kelamin',
         'position_id',
-        // 'contract_date',
-        // 'contract_number',
-        // 'contract_type',
         'employees.created_at', 
         'employees.updated_at')
         ->join('positions','employees.position_id', '=', 'positions.id')
@@ -126,8 +124,8 @@ class EmployeeDataTable extends DataTable
                 'orderable' => false,
             ],
             // 'reminder',
-            'created_at',
-            'updated_at'
+            // 'created_at',
+            // 'updated_at'
         ];
     }
 
@@ -179,7 +177,7 @@ class EmployeeDataTable extends DataTable
             this.api().columns().every(function () {
                 var column = this;
                 var input = document.createElement("input");
-                $(input).attr("style","width:100px");
+                $(input).attr("style","width:auto");
                 $(input).appendTo($(column.footer()).empty())
                 .on("change", function () {
                     var val = $.fn.dataTable.util.escapeRegex($(this).val());

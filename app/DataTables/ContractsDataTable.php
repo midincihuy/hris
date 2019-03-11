@@ -39,7 +39,7 @@ class ContractsDataTable extends DataTable
 
             $print = "";
             if($contracts->employee){
-                $edit .= ' <a href="contracts/'.$contracts->id.'/renew" class="btn btn-xs btn-warning"><i class="fa fa-check"></i> Renew</a>';
+                $edit .= ' <a href="contracts/'.$contracts->id.'/renew" class="btn btn-xs btn-warning"><i class="fa fa-refresh"></i> Renew</a>';
                 $print = ' <a href="draft_contracts/'.$contracts->id.'/print" class="btn btn-xs btn-success" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>';
             }else{
                 $edit = "<span class='alert-danger'>Contract Has been Renewed</span>";
@@ -181,7 +181,7 @@ class ContractsDataTable extends DataTable
             this.api().columns().every(function () {
                 var column = this;
                 var input = document.createElement("input");
-                $(input).attr("style","width:100px");
+                $(input).attr("style","width:auto");
                 $(input).appendTo($(column.footer()).empty())
                 .on("change", function () {
                     var val = $.fn.dataTable.util.escapeRegex($(this).val());

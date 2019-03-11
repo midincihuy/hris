@@ -22,10 +22,11 @@ class RecruitmentsDataTable extends DataTable
         })
         ->addColumn('action', function ($recruitments) {
             $display_btn = ($recruitments->status_offering == "Disarankan") && (count($recruitments->contract) < 1) ? true : false;
-            $view_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'" class="btn btn-xs btn-primary"><i class="fa fa-search"></i> View</a>';
+            $view_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
             $edit_recruitment_btn = '<a href="recruitments/'.$recruitments->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</a>';
             $create_contract_btn = $display_btn ? '<a href="recruitments/'.$recruitments->id.'/create_contract" class="btn btn-xs btn-warning"><i class="fa fa-file"></i> Create Contract</a>' : '';
-            return $view_recruitment_btn." ".$edit_recruitment_btn." ".$create_contract_btn;
+            $btn_group = '<div class="btn-group">'.$view_recruitment_btn.$edit_recruitment_btn.'</div>';
+            return $btn_group.$create_contract_btn;
         });
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Contract;
 use App\DataTables\EmployeeDataTable;
 use App\DataTables\FamilyDataTable;
+use App\DataTables\SkDataTable;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -195,7 +196,7 @@ class EmployeeController extends Controller
       return redirect(route('admin.employee.edit',$id));
     }
 
-    public function sk($id)
+    public function sk(SkDataTable $dataTable, $id)
     {
       $employee = Employee::findOrFail($id);
       $contract = $employee->contract->first();
@@ -203,7 +204,7 @@ class EmployeeController extends Controller
       
       $data['list_jabatan'] = Position::list_position();
       $data['jenis_surat'] = Reference::where('code','JENIS_SK')->orderBy('sort')->get()->pluck('item','value');
-      return view('admin.employee.sk', compact('employee', 'contract', 'data'));
+      return $dataTable->render('admin.employee.sk', compact('employee', 'contract', 'data'));
     }
 
     public function store_sk(Request $request, $id)
