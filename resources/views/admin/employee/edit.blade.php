@@ -93,7 +93,7 @@
                         <div class="box-body">
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                            <i class="fa fa-home"></i>
+                                    <i class="fa fa-home"></i>
                                     {!! $employee->alamat !!}
                                 </li>
                                 <li class="list-group-item">
