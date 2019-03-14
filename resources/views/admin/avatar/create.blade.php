@@ -25,24 +25,16 @@
       @endif
 <div class="panel panel-default">
   <div class="panel-heading">
-    Add Document
+    Change Avatar
   </div>
   <div class="panel-body">
-    {{ Form::open(['url' => route('admin.employee.documents.store', $employee->id), 'method' => 'POST', 'enctype' => "multipart/form-data"]) }}
+    {{ Form::open(['url' => route('admin.employee.avatar.store', $employee->id), 'method' => 'POST', 'enctype' => "multipart/form-data"]) }}
     <div class="row">
       <div class="col-md-3 form-group">
-        {{ Form::label('description', 'Description') }}
+        {{ Form::label('avatar', 'Avatar') }}
       </div>
       <div class="col-md-6 form-group">
-        {{ Form::text('description', '', ['class' => 'form-control', 'placeholder' => 'Description', 'required']) }}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 form-group">
-        {{ Form::label('url', 'File') }}
-      </div>
-      <div class="col-md-6 form-group">
-        {{ Form::file('url', old('url'), ['class' => 'form-control', 'placeholder' => 'File', 'required']) }}
+        {{ Form::file('avatar', old('avatar'), ['class' => 'form-control', 'placeholder' => 'Avatar', 'required']) }}
       </div>
     </div>
   </div>
