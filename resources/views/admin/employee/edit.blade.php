@@ -88,14 +88,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Info
-                        </div>
-                        <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="box box-outline">
+                        <div class="box-body">
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
                             <i class="fa fa-home"></i>
-                            {{ $employee->alamat_ktp }}
+                                    {!! $employee->alamat !!}
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-mobile"></i>
+                                    {!! $employee->handphone !!}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
