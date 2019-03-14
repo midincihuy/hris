@@ -8,16 +8,17 @@
         <div class="box box-primary box-outline">
             <div class="box-body box-profile">
             <div class="text-muted text-center">
-                {{ $employee->nik }}
-                {{-- <img class="profile-user-img img-fluid img-circle"
+                <img class="profile-user-img img-fluid img-circle"
                     src="/uploads/avatar/profile.png"
-                    alt="User profile picture"> --}}
+                    alt="User profile picture">
             </div>
 
             <h3 class="profile-username text-center">
-                {{ $employee->name }}
+                {{ $employee->nama }}
             </h3>
-
+            <p class="text-center">
+                {{ $employee->nik }}
+            </p>
             <p class="text-muted text-center">
                 {{ $employee->position->name }}
             </p>
