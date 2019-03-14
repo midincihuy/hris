@@ -18,7 +18,7 @@ class DraftContractsDataTable extends DataTable
         return datatables($query)
             ->addColumn('action', function ($contracts) {
                 $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Assign NIK</a>';
-                $print = '<a href="draft_contracts/'.$contracts->id.'/print" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                $print = '<a href="'.route('admin.do_print', ['contract', $contracts->id]).'" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
                 $cancel = '<a href="draft_contracts/'.$contracts->id.'/cancel" target="_blank" class="btn btn-xs btn-danger"><i class="fa fa-close"></i> Cancel</a>';
                 $button = '<div class="btn-group">'.$edit.$cancel.'</div>';
                 $button .= $print;
