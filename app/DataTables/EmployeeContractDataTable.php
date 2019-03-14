@@ -20,7 +20,11 @@ class EmployeeContractDataTable extends DataTable
                 return $contract->contract_date->formatLocalized('%d %B %Y');
             })
             ->editColumn('contract_expire_date', function($contract){
-                return $contract->contract_expire_date->formatLocalized('%d %B %Y');
+                if($contract->contract_expire_date){
+                    return $contract->contract_expire_date->formatLocalized('%d %B %Y');
+                }else{
+                    return "-";
+                }
             })
             ->addColumn('action', function($contract){
                 $print = '<a href="'.route('admin.do_print', ['contract', $contract->id]).'" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
@@ -40,6 +44,7 @@ class EmployeeContractDataTable extends DataTable
         return $model->newQuery()
         ->where('employee_id', $this->employee_id)->
         select('id', 
+        'contract_type', 
         'contract_number', 
         'contract_date', 
         'contract_expire_date', 
@@ -72,6 +77,7 @@ class EmployeeContractDataTable extends DataTable
     {
         return [
             // 'id',
+            'contract_type',
             'contract_number',
             'contract_date', 
             'contract_expire_date', 
