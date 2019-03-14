@@ -88,5 +88,10 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Position');
     }
+
+    public function documents()
+    {
+        return $this->hasMany('App\Document');
+    }
     
 }

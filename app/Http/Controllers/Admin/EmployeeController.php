@@ -84,7 +84,8 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $contract = $employee->contract->first();
         // return view('admin.employee.edit', compact('contract', 'data'));
-        return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('employee', 'contract', 'data'));
+        $documents = $employee->documents;
+        return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('employee', 'contract', 'data', 'documents'));
 
     }
 

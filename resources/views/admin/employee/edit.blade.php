@@ -62,27 +62,74 @@
             <!-- /.box -->
         </div>
         <div class="col-md-9">
-            <div class="box box-default">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-5 form-group">
-                            <div class="btn-group">
-                                <a href="detailemployee" class="btn btn-primary"><i class="fa fa-edit"></i> Edit By Employee</a>
-                                <a href="detail" class="btn btn-danger"><i class="fa fa-edit"></i> Edit By HR</a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-5 form-group">
+                                    <div class="btn-group">
+                                        <a href="detailemployee" class="btn btn-primary"><i class="fa fa-edit"></i> Edit By Employee</a>
+                                        <a href="detail" class="btn btn-danger"><i class="fa fa-edit"></i> Edit By HR</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <a href="contract"><button type="button" class="btn btn-default"><i class="fa fa-file"></i> Contract Form</button></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <a href="contract"><button type="button" class="btn btn-default"><i class="fa fa-file"></i> Contract Form</button></a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Info
+                        </div>
+                        <div class="panel-body">
+                            <i class="fa fa-home"></i>
+                            {{ $employee->alamat_ktp }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Documents List
+        </div>
+        <div class="panel-body">
+            <table class="table dataTable">
+                <thead>
+                    <th>Description</th>
+                    <th>Upload At</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    @foreach($documents as $document)
+                    <tr role="row">
+                        <td>{{ $document->description }}</td>
+                        <td>{{ $document->created_at }} </td>
+                        <td>
+                            <a href="{{ asset('storage/'.$document->url)}}" target="_blank" class="btn btn-xs btn-primary fa fa-download">
+                                Download
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            {!! link_to(route('admin.employee.documents.create', $employee->id), '&nbsp;Add', ['class' => 'btn btn-success fa fa-file']) !!}
         </div>
     </div>
     <div class="panel panel-default">
