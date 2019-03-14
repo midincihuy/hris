@@ -11,7 +11,7 @@
       </div>
     </div>
   @endif
-  <div class="panel panel-default">
+  {{-- <div class="panel panel-default">
     <div class="panel-heading">
       <h3>Import Contracts From XLS</h3>
     </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </div> --}}
 {!! $dataTable->table([], true) !!}
 @endsection
 

@@ -16,7 +16,7 @@
             <h3 class="profile-username text-center">
                 {{ $employee->nama }}
             </h3>
-            <p class="text-center">
+            <p class="text-muted text-center">
                 {{ $employee->nik }}
             </p>
             <p class="text-muted text-center">
@@ -55,93 +55,97 @@
         <!-- /.box -->
     </div>
     <div class="col-md-9">
-  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.update_detail', $contract->id]]) !!}
-
-    <div class="panel panel-primary">
+  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_contract', $employee->id]]) !!}
+    <div class="panel panel-default">
         <div class="panel-heading">
-            Detail
+            Create Contract
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_kk', 'No KK', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_reference_no', 'Nomor Referensi Kontrak', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_kk', old('no_kk') , ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::text('contract_reference_no', '', ['class' => 'form-control', 'placeholder' => 'Nomor Referensi Kontrak']) !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_bpjs_ketenagakerjaan', 'No BPJS Ketenagakerjaan', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_type', 'Jenis Kontrak', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_bpjs_ketenagakerjaan', old('no_bpjs_ketenagakerjaan'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('contract_type', $data['jenis_kontrak'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Kontrak']) !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_bpjs_kesehatan', 'No BPJS Kesehatan', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_number', 'Nomor Kontrak', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_bpjs_kesehatan', old('no_bpjs_kesehatan'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('contract_number', '', ['class' => 'form-control', 'placeholder' => 'Nomor Kontrak', 'required']) !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_bpjs_pensiun', 'No BPJS Pensiun', ['class' => 'control-label']) !!}
+                    {!! Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_bpjs_pensiun', old('no_bpjs_pensiun'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('jabatan', $data['list_jabatan'], '', ['class' => 'form-control', 'placeholder' => 'Jabatan']) !!}
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_npwp', 'No NPWP', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_date', 'Mulai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_npwp', old('no_npwp'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::date('contract_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('no_rek_bca', 'No Rek BCA', ['class' => 'control-label']) !!}
+                    {!! Form::label('contract_expire_date', 'Sampai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_rek_bca', old('no_rek_bca'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 form-group">
-                    {!! Form::label('no_va_dana', 'No VA Dana', ['class' => 'control-label']) !!}
-                </div>
-                <div class="col-md-6 form-group">
-                    {!! Form::text('no_va_dana', old('no_va_dana'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 form-group">
-                    {!! Form::label('nama_ayah', 'Nama Ayah', ['class' => 'control-label']) !!}
-                </div>
-                <div class="col-md-6 form-group">
-                    {!! Form::text('nama_ayah', old('nama_ayah'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 form-group">
-                    {!! Form::label('nama_ibu', 'Nama Ibu', ['class' => 'control-label']) !!}
-                </div>
-                <div class="col-md-6 form-group">
-                    {!! Form::text('nama_ibu', old('nama_ibu'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::date('contract_expire_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
                 </div>
             </div>
         </div>
         <div class="panel-footer">
-            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-primary']) !!}
-            {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
+          {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-primary']) !!}
+
+          {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>
     </div>
 
     {!! Form::close() !!}
     </div>
 </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Contract List
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    {!! $dataTable->table([], true) !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
+@push('js')
+<script type="text/javascript">
+    $("select[name='jabatan']").select2();
+</script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+<script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+<script src="/vendor/datatables/buttons.server-side.js"></script>
+<script type="text/javascript">
+var selected = [];
+</script>
+{!! $dataTable->scripts() !!}
+
+@endpush

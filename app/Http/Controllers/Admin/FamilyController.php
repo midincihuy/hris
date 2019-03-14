@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Reference;
 use App\Family;
+use App\Employee;
 
 class FamilyController extends Controller
 {
@@ -25,8 +26,10 @@ class FamilyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($employee)
+    public function create($id)
     {
+        // return $id;
+        $employee = Employee::findOrFail($id);
         $hubungan_keluarga = Reference::where('code','HUBUNGAN_KELUARGA')->orderBy('sort')->get()->pluck('item','value');
         return view('admin.families.create', compact('hubungan_keluarga', 'employee'));
     }

@@ -16,7 +16,7 @@
       <h3>Employee List</h3>
     </div>
     <div class="panel-body">
-      {!! Form::open(['method' => 'POST', 'route' => ['admin.employee.mass_update']]) !!}
+      {{-- {!! Form::open(['method' => 'POST', 'route' => ['admin.employee.mass_update']]) !!}
         <div class="row">
           <input type="hidden" name="update_nik" id="hide_nik" value="">
 
@@ -47,7 +47,7 @@
             {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
           </div>
         </div>
-      {!! Form::close() !!}
+      {!! Form::close() !!} --}}
     </div>
   </div>
 {!! $dataTable->table([], true) !!}

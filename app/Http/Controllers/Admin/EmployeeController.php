@@ -9,6 +9,7 @@ use App\Contract;
 use App\DataTables\EmployeeDataTable;
 use App\DataTables\FamilyDataTable;
 use App\DataTables\SkDataTable;
+use App\DataTables\EmployeeContractDataTable;
 
 use Illuminate\Support\Facades\Gate;
 
@@ -83,7 +84,7 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $contract = $employee->contract->first();
         // return view('admin.employee.edit', compact('contract', 'data'));
-        return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('contract', 'data'));
+        return $dataTable->with('employee_id',$employee->id)->render('admin.employee.edit', compact('employee', 'contract', 'data'));
 
     }
 
@@ -214,6 +215,40 @@ class EmployeeController extends Controller
       $sk->employee_id = $id;
       $sk->save();
 
+      return redirect(route('admin.employee.edit',$id));
+    }
+
+    public function contract(EmployeeContractDataTable $dataTable, $id)
+    {
+      $employee = Employee::findOrFail($id);
+      $contract = $employee->contract->first();
+      $position = Position::all();
+      
+      $data['list_jabatan'] = Position::list_position();
+      $data['jenis_kontrak'] = Reference::where('code','JENIS_KONTRAK')->orderBy('sort')->get()->pluck('item','value');
+      return $dataTable->with('employee_id', $id)->render('admin.employee.contract', compact('employee', 'contract', 'data'));
+    }
+
+    public function store_contract(Request $request, $id)
+    {
+      $employee = Employee::findOrFail($id);
+      $old_contract = Contract::findOrFail($employee->contract_id);
+
+      // save contract from recruitments
+      $contract = new Contract();
+      $contract->fill($request->all());
+      $contract->employee_id = $id;
+      
+      // Fill Contract Detail From Old Contract
+      $contract->name = $old_contract->name;
+      $contract->employee_status = $old_contract->employee_status;
+      $contract->status_active = $old_contract->employee_status;
+      $contract->position_id = $old_contract->position_id;
+      $contract->save();
+
+      
+      $employee->contract_id = $contract->id;
+      $employee->save();
       return redirect(route('admin.employee.edit',$id));
     }
 }

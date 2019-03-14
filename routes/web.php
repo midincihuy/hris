@@ -95,6 +95,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->middleware('can:employee_manage');
     Route::put('employee/{contract}/store_sk', 'Admin\EmployeeController@store_sk')->name('employee.store_sk')
     ->middleware('can:employee_manage');
+
+    Route::get('employee/{contract}/contract', 'Admin\EmployeeController@contract')->name('employee.contract')
+    ->middleware('can:employee_manage');
+    Route::put('employee/{contract}/store_contract', 'Admin\EmployeeController@store_contract')->name('employee.store_contract')
+    ->middleware('can:employee_manage');
     
     Route::resource('schedulers', 'Admin\SchedulersController',['only' => [
         'index', 'create', 'store', 'edit', 'update'

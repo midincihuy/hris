@@ -2,9 +2,9 @@
 
 @section('content')
   {{-- {{ dd($data) }} --}}
-    <h3 class="page-title">{{ $contract->position->division->company }}</h3>
+    <h3 class="page-title">{{ $employee->position->division->company }}</h3>
 
-    {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->id]]) !!}
+    {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->employee_id]]) !!}
 @php
     $readonly = $contract->nik == "" ? "" : "readonly";
 @endphp
@@ -15,36 +15,37 @@
             <div class="box box-primary box-outline">
                 <div class="box-body box-profile">
                 <div class="text-muted text-center">
-                    {{ $contract->nik }}
-                    {{-- <img class="profile-user-img img-fluid img-circle"
+                    <img class="profile-user-img img-fluid img-circle"
                         src="/uploads/avatar/profile.png"
-                        alt="User profile picture"> --}}
+                        alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">
-                    {{ $contract->name }}
+                    {{ $employee->nama }}
                 </h3>
-
+                <p class="text-center">
+                    {{ $employee->nik }}
+                </p>
                 <p class="text-muted text-center">
-                    {{ $contract->position->name }}
+                    {{ $employee->position->name }}
                 </p>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
                     <b>Division</b>
-                    {{ $contract->position->division->name }}
+                    {{ $employee->position->division->name }}
                     </li>
                     <li class="list-group-item">
                     <b>Department</b>
-                    @if($contract->position->department)
-                    {{ $contract->position->department->name }}
+                    @if($employee->position->department)
+                    {{ $employee->position->department->name }}
                     @else 
                     -
                     @endif
                     </li>
                     <li class="list-group-item">
                     <b>Section</b>
-                    @if($contract->position->section)
-                    {{ $contract->position->section->name }}
+                    @if($employee->position->section)
+                    {{ $employee->position->section->name }}
                     @else 
                     -
                     @endif
@@ -52,7 +53,7 @@
 
                     <li class="list-group-item">
                     <b>Head</b>
-                    {{ $contract->position->parent->name }}
+                    {{ $employee->position->parent->name }}
                     </li>
                 </ul>
                 </div>
@@ -76,6 +77,9 @@
                         <div class="col-md-2 form-group">
                             <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
                         </div>
+                        <div class="col-md-2 form-group">
+                            <a href="contract"><button type="button" class="btn btn-default"><i class="fa fa-file"></i> Contract Form</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,7 +97,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <a href="{{ route('admin.employee.family.create', $contract->id) }}">
+            <a href="{{ route('admin.employee.family.create', $contract->employee_id) }}">
                 <i class="btn btn-success fa fa-plus"> Add</i>
             </a>
         </div>
