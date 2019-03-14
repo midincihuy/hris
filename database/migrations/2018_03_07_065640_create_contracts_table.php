@@ -39,6 +39,7 @@ class CreateContractsTable extends Migration
             $table->string('reason_not_active')->nullable();
             $table->string('contract_type')->nullable();
             $table->string('contract_expire_date')->nullable();
+            $table->date('tmt')->comment('Terhitung Mulai Tanggal');
             $table->timestamps();
         });
     }

@@ -115,6 +115,7 @@ class DraftContractsController extends Controller
         $employee->nik = $contract->nik;
         $employee->employee_status = $contract->employee_status;
         $employee->status_active = $contract->status_active;
+        $employee->tmt = $contract->tmt;
         $employee->save();
   
         return redirect()->route('admin.contracts.index');

@@ -56,7 +56,9 @@ class Employee extends Model
         'tahun_masuk',
         'tahun_keluar',
         'informasi_lowongan',
-        'position',
+        'position_id',
+        'avatar',
+        'tmt',
     ];
 
     protected $dates = [
@@ -64,6 +66,7 @@ class Employee extends Model
         'tanggal_berhenti',
         'last_day',
         'tanggal_efektif_asuransi',
+        'tmt',
     ];
 
     public function family()

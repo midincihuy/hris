@@ -35,6 +35,7 @@ class Contract extends Model
     'contract_type',
     'contract_expire_date',
     'contract_reference_no',
+    'tmt',
 
   ];
 

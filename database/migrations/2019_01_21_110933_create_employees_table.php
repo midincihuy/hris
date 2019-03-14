@@ -74,6 +74,8 @@ class CreateEmployeesTable extends Migration
             $table->string('tahun_keluar');
             $table->string('informasi_lowongan');
             $table->string('position_id');
+            $table->string('avatar');
+            $table->date('tmt')->comment('Terhitung Mulai Tanggal');
             $table->timestamps();
         });
     }
