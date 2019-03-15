@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-9">
   {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_resign', $contract->id]]) !!}
-    <div class="panel panel-danger">
+    <div class="panel panel-default">
         <div class="panel-heading">
             Resign 
         </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="panel-footer">
-          {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-danger']) 
+          {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) 
           !!}
           {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>

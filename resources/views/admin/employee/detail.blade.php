@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-9">
   {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.update_detail', $contract->id]]) !!}
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
         <div class="panel-heading">
             Detail
         </div>
@@ -158,7 +158,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) !!}
             {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>
     </div>

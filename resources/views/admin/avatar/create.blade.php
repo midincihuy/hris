@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="panel-footer">
-      {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-primary']) 
+      {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) 
           !!}
       {!! link_to(route('admin.employee.edit', $employee->id), 'Cancel', ['class' => 'btn btn-default']) !!}
   </div>

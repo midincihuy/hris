@@ -21,15 +21,15 @@
                             <div class="row">
                                 <div class="col-md-5 form-group">
                                     <div class="btn-group">
-                                        <a href="detailemployee" class="btn btn-primary"><i class="fa fa-edit"></i> Edit By Employee</a>
-                                        <a href="detail" class="btn btn-danger"><i class="fa fa-edit"></i> Edit By HR</a>
+                                        <a href="detailemployee" class="btn btn-default"><i class="fa fa-edit"></i> Edit By Employee</a>
+                                        <a href="detail" class="btn btn-default"><i class="fa fa-edit"></i> Edit By HR</a>
                                     </div>
                                 </div>
                                 <div class="col-md-2 form-group">
-                                    <a href="sk"><button type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> SK Form</button></a>
+                                    <a href="sk"><button type="button" class="btn btn-default"><i class="fa fa-refresh"></i> SK Form</button></a>
                                 </div>
                                 <div class="col-md-2 form-group">
-                                    <a href="resign"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Resign Form</button></a>
+                                    <a href="resign"><button type="button" class="btn btn-default"><i class="fa fa-close"></i> Resign Form</button></a>
                                 </div>
                                 <div class="col-md-2 form-group">
                                     <a href="contract"><button type="button" class="btn btn-default"><i class="fa fa-file"></i> Contract Form</button></a>
