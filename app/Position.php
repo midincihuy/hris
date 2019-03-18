@@ -57,4 +57,9 @@ class Position extends Model
         }
         return $list_jabatan;
     }
+
+    public function person()
+    {
+        return $this->hasMany('App\Employee');
+    }
 }
