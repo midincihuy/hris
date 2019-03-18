@@ -26,5 +26,8 @@
             @php endforeach;
             @endphp
         </div>
+        <div class="panel-footer">
+            {!! link_to(route('admin.recruitments.index'), 'Back', ['class' => 'btn btn-default']) !!}
+        </div>
     </div>
 @stop

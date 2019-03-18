@@ -273,9 +273,12 @@
 
 
         </div>
+        <div class="panel-footer">
+            {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) !!}
+            {!! link_to(route('admin.applicants.show', $applicant->id), 'Cancel', ['class' => 'btn btn-default']) !!}
+        </div>
     </div>
 
-  {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-danger']) !!}
   {!! Form::close() !!}
 @endsection
 

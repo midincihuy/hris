@@ -27,7 +27,7 @@ class EmployeeContractDataTable extends DataTable
                 }
             })
             ->addColumn('action', function($contract){
-                $print = '<a href="'.route('admin.do_print', ['contract', $contract->id]).'" target="_blank" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                $print = '<a href="'.route('admin.do_print', ['contract', $contract->id]).'" target="_blank" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-print"></i> Print</a>';
                 return $print;
             });
     }

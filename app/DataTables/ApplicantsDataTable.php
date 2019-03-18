@@ -19,8 +19,8 @@ class ApplicantsDataTable extends DataTable
         ->addColumn('action', function ($applicants) {
             $button = '<a href="applicants/'.$applicants->id.'" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-search"></i> View</a>';
 
-            $recuited = $applicants->recruitment ? "Recruited" : "Not Recruited";
-            $btn_recuited = $applicants->recruitment ? "success" : "warning";
+            $recuited = $applicants->recruitment ? "" : "New";
+            $btn_recuited = $applicants->recruitment ? "default" : "success";
             return $button."<br/><span class='alert-$btn_recuited'>".$recuited."</span>";
         });
     }

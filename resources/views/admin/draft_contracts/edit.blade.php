@@ -52,8 +52,10 @@
                 </div>
             </div>
         </div>
+        <div class="panel-footer">
+            {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) !!}
+            {!! link_to(route('admin.draft_contracts.index'), 'Back', ['class' => 'btn btn-default']) !!}
+        </div>
     </div>
-
-    {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop

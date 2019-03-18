@@ -35,12 +35,13 @@ class ContractsDataTable extends DataTable
             return $contracts->contract_expire_date->formatLocalized('%d %B %Y');
         })
         ->addColumn('action', function ($contracts) {
-            $edit = '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            // $edit = '<a href="contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
 
+            $edit = "";
             $print = "";
             if($contracts->employee){
-                $edit .= ' <a href="contracts/'.$contracts->id.'/renew" class="btn btn-xs btn-warning"><i class="fa fa-refresh"></i> Renew</a>';
-                $print = ' <a href="draft_contracts/'.$contracts->id.'/print" class="btn btn-xs btn-success" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>';
+                $edit .= ' <a href="contracts/'.$contracts->id.'/renew" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i> Renew</a>';
+                $print = ' <a href="draft_contracts/'.$contracts->id.'/print" class="btn btn-xs btn-default" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>';
             }else{
                 $edit = "<span class='alert-danger'>Contract Has been Renewed</span>";
             }

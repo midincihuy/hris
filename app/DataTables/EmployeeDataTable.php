@@ -31,8 +31,8 @@ class EmployeeDataTable extends DataTable
         })
         ->addColumn('action', function ($employee) {
             $edit = '<a href="employee/'.$employee->id.'/edit" class="btn btn-xs btn-default"><i class="fa fa-search"></i> View</a>';
-            $edit_detail_employee = '<a href="employee/'.$employee->id.'/detailemployee" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
-            $edit_detail_hr = '<a href="employee/'.$employee->id.'/detail" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
+            $edit_detail_employee = '<a href="employee/'.$employee->id.'/detailemployee" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i> Edit By Employee</a>';
+            $edit_detail_hr = '<a href="employee/'.$employee->id.'/detail" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i> Edit By HR</a>';
             $btn_group = '<div class="btn-group">'.$edit_detail_employee.$edit_detail_hr.'</div>';
             $button = $edit.$btn_group;
             return $button;

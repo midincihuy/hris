@@ -25,11 +25,12 @@
             </div>
             @php endforeach;
             @endphp
+        </div>
+        <div class="panel-footer">
             @if (count($applicant->recruitment) < 1)
-            <a href="{{$applicant->id}}/recruit">
-                <button class="btn btn-success">Create Recruitment</button>
-            </a>
+            {!! link_to(route('admin.applicants.recruit', $applicant->id), 'Create Recruitment', ['class' => 'btn btn-success']) !!}
             @endif
+            {!! link_to(route('admin.applicants.index'), 'Back', ['class' => 'btn btn-default']) !!}
         </div>
     </div>
 

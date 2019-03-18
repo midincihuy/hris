@@ -9,7 +9,7 @@
             <span>{{ $item['text'] }}</span>
             @if (isset($item['label']))
                 <span class="pull-right-container">
-                    <span class="label label-{{ $item['label_color'] or 'primary' }} pull-right">{{ $item['label'] }}</span>
+                    <span class="label label-{{ $item['label_color'] or 'warning' }} pull-right">{{ $item['label'] }}</span>
                 </span>
             @elseif (isset($item['submenu']))
                 <span class="pull-right-container">

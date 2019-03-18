@@ -35,24 +35,20 @@
                                     <a href="contract"><button type="button" class="btn btn-default"><i class="fa fa-file"></i> Contract Form</button></a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="box box-outline">
-                        <div class="box-body">
-                            <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item">
-                                    <i class="fa fa-home"></i>
-                                    {!! $employee->alamat !!}
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-mobile"></i>
-                                    {!! $employee->handphone !!}
-                                </li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <i class="fa fa-home"></i>
+                                            {!! $employee->alamat !!}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="fa fa-mobile"></i>
+                                            {!! $employee->handphone !!}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +72,7 @@
                         <td>{{ $document->description }}</td>
                         <td>{{ $document->created_at }} </td>
                         <td>
-                            <a href="{{ asset('storage/'.$document->url)}}" target="_blank" class="btn btn-xs btn-primary fa fa-download">
+                            <a href="{{ asset('storage/'.$document->url)}}" target="_blank" class="btn btn-xs btn-default fa fa-download">
                                 Download
                             </a>
                         </td>
