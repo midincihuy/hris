@@ -7,7 +7,7 @@
         @include('admin.employee.profile', ['employee' => $employee])
     </div>
     <div class="col-md-9">
-  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.update_detail', $contract->id]]) !!}
+  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.update_detail', $employee->id]]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">

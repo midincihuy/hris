@@ -163,7 +163,7 @@ class EmployeeController extends Controller
         $employee->fill($request->all());
         $employee->save();
         // return $employee;
-        return redirect()->route('admin.employee.index');
+        return redirect()->route('admin.employee.edit', $id);
     }
 
     public function detailemployee($id)
