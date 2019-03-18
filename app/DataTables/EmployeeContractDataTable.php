@@ -50,8 +50,7 @@ class EmployeeContractDataTable extends DataTable
         'contract_expire_date', 
         'contract_reference_no', 
         'created_at', 
-        'updated_at')
-        ->orderBy('id');
+        'updated_at');
     }
 
     /**
@@ -103,6 +102,9 @@ class EmployeeContractDataTable extends DataTable
         'dom'          => 'Blrtip',
         'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
+        'order'         => [
+            2, 'desc'
+        ],
         'scrollX'       => 'true',
         'initComplete' => 'function () {
             $("#dataTableBuilder").attr("style","margin-left:0px;width:auto");

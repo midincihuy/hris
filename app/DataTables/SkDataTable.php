@@ -96,6 +96,9 @@ class SkDataTable extends DataTable
         'dom'          => 'Blrtip',
         'buttons'      => ['excel', 'reset', 'reload'],
         'pageLength'   => 10,
+        'order'         => [
+            3, 'desc'
+        ],
         'scrollX'       => 'true',
         'initComplete' => 'function () {
             $("#dataTableBuilder").attr("style","margin-left:0px;width:auto");
