@@ -26,7 +26,7 @@
                     {!! Form::label('jenis_surat', 'Jenis Surat', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::select('jenis_surat', $data['jenis_surat'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Surat']) !!}
+                    {!! Form::select('jenis_surat', $data['jenis_surat'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Surat', 'required']) !!}
                 </div>
             </div>
             <div class="row">
@@ -34,7 +34,7 @@
                     {!! Form::label('no_surat', 'Nomor Surat', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('no_surat', '', ['class' => 'form-control', 'placeholder' => 'Nomor Surat']) !!}
+                    {!! Form::text('no_surat', '', ['class' => 'form-control', 'placeholder' => 'Nomor Surat', 'required']) !!}
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
                     {!! Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::select('jabatan', $data['list_jabatan'], '', ['class' => 'form-control', 'placeholder' => 'Jabatan']) !!}
+                    {!! Form::select('jabatan', $data['list_jabatan'], $employee->position_id, ['class' => 'form-control', 'placeholder' => 'Jabatan']) !!}
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     {!! Form::label('start_date', 'Mulai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('start_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
+                    {!! Form::date('start_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal', 'required']) !!}
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                     {!! Form::label('end_date', 'Sampai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('end_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
+                    {!! Form::date('end_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal', 'required']) !!}
                 </div>
             </div>
         </div>

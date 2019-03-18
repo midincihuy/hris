@@ -59,6 +59,8 @@ class Employee extends Model
         'position_id',
         'avatar',
         'tmt',
+        'employee_status',
+        'status_active',
     ];
 
     protected $dates = [

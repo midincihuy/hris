@@ -60,6 +60,6 @@ class Position extends Model
 
     public function person()
     {
-        return $this->hasMany('App\Employee');
+        return $this->hasMany('App\Employee')->where('status_active', 'Aktif');
     }
 }

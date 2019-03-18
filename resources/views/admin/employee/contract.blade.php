@@ -26,7 +26,7 @@
                     {!! Form::label('contract_type', 'Jenis Kontrak', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::select('contract_type', $data['jenis_kontrak'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Kontrak']) !!}
+                    {!! Form::select('contract_type', $data['jenis_kontrak'], '', ['class' => 'form-control', 'placeholder' => 'Jenis Kontrak', 'required']) !!}
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
                     {!! Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::select('jabatan', $data['list_jabatan'], '', ['class' => 'form-control', 'placeholder' => 'Jabatan']) !!}
+                    {!! Form::select('jabatan', $data['list_jabatan'], $employee->position_id, ['class' => 'form-control', 'placeholder' => 'Jabatan', 'required']) !!}
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     {!! Form::label('contract_date', 'Mulai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('contract_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
+                    {!! Form::date('contract_date', '', ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal', 'required']) !!}
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                     {!! Form::label('contract_expire_date', 'Sampai Tanggal', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('contract_expire_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
+                    {!! Form::date('contract_expire_date', '', ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal', 'required']) !!}
                 </div>
             </div>
         </div>

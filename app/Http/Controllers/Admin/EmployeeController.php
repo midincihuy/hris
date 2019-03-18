@@ -192,9 +192,14 @@ class EmployeeController extends Controller
     {
       $employee = Employee::findOrFail($id);
       $employee->fill($request->all());
-      $employee->save();
+      
 
       // Do Nonaktif Employee
+      $employee->employee_status = "Resign";
+      $employee->status_active = "Resign";
+
+      $employee->save();
+
       return redirect(route('admin.employee.edit',$id));
     }
 
@@ -211,10 +216,15 @@ class EmployeeController extends Controller
 
     public function store_sk(Request $request, $id)
     {
+      $employee = Employee::findOrFail($id);
+
       $sk = new Sk();
       $sk->fill($request->all());
       $sk->employee_id = $id;
       $sk->save();
+
+      $employee->position_id = $request->input('jabatan');
+      $employee->save();
 
       return redirect(route('admin.employee.edit',$id));
     }

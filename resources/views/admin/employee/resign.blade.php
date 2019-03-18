@@ -7,7 +7,7 @@
         @include('admin.employee.profile', ['employee' => $employee])
     </div>
     <div class="col-md-9">
-  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_resign', $contract->id]]) !!}
+  {!! Form::model($employee, ['method' => 'PUT', 'route' => ['admin.employee.store_resign', $employee->id]]) !!}
     <div class="panel panel-default">
         <div class="panel-heading">
             Resign 
@@ -18,7 +18,7 @@
                     {!! Form::label('tanggal_berhenti', 'Tanggal Berhenti', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('tanggal_berhenti', $employee->tanggal_berhenti, ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti']) !!}
+                    {!! Form::date('tanggal_berhenti', $employee->tanggal_berhenti, ['class' => 'form-control', 'placeholder' => 'tanggal_berhenti', 'required']) !!}
                 </div>
             </div>
             <div class="row">
@@ -26,7 +26,7 @@
                     {!! Form::label('last_day', 'Last Day at Office', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::date('last_day', $employee->last_day, ['class' => 'form-control', 'placeholder' => 'Last Day']) !!}
+                    {!! Form::date('last_day', $employee->last_day, ['class' => 'form-control', 'placeholder' => 'Last Day', 'required']) !!}
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
                     {!! Form::label('alasan_berhenti', 'Alasan Berhenti', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::select('alasan_berhenti', $data['resign_cause'], old('alasan_berhenti'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('alasan_berhenti', $data['resign_cause'], old('alasan_berhenti'), ['class' => 'form-control', 'placeholder' => '', 'required']) !!}
                 </div>
             </div>
         </div>
