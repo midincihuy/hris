@@ -51,7 +51,11 @@
 
         <li class="list-group-item">
         <b>Head</b>
+        @if($employee->position->parent != null)
         {{ $employee->position->parent->name }}
+        @else 
+        -
+        @endif
         </li>
     </ul>
     </div>

@@ -37,8 +37,25 @@ class Applicant extends Model
         'upload_by',
     ];
 
+    protected $dates = [
+        'tanggal_lahir'
+    ];
+
     public function recruitment()
     {
         return $this->hasOne('App\Recruitment');
+    }
+
+    public function getAlamatAttribute()
+    {
+        $alamat = $this->alamat_ktp;
+        $alamat .= " RT ".$this->rt;
+        $alamat .= " RW ".$this->rw;
+        $alamat .= "<br/> Kel. ".$this->kelurahan;
+        $alamat .= "<br/> Kec. ".$this->kecamatan;
+        $alamat .= "<br/> Kab/Kota ".$this->kota;
+        $alamat .= " ".$this->kode_pos;
+        
+        return $alamat;
     }
 }
