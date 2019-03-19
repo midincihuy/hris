@@ -156,6 +156,74 @@
                     {!! Form::date('tanggal_efektif_asuransi', old('tanggal_efektif_asuransi'), ['class' => 'form-control', 'placeholder' => 'tanggal_efektif_asuransi']) !!}
                 </div>
             </div>
+            <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('alamat_ktp', 'Alamat KTP', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('alamat_ktp', old('alamat_ktp'), ['class' => 'form-control', 'placeholder' => 'Alamat KTP']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('rt', 'RT', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('rt', old('rt'), ['class' => 'form-control', 'placeholder' => 'RT']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('rw', 'RW', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('rw', old('rw'), ['class' => 'form-control', 'placeholder' => 'RW']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('kelurahan', 'Kelurahan', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('kelurahan', old('kelurahan'), ['class' => 'form-control', 'placeholder' => 'Kelurahan']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('kecamatan', 'Kecamatan', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('kecamatan', old('kecamatan'), ['class' => 'form-control', 'placeholder' => 'Kecamatan']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('kota', 'Kota', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('kota', old('kota'), ['class' => 'form-control', 'placeholder' => 'Kota']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('handphone', 'No Handphone', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('handphone', old('handphone'), ['class' => 'form-control', 'placeholder' => 'handphone']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('email', 'Email', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
         <div class="panel-footer">
             {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) !!}
