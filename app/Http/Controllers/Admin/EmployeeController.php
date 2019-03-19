@@ -195,7 +195,7 @@ class EmployeeController extends Controller
       
 
       // Do Nonaktif Employee
-      $employee->employee_status = "Resign";
+      // $employee->employee_status = "Resign";
       $employee->status_active = "Resign";
 
       $employee->save();
