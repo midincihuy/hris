@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-xs-5 form-group">
               {{ csrf_field() }}
-              <input type="file" name="file" class="form-control" length=>
+              <input type="file" name="file" class="form-control">
           </div>
         </div>
         <div class="row">
