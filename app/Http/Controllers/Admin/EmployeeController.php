@@ -221,6 +221,7 @@ class EmployeeController extends Controller
       $sk = new Sk();
       $sk->fill($request->all());
       $sk->employee_id = $id;
+      $sk->position_id = $employee->position_id;
       $sk->save();
 
       $employee->position_id = $request->input('jabatan');

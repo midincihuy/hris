@@ -18,6 +18,7 @@ class CreateSksTable extends Migration
             $table->integer('employee_id')->unsigned();
             $table->string('no_surat');
             $table->string('jenis_surat');
+            $table->string('position_id');
             $table->string('ref_no')->nullable();
             $table->string('start_date');
             $table->string('end_date')->nullable();

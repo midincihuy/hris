@@ -10,6 +10,7 @@ class Sk extends Model
         'employee_id',
         'no_surat',
         'jenis_surat',
+        'position_id',
         'ref_no',
         'start_date',
         'end_date',
@@ -23,5 +24,10 @@ class Sk extends Model
       public function employee()
       {
           return $this->belongsTo('App\Employee');
+      }
+
+      public function old_position()
+      {
+        return $this->belongsTo('App\Position', 'position_id', 'id');
       }
 }
