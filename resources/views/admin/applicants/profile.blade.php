@@ -17,17 +17,26 @@
         {{ $applicant->no_ktp }}
     </div>
     <div class="text-center">
-        {{ $applicant->kewarganegaraan }}
+        {{ $applicant->kewarganegaraan.' - '.$applicant->agama }}
     </div>
     <ul class="list-group list-group-unbordered mb-3">
         <li class="list-group-item">
           <i class="fa fa-home"></i><br/>{!! $applicant->alamat !!}
         </li>
         <li class="list-group-item">
+          <i class="fa fa-phone"></i><br/>{!! $applicant->telephone_rumah !!}
+        </li>
+        <li class="list-group-item">
           <i class="fa fa-mobile"></i><br/>{!! $applicant->handphone !!}
         </li>
         <li class="list-group-item">
           <i class="fa fa-envelope"></i><br/>{{ $applicant->email }}
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-skype"></i><br/>{!! $applicant->skype_id !!}
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-tint"></i><br/>{!! $applicant->golongan_darah !!}
         </li>
         <li class="list-group-item">
           <i class="fa fa-briefcase"></i><br/>{{ $applicant->posisi_yang_dilamar }}
