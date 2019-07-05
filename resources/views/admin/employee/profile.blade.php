@@ -24,6 +24,9 @@
     <p class="text-center">
         {{ $employee->nik }}
     </p>
+    <p class="text-center">
+        {{ $employee->no_ktp }}
+    </p>
     <p class="text-muted text-center">
         {{ $employee->position->name }}
     </p>
@@ -53,6 +56,14 @@
         <b>Head</b>
         @if($employee->position->parent != null)
         {{ $employee->position->parent->name }}
+        @else 
+        -
+        @endif
+        </li>
+        <li class="list-group-item">
+        <b>Head Name</b>
+        @if($employee->head != null)
+        {{ $employee->head->nama }}
         @else 
         -
         @endif

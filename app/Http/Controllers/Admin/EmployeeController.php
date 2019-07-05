@@ -153,6 +153,7 @@ class EmployeeController extends Controller
         $data['status_pajak']     = Reference::where('code','STATUS_PAJAK')->orderBy('sort')->get()->pluck('item','value');
         $data['plan_asuransi']    = Reference::where('code','PLAN_ASURANSI')->orderBy('sort')->get()->pluck('item','value');
         $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
+        $data['list_employee'] = Employee::where('id','<>',$id)->pluck('nama', 'no_ktp')->toArray();
         return view('admin.employee.detail', compact('contract', 'employee', 'data'));
     }
 

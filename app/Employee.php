@@ -65,6 +65,7 @@ class Employee extends Model
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
+        'head_nik',
     ];
 
     protected $dates = [
@@ -102,6 +103,10 @@ class Employee extends Model
     public function documents()
     {
         return $this->hasMany('App\Document');
+    }
+
+    public function head(){
+        return $this->hasOne('App\Employee', 'no_ktp', 'head_nik');
     }
 
     public function getAlamatAttribute()

@@ -222,6 +222,14 @@
                             {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => 'email']) !!}
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            {!! Form::label('head_nik', 'Head Name', ['class' => 'control-label']) !!}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {!! Form::select('head_nik', $data['list_employee'], $employee->head_nik, ['class' => 'form-control', 'placeholder' => 'Head Nik']) !!}
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -235,3 +243,8 @@
     </div>
 </div>
 @stop
+@push('js')
+<script type="text/javascript">
+    $("select[name='head_nik']").select2();
+</script>
+@endpush

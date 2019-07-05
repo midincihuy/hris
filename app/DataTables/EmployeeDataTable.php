@@ -57,6 +57,7 @@ class EmployeeDataTable extends DataTable
         ->whereNotIn('status_active', ['Draft','Cancel'])
         ->select('employees.id', 
         'employees.nik', 
+        'employees.no_ktp', 
         'nama', 
         'employee_status', 
         'status_active', 
@@ -127,6 +128,7 @@ class EmployeeDataTable extends DataTable
         return [
             // 'id',
             'nik',
+            'no_ktp',
             'nama',
             // 'contract_date',
             // 'contract_number',
