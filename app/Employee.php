@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Employee extends Model
 {
     protected $fillable = [
@@ -61,6 +61,10 @@ class Employee extends Model
         'tmt',
         'employee_status',
         'status_active',
+        'nama',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
     ];
 
     protected $dates = [
@@ -69,6 +73,10 @@ class Employee extends Model
         'last_day',
         'tanggal_efektif_asuransi',
         'tmt',
+    ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date:Y-m-d',
     ];
 
     public function family()
@@ -110,6 +118,20 @@ class Employee extends Model
 
 
         return $alamat;
+    }
+
+    public function getTanggalLahirAttribute($value)
+    {
+        setLocale(LC_TIME, 'id_ID.utf8');
+        $data = new Carbon($value);
+        return $data;
+    }
+
+    public function getTmtAttribute($value)
+    {
+        setLocale(LC_TIME, 'id_ID.utf8');
+        $data = new Carbon($value);
+        return $data;
     }
     
 }

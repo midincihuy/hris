@@ -44,6 +44,10 @@ class Position extends Model
         return $this->belongsTo('App\Position', 'parent_id');
     }
 
+    public function childs(){
+        return $this->hasMany('App\Position', 'parent_id', 'id');
+    }
+
     public static function list_position()
     {
         foreach(Division::all() as $division){
