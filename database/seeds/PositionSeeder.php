@@ -59,12 +59,37 @@ class PositionSeeder extends Seeder
                   'head' => 'Finance Division Head',
                 ],
                 [
-                  'name' => 'Finance Supervisor',
-                  'head' => 'Finance & Accounting Department Head',
-                ],
-                [
                   'name' => 'General Accounting Supervisor',
                   'head' => 'Finance & Accounting Department Head',
+                ],
+              ],
+              'sections' => [
+                [
+                  'name' => 'Finance',
+                  'positions' => [
+                    [
+                      'name' => 'Finance Supervisor',
+                      'head' => 'Finance & Accounting Department Head',
+                    ],
+                  ]
+                ],
+                [
+                  'name' => 'Procurement',
+                  'positions' => [
+                    [
+                      'name' => 'Procurement Supervisor',
+                      'head' => 'Finance Division Head',
+                    ]
+                  ]
+                ],
+                [
+                  'name' => 'Tax',
+                  'positions' => [
+                    [
+                      'name' => 'Tax Section Head',
+                      'head' => 'Finance Division Head',
+                    ]
+                  ]
                 ],
               ]
             ],
@@ -76,34 +101,6 @@ class PositionSeeder extends Seeder
                   'positions' => [
                     [
                       'name' => 'Legal Supervisor',
-                      'head' => 'Finance Division Head',
-                    ]
-                  ]
-                ]
-              ]
-            ],
-            [
-              'name' => 'Procurement',
-              'sections' => [
-                [
-                  'name' => 'Procurement',
-                  'positions' => [
-                    [
-                      'name' => 'Procurement Supervisor',
-                      'head' => 'Finance Division Head',
-                    ]
-                  ]
-                ]
-              ]
-            ],
-            [
-              'name' => 'Tax',
-              'sections' => [
-                [
-                  'name' => 'Tax',
-                  'positions' => [
-                    [
-                      'name' => 'Tax Section Head',
                       'head' => 'Finance Division Head',
                     ]
                   ]
@@ -146,25 +143,39 @@ class PositionSeeder extends Seeder
                 [
                   'name' => 'GA Supervisor',
                   'head' => 'HRGA Division Head',
+                ],
+                [
+                  'name' => 'GA Officer',
+                  'head' => 'GA Supervisor',
                 ]
               ]
             ],
             [
               'name' => 'HR',
-              'positions' => [
+              'sections' => [
                 [
-                  'name' => 'HR Officer',
-                  'head' => 'HR Supervisor',
+                  'name' => 'HR Operations',
+                  'positions' => [
+                    [
+                      'name' => 'HR Officer',
+                      'head' => 'HRGA Division Head',
+                    ],
+                  ]
                 ],
                 [
-                  'name' => 'HR Operations Officer',
-                  'head' => 'HRGA Division Head',
+                  'name' => 'Recruitment & Training',
+                  'positions' => [
+                    [
+                      'name' => 'HR Officer',
+                      'head' => 'HR Supervisor',
+                    ],
+                    [
+                      'name' => 'HR Supervisor',
+                      'head' => 'HRGA Division Head',
+                    ],
+                  ]
                 ],
-                [
-                  'name' => 'HR Supervisor',
-                  'head' => 'HRGA Division Head',
-                ],
-              ]
+              ],
             ],
           ],
           'positions' => [
@@ -292,19 +303,24 @@ class PositionSeeder extends Seeder
                     ],
                   ]
                 ],
+                [
+                  'name' => 'Creative',
+                  'positions' => [
+                    [
+                      'name' => 'Creative',
+                      'head' => 'Production Department Head',
+                    ],
+                    [
+                      'name' => 'Senior Creative',
+                      'head' => 'Production Department Head',
+                    ],
+                  ]
+                ]
               ],
               'positions' => [
                 [
                   'name' => 'Production Department Head',
                   'head' => 'Programming Division Head',
-                ],
-                [
-                  'name' => 'Creative',
-                  'head' => 'Production Department Head',
-                ],
-                [
-                  'name' => 'Senior Creative',
-                  'head' => 'Production Department Head',
                 ],
               ]
             ],
@@ -337,8 +353,12 @@ class PositionSeeder extends Seeder
                   ]
                 ],
                 [
-                  'name' => 'Camera & Lighting',
+                  'name' => 'Studio & Outside Broadcast',
                   'positions' => [
+                    [
+                      'name' => 'Audioman',
+                      'head' => 'Control Room Supervisor',
+                    ],
                     [
                       'name' => 'Camera & Lighting Supervisor',
                       'head' => 'Production Services Department Head',
@@ -346,19 +366,6 @@ class PositionSeeder extends Seeder
                     [
                       'name' => 'Camera Person',
                       'head' => 'Camera & Lighting Supervisor',
-                    ],
-                    [
-                      'name' => 'Lightingman',
-                      'head' => 'Camera & Lighting Supervisor',
-                    ],
-                  ]
-                ],
-                [
-                  'name' => 'Control Room',
-                  'positions' => [
-                    [
-                      'name' => 'Audioman',
-                      'head' => 'Control Room Supervisor',
                     ],
                     [
                       'name' => 'CG Operator',
@@ -369,21 +376,20 @@ class PositionSeeder extends Seeder
                       'head' => 'Production Services Department Head',
                     ],
                     [
+                      'name' => 'Lightingman',
+                      'head' => 'Camera & Lighting Supervisor',
+                    ],
+                    [
+                      'name' => 'Program Director',
+                      'head' => 'Production Services Department Head',
+                    ],
+                    [
                       'name' => 'Switcherman',
                       'head' => 'Control Room Supervisor',
                     ],
                     [
                       'name' => 'VT Operator',
                       'head' => 'Control Room Supervisor',
-                    ],
-                  ]
-                ],
-                [
-                  'name' => 'Director',
-                  'positions' => [
-                    [
-                      'name' => 'Program Director',
-                      'head' => 'Production Services Department Head',
                     ],
                   ]
                 ],
@@ -399,6 +405,15 @@ class PositionSeeder extends Seeder
               'name' => 'Program Services',
               'sections' => [
                 [
+                  'name' => 'Library',
+                  'positions' => [
+                    [
+                      'name' => 'Library Officer',
+                      'head' => 'Program Services Department Head',
+                    ],
+                  ]
+                ],
+                [
                   'name' => 'OAP',
                   'positions' => [
                     [
@@ -412,7 +427,7 @@ class PositionSeeder extends Seeder
                   ]
                 ],
                 [
-                  'name' => 'QC',
+                  'name' => 'QC & Subtitling',
                   'positions' => [
                     [
                       'name' => 'QC & Subtitling Officer',
@@ -424,35 +439,36 @@ class PositionSeeder extends Seeder
                     ],
                   ]
                 ],
+                [
+                  'name' => 'Scheduling',
+                  'positions' => [
+                    [
+                      'name' => 'Program Services Officer',
+                      'head' => 'Program Services Department Head',
+                    ],
+                    [
+                      'name' => 'Program & Acqusition Officer',
+                      'head' => 'Program Services Department Head',
+                    ],
+                    [
+                      'name' => 'Schedulling Officer',
+                      'head' => 'Program Services Department Head',
+                    ],
+                  ]
+                ],
               ],
               'positions' => [
-                [
-                  'name' => 'Library Officer',
-                  'head' => 'Program Services Department Head',
-                ],
                 [
                   'name' => 'Program Services Department Head',
                   'head' => 'Programming Division Head',
                 ],
-                [
-                  'name' => 'Program Services Officer',
-                  'head' => 'Program Services Department Head',
-                ],
-                [
-                  'name' => 'Program & Acquisition Officer',
-                  'head' => 'Program Services Department Head',
-                ],
-                [
-                  'name' => 'Schedulling Officer',
-                  'head' => 'Program Services Department Head',
-                ],
               ]
             ],
             [
-              'name' => 'R&D',
+              'name' => 'Research & Development',
               'sections' => [
                 [
-                  'name' => 'R&D',
+                  'name' => 'Research & Development',
                   'positions' => [
                     [
                       'name' => 'Research & Development Officer',
@@ -471,6 +487,10 @@ class PositionSeeder extends Seeder
             [
               'name' => 'Programming Division Head',
               'head' => 'Director',
+            ],
+            [
+              'name' => 'Secretary',
+              'head' => 'Programming Division Head',
             ]
           ]
         ],
@@ -493,40 +513,72 @@ class PositionSeeder extends Seeder
             ],
             [
               'name' => 'Marketing Communication',
-              'positions' => [
+              'sections' => [
                 [
-                  'name' => 'Digital Marketing Officer',
-                  'head' => 'Promotion Supervisor',
+                  'name' => 'Off Air',
+                  'positions' => [
+                    [
+                      'name' => 'Marketing Communication Officer',
+                      'head' => 'Marketing Communication Department Head',
+                    ],
+                  ]
                 ],
+                [
+                  'name' => 'Promotion',
+                  'positions' => [
+                    [
+                      'name' => 'Digital Marketing Officer',
+                      'head' => 'Promotion Supervisor',
+                    ],
+                    [
+                      'name' => 'Promotion Officer',
+                      'head' => 'Promotion Supervisor',
+                    ],
+                    [
+                      'name' => 'Promotion Supervisor',
+                      'head' => 'Marketing Communication Department Head',
+                    ],
+                  ]
+                ],
+              ],
+              'positions' => [
                 [
                   'name' => 'Marketing Communication Department Head',
                   'head' => 'Sales & Marketing Division Head',
-                ],
-                [
-                  'name' => 'Marketing Communication Officer',
-                  'head' => 'Marketing Communication Department Head',
-                ],
-                [
-                  'name' => 'Promotion Officer',
-                  'head' => 'Promotion Supervisor',
-                ],
-                [
-                  'name' => 'Promotion Supervisor',
-                  'head' => 'Marketing Communication Department Head',
                 ],
               ]
             ],
             [
               'name' => 'Sales',
+              'sections' => [
+                [
+                  'name' => 'Account Group I',
+                  'positions' => [
+                    [
+                      'name' => 'Account Executive',
+                      'head' => 'Account Manager',
+                    ],
+                    [
+                      'name' => 'Account Manager',
+                      'head' => 'Sales & Marketing Division Head',
+                    ],
+                  ]
+                ],
+                [
+                  'name' => 'Account Group II',
+                  'positions' => [
+                    [
+                      'name' => 'Account Executive',
+                      'head' => 'Account Manager',
+                    ],
+                    [
+                      'name' => 'Account Manager',
+                      'head' => 'Sales & Marketing Division Head',
+                    ],
+                  ]
+                ],
+              ],
               'positions' => [
-                [
-                  'name' => 'Account Executive',
-                  'head' => 'Account Manager',
-                ],
-                [
-                  'name' => 'Account Manager',
-                  'head' => 'Sales & Marketing Division Head',
-                ],
                 [
                   'name' => 'Sales Department Head',
                   'head' => 'Sales & Marketing Division Head',
@@ -551,56 +603,92 @@ class PositionSeeder extends Seeder
           'departments' => [
             [
               'name' => 'IT',
+              'sections' => [
+                [
+                  'name' => 'Application & Development',
+                  'positions' => [
+                    [
+                      'name' => 'Senior Developer',
+                      'head' => 'Information Technology Department Head',
+                    ],
+                  ]
+                ],
+                [
+                  'name' => 'Helpdesk',
+                  'positions' => [
+                    [
+                      'name' => 'IT Support',
+                      'head' => 'IT Support & Network Section Head',
+                    ],
+                    [
+                      'name' => 'IT Support & Network Section Head',
+                      'head' => 'Information Technology Department Head',
+                    ],
+                  ]
+                ],
+              ],
               'positions' => [
                 [
                   'name' => 'Information Technology Department Head',
                   'head' => 'Technical Division Head',
                 ],
-                [
-                  'name' => 'IT Support',
-                  'head' => 'IT Support & Network Section Head',
-                ],
-                [
-                  'name' => 'IT Support & Network Section Head',
-                  'head' => 'Information Technology Department Head',
-                ],
-                [
-                  'name' => 'Senior Developer',
-                  'head' => 'Information Technology Department Head',
-                ],
               ]
             ],
             [
               'name' => 'Technical Operation',
+              'sections' => [
+                [
+                  'name' => 'Camera Storage',
+                  'positions' => [
+                    [
+                      'name' => 'Technical Support Engineer',
+                      'head' => 'Technical Support Section Head',
+                    ],
+                  ]
+                ],
+                [
+                  'name' => 'Technical Support',
+                  'positions' => [
+                    [
+                      'name' => 'Technical Support Engineer',
+                      'head' => 'Technical Support Section Head',
+                      'head_section' => 'Technical Support',
+                    ],
+                    [
+                      'name' => 'Technical Support Section Head',
+                      'head' => 'Technical Operation Department Head',
+                    ],
+                  ]
+                ]
+              ],
               'positions' => [
                 [
                   'name' => 'Technical Operation Department Head',
                   'head' => 'Technical Division Head',
                 ],
-                [
-                  'name' => 'Technical Support Engineer',
-                  'head' => 'Technical Support Section Head',
-                ],
-                [
-                  'name' => 'Technical Support Section Head',
-                  'head' => 'Technical Operation Department Head',
-                ],
               ]
             ],
             [
               'name' => 'Transmission',
+              'sections' => [
+                [
+                  'name' => 'Transmission',
+                  'positions' => [
+                    [
+                      'name' => 'Transmission Engineer',
+                      'head' => 'Transmission Supervisor',
+                    ],
+                    [
+                      'name' => 'Transmission Supervisor',
+                      'head' => 'Transmission Department Head',
+                    ],
+                  ]
+                ]
+              ],
               'positions' => [
                 [
                   'name' => 'Transmission Department Head',
                   'head' => 'Technical Division Head',
-                ],
-                [
-                  'name' => 'Transmission Engineer',
-                  'head' => 'Transmission Supervisor',
-                ],
-                [
-                  'name' => 'Transmission Supervisor',
-                  'head' => 'Transmission Department Head',
                 ],
               ]
             ],
@@ -618,18 +706,25 @@ class PositionSeeder extends Seeder
           'departments' => [
             [
               'name' => 'Finance & Accounting',
+              'sections' => [
+                [
+                  'name' => 'Home Shopping',
+                  'positions' => [
+                    [
+                      'name' => 'O Shop Finance & Accounting Section Head',
+                      'head' => 'Finance & Accounting Department Head',
+                    ],
+                    [
+                      'name' => 'O Shop Finance Officer',
+                      'head' => 'O Shop Finance & Accounting Section Head',
+                    ],
+                  ]
+                ]
+              ],
               'positions' => [
                 [
                   'name' => 'Finance & Accounting Department Head',
                   'head' => 'Finance Division Head',
-                ],
-                [
-                  'name' => 'Finance & Accounting Section Head',
-                  'head' => 'Finance & Accounting Department Head',
-                ],
-                [
-                  'name' => 'Finance & Accounting Officer',
-                  'head' => 'Finance & Accounting Section Head',
                 ],
               ]
             ],
@@ -649,7 +744,7 @@ class PositionSeeder extends Seeder
               'name' => 'Marketing',
               'sections' => [
                 [
-                  'name' => 'Digital',
+                  'name' => 'Marketing',
                   'positions' => [
                     [
                       'name' => 'Digital Marketing Officer',
@@ -669,14 +764,16 @@ class PositionSeeder extends Seeder
                   'name' => 'Non Digital',
                   'positions' => [
                     [
-                      'name' => 'Promotion Officer',
-                      'head' => 'Promotion Section Head',
-                    ],
-                    [
                       'name' => 'Promotion Section Head',
                       'head' => 'Merchandising & Marketing Division Head',
                     ],
                   ]
+                ],
+              ],
+              'positions' => [
+                [
+                  'name' => 'Promotion Officer',
+                  'head' => 'Promotion Section Head',
                 ],
               ]
             ],
@@ -687,36 +784,36 @@ class PositionSeeder extends Seeder
                   'name' => 'Grid',
                   'positions' => [
                     [
-                      'name' => 'Merchandising Administrator',
-                      'head' => 'Grid Supervisor',
-                      'head_section' => 'Grid',
-                    ],
-                    [
-                      'name' => 'Grid Supervisor',
+                      'name' => 'Grid Administrator',
                       'head' => 'Merchandising Department Head',
                     ],
                   ]
                 ],
                 [
-                  'name' => 'Merchandiser',
+                  'name' => 'Merchandising',
                   'positions' => [
+                    [
+                      'name' => 'E-Commerce Administrator',
+                      'head' => 'Merchandising Department Head',
+                    ],
                     [
                       'name' => 'Merchandising Administrator',
                       'head' => 'Merchandiser',
-                      'head_section' => 'Merchandiser',
+                      'head_section' => 'Merchandising',
                     ],
                     [
                       'name' => 'Merchandiser',
+                      'head' => 'Merchandising Department Head',
+                    ],
+                    [
+                      'name' => 'Senior Merchandiser',
                       'head' => 'Merchandising Department Head',
                     ],
                   ]
                 ],
               ],
               'positions' => [
-                [
-                  'name' => 'E-Commerce Administrator',
-                  'head' => 'Merchandising Department Head',
-                ],
+                
                 [
                   'name' => 'Merchandising & Marketing Division Head',
                   'head' => 'Deputy Director'
@@ -725,10 +822,7 @@ class PositionSeeder extends Seeder
                   'name' => 'Merchandising Department Head',
                   'head' => 'Merchandising & Marketing Division Head'
                 ],
-                [
-                  'name' => 'Senior Merchandiser',
-                  'head' => 'Merchandising Department Head',
-                ],
+                
               ]
             ],
           ]
@@ -754,7 +848,7 @@ class PositionSeeder extends Seeder
                   ]
                 ],
                 [
-                  'name' => 'Sales',
+                  'name' => 'Call Center',
                   'positions' => [
                     [
                       'name' => 'Call Center Section Head',
@@ -763,6 +857,10 @@ class PositionSeeder extends Seeder
                     [
                       'name' => 'Call Center Team Leader',
                       'head' => 'Call Center Section Head',
+                    ],
+                    [
+                      'name' => 'Survey & Research Officer',
+                      'head' => 'Call Center Department Head',
                     ],
                   ]
                 ],
@@ -785,17 +883,13 @@ class PositionSeeder extends Seeder
                   'name' => 'Call Center Department Head',
                   'head' => 'Operations Support Division Head',
                 ],
-                [
-                  'name' => 'Survey & Research Officer',
-                  'head' => 'Call Center Department Head',
-                ],
               ]
             ],
             [
               'name' => 'Warehouse',
               'sections' => [
                 [
-                  'name' => 'Branch',
+                  'name' => 'WH Bandung',
                   'positions' => [
                     [
                       'name' => 'Branch Supervisor',
@@ -804,15 +898,17 @@ class PositionSeeder extends Seeder
                     [
                       'name' => 'Warehouse Administrator',
                       'head' => 'Branch Supervisor',
+                      'head_section' => 'WH Bandung',
                     ],
                     [
                       'name' => 'Warehouse Staff',
                       'head' => 'Branch Supervisor',
+                      'head_section' => 'WH Bandung',
                     ],
                   ]
                 ],
                 [
-                  'name' => 'Central',
+                  'name' => 'WH Kebayoran',
                   'positions' => [
                     [
                       'name' => 'Warehouse Supervisor',
@@ -821,10 +917,31 @@ class PositionSeeder extends Seeder
                     [
                       'name' => 'Warehouse Administrator',
                       'head' => 'Warehouse Supervisor',
+                      'head_section' => 'WH Kebayoran',
                     ],
                     [
                       'name' => 'Warehouse Staff',
                       'head' => 'Warehouse Supervisor',
+                      'head_section' => 'WH Kebayoran',
+                    ],
+                  ]
+                ],
+                [
+                  'name' => 'WH Kelapa Gading',
+                  'positions' => [
+                    [
+                      'name' => 'Warehouse Supervisor',
+                      'head' => 'Warehouse Department Head',
+                    ],
+                    [
+                      'name' => 'Warehouse Administrator',
+                      'head' => 'Warehouse Supervisor',
+                      'head_section' => 'WH Kelapa Gading',
+                    ],
+                    [
+                      'name' => 'Warehouse Staff',
+                      'head' => 'Warehouse Supervisor',
+                      'head_section' => 'WH Kelapa Gading',
                     ],
                   ]
                 ],

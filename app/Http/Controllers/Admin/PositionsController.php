@@ -27,17 +27,7 @@ class PositionsController extends Controller
      */
     public function create()
     {
-        $position = Position::get();
-    
-        foreach($position as $list){
-            $value = $list->where('division_id',$list->division->id)->orderBy('name')->get()->each(function($x){
-                $department_name = isset($x->department) ? $x->department->name." " : "";
-                $section_name = isset($x->section) ? " / ".$x->section->name." " : "";
-                $additional_info = $department_name.$section_name;
-                $x->position_name = "[".$x->name."] ".$additional_info;
-            })->pluck('position_name', 'id')->toArray();
-            $list_jabatan[$list->division->company." | ".$list->division->name] = $value;
-        }
+        $list_jabatan = Position::list_position();
         return view('admin.positions.create', compact('list_jabatan'));
     }
 
