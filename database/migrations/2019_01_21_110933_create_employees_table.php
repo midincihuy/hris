@@ -27,9 +27,10 @@ class CreateEmployeesTable extends Migration
             $table->string('no_va_dana')->nullable();
             $table->string('alamat')->nullable();
             $table->string('nama_ayah')->nullable();
-            $table->string('no_ktp_ibu')->nullable();
+            $table->string('nik_ibu')->nullable();
             $table->string('nama_ibu')->nullable();
-            $table->string('nik');
+            $table->string('nip')->comment('No Pegawai');
+            $table->string('nik')->comment('No KTP');
             $table->string('golongan');
             $table->string('kelas');
             $table->string('status_karyawan');
@@ -53,7 +54,7 @@ class CreateEmployeesTable extends Migration
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
             $table->string('kewarganegaraan');
-            $table->string('no_ktp');
+            // $table->string('nik');
             $table->string('alamat_ktp');
             $table->string('rt');
             $table->string('rw');

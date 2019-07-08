@@ -132,7 +132,7 @@ class RecruitmentsController extends Controller
         $employee = new Employee();
         $employee->contract_id = $contract_id;
         $employee->nama = $recruitment->applicant->nama;
-        $employee->no_ktp = $recruitment->applicant->no_ktp;
+        $employee->nik = $recruitment->applicant->nik;
         $employee->alamat_ktp = $recruitment->applicant->alamat_ktp;
         $employee->rt = $recruitment->applicant->rt;
         $employee->rw = $recruitment->applicant->rw;

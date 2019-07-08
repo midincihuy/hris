@@ -17,7 +17,7 @@ class Employee extends Model
         'alamat',
         'nama_ayah',
         'nama_ibu',
-        'nik',
+        'nip',
         'golongan',
         'kelas',
         'status_karyawan',
@@ -36,7 +36,7 @@ class Employee extends Model
         'tanggal_berhenti',
         'alasan_berhenti',
         'last_day',
-        'no_ktp',
+        'nik',
         'alamat_ktp',
         'rt',
         'rw',
@@ -106,7 +106,11 @@ class Employee extends Model
     }
 
     public function head(){
-        return $this->hasOne('App\Employee', 'no_ktp', 'head_nik');
+        return $this->hasOne('App\Employee', 'nik', 'head_nik');
+    }
+
+    public function staff(){
+        return $this->hasMany('App\Employee', 'head_nik', 'nik');
     }
 
     public function getAlamatAttribute()

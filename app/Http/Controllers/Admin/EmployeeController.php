@@ -126,10 +126,10 @@ class EmployeeController extends Controller
     public function mass_update(Request $request)
     {
       if($request->update_nik !== null){
-        $niks = explode(',',$request->update_nik);
+        $nips = explode(',',$request->update_nik);
 
-        foreach($niks as $nik){
-          $data = Contract::where('nik', $nik)->first();
+        foreach($nips as $nip){
+          $data = Contract::where('nip', $nip)->first();
           $data->employee_status  = $request->employee_status;
           $data->status_active    = $request->status_active;
           $data->reminder_hr      = $request->reminder_hr;
@@ -153,7 +153,7 @@ class EmployeeController extends Controller
         $data['status_pajak']     = Reference::where('code','STATUS_PAJAK')->orderBy('sort')->get()->pluck('item','value');
         $data['plan_asuransi']    = Reference::where('code','PLAN_ASURANSI')->orderBy('sort')->get()->pluck('item','value');
         $data['resign_cause']     = Reference::where('code','RESIGN_CAUSE')->orderBy('sort')->get()->pluck('item','value');
-        $data['list_employee'] = Employee::where('id','<>',$id)->pluck('nama', 'no_ktp')->toArray();
+        $data['list_employee'] = Employee::where('id','<>',$id)->pluck('nama', 'nik')->toArray();
         return view('admin.employee.detail', compact('contract', 'employee', 'data'));
     }
 

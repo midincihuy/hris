@@ -18,7 +18,7 @@ class CreateContractsTable extends Migration
             $table->integer('recruitment_id');
             $table->integer('employee_id')->unsigned();
             $table->string('contract_reference_no')->nullable();
-            $table->string('nik');
+            $table->string('nip')->comment('No Pegawai');
             $table->string('name');
             $table->string('gender');
             $table->string('contract_number')->comment('Nomor Kontrak');

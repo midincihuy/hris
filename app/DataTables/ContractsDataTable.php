@@ -67,7 +67,7 @@ class ContractsDataTable extends DataTable
         ->whereDate('contract_date', '<=', date("Y-m-d"))
         ->whereDate('contract_expire_date', '>', date("Y-m-d"))
         ->select('contracts.id', 
-        'nik', 
+        'nip', 
         'contracts.name', 
         'contract_number', 
         'gender',
@@ -111,7 +111,7 @@ class ContractsDataTable extends DataTable
     {
         return [
             // 'id',
-            'nik',
+            'nip',
             'name',
             'contract_number', 
             'contract_date',

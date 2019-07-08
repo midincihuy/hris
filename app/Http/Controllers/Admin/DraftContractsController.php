@@ -112,7 +112,7 @@ class DraftContractsController extends Controller
         $contract->save();
 
         $employee = $contract->employee;
-        $employee->nik = $contract->nik;
+        $employee->nip = $contract->nip;
         $employee->employee_status = $contract->employee_status;
         $employee->status_active = $contract->status_active;
         $employee->tmt = $contract->tmt;
@@ -193,7 +193,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->no_ktp."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->nik."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -660,7 +660,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->no_ktp."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->nik."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1394,7 +1394,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1855,7 +1855,7 @@ class DraftContractsController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);

@@ -46,7 +46,7 @@ class PrintController extends Controller
         PDF::MultiCell(50, 5, "Sdr. ".$sk->employee->nama,0,'L');
         $y = PDF::getY();
         PDF::SetXY($x, $y);
-        PDF::MultiCell(50, 5, "EM : ".$sk->employee->nik,0,'L');
+        PDF::MultiCell(50, 5, "EM : ".$sk->employee->nip,0,'L');
         $y = PDF::getY();
         PDF::SetXY($x, $y);
         PDF::MultiCell(50, 5, "Di tempat",0,'L');
@@ -176,7 +176,7 @@ class PrintController extends Controller
         PDF::MultiCell(50, 5, "Sdr. ".$sk->employee->nama,0,'L');
         $y = PDF::getY();
         PDF::SetXY($x, $y);
-        PDF::MultiCell(50, 5, "EM : ".$sk->employee->nik,0,'L');
+        PDF::MultiCell(50, 5, "EM : ".$sk->employee->nip,0,'L');
         $y = PDF::getY();
         PDF::SetXY($x, $y);
         PDF::MultiCell(50, 5, "Di tempat",0,'L');
@@ -337,7 +337,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->no_ktp."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->nik."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -804,7 +804,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->no_ktp."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di <b>".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota."</b> No KTP <b>".$contract->employee->nik."</b>, dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1308,7 +1308,7 @@ class PrintController extends Controller
         PDF::SetXY($x+10, $y);
         PDF::MultiCell(40,5,"EM",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(100,5,": ".$contract->nik,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(100,5,": ".$contract->nip,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+10, $y);
@@ -1442,7 +1442,7 @@ class PrintController extends Controller
         PDF::SetXY($x+10, $y);
         PDF::MultiCell(40,5,"EM",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+50, $y);
-        PDF::MultiCell(100,5,": ".$contract->nik,0,'L',0,1,'','',true,0,true);
+        PDF::MultiCell(100,5,": ".$contract->nip,0,'L',0,1,'','',true,0,true);
 
         $y=PDF::getY();
         PDF::SetXY($x+10, $y);
@@ -1538,7 +1538,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -1999,7 +1999,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"<b>2.</b>",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -2463,7 +2463,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);
@@ -2592,7 +2592,7 @@ class PrintController extends Controller
         PDF::SetXY($x, $y);
         PDF::MultiCell(5,5,"2.",0,'L',0,1,'','',true,0,true);
         PDF::SetXY($x+5, $y);
-        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->no_ktp.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
+        PDF::MultiCell(165,5,"<b>".$contract->name."</b>, beralamat di ".$contract->employee->alamat_ktp." RT ".$contract->employee->rt." RW ".$contract->employee->rw." Kelurahan ".$contract->employee->kelurahan." Kecamatan ".$contract->employee->kecamatan." ".$contract->employee->kota." No KTP ".$contract->employee->nik.", dalam hal ini bertindak untuk dan atas nama diri sendiri (untuk selanjutnya disebut <b>\"Pihak Kedua/ Pekerja\"</b>).",0,'J',0,1,'','',true,0,true);
 
         $y=PDF::getY()+5;
         PDF::SetXY($x, $y);

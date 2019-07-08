@@ -40,7 +40,7 @@ class ContractsController extends Controller
                 foreach ($reader->toArray() as $row) {
                     $row['upload_by'] = $username;
                     \Log::info($row);
-                    $contract = Contract::firstOrNew(['nik' => $row['nik']]);
+                    $contract = Contract::firstOrNew(['nip' => $row['nip']]);
                     $contract->fill($row);
                     $contract->save();
                 }

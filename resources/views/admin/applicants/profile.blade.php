@@ -14,7 +14,7 @@
         {{ $applicant->tempat_lahir.", ".$applicant->tanggal_lahir->formatLocalized("%d %B %Y") }}
     </p>
     <div class="text-center">
-        {{ $applicant->no_ktp }}
+        {{ $applicant->nik }}
     </div>
     <div class="text-center">
         {{ $applicant->kewarganegaraan.' - '.$applicant->agama }}

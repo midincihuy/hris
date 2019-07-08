@@ -17,7 +17,7 @@ class DraftContractsDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action', function ($contracts) {
-                $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i> Assign NIK</a>';
+                $edit = '<a href="draft_contracts/'.$contracts->id.'/edit" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i> Assign NIP</a>';
                 $print = '<a href="'.route('admin.do_print', ['contract', $contracts->id]).'" target="_blank" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-print"></i> Print</a>';
                 $cancel = '<a href="draft_contracts/'.$contracts->id.'/cancel" onclick="if(!confirm(\'Are You Sure?\')){return false;}" class="btn btn-xs btn-default"><i class="fa fa-close"></i> Cancel</a>';
                 $button = '<div class="btn-group">'.$edit.$cancel.'</div>';
@@ -38,7 +38,7 @@ class DraftContractsDataTable extends DataTable
         ->where('employee_status', 'Draft')
         ->where('status_active', 'Draft')
         ->select('id',
-        'nik',
+        'nip',
         'name',
         'created_at',
         'updated_at');
@@ -67,7 +67,7 @@ class DraftContractsDataTable extends DataTable
     {
         return [
             'id',
-            'nik',
+            'nip',
             'name',
             'created_at',
             'updated_at'

@@ -13,8 +13,8 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-2 form-group">
-                    {!! Form::label('nik', 'NIK', ['class' => 'control-label']) !!}
-                    {!! Form::text('nik', old('nik'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
+                    {!! Form::label('nip', 'NIP', ['class' => 'control-label']) !!}
+                    {!! Form::text('nip', old('nip'), ['class' => 'form-control', 'placeholder' => '', 'required' => '', 'readonly']) !!}
                 </div>
 
                 <div class="col-xs-2 form-group">

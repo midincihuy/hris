@@ -14,7 +14,7 @@ class Contract extends Model
   protected $fillable = [
     'recruitment_id',
     'employee_id',
-    'nik',
+    'nip',
     'name',
     'gender',
     'contract_number',

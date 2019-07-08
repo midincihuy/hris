@@ -13,10 +13,10 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 form-group">
-                    {!! Form::label('nik', 'NIK', ['class' => 'control-label']) !!}
+                    {!! Form::label('nip', 'NIP', ['class' => 'control-label']) !!}
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::text('nik', old('nik'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::text('nip', old('nip'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                 </div>
             </div>
             <div class="row">

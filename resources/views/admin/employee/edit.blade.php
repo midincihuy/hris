@@ -6,7 +6,7 @@
 
     {!! Form::model($contract, ['method' => 'PUT', 'route' => ['admin.employee.update', $contract->employee_id]]) !!}
 @php
-    $readonly = $contract->nik == "" ? "" : "readonly";
+    $readonly = $contract->nip == "" ? "" : "readonly";
 @endphp
 
     <div class="row">

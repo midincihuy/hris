@@ -56,14 +56,13 @@ class EmployeeDataTable extends DataTable
         ->whereNotIn('employee_status', ['Draft','Cancel'])
         ->whereNotIn('status_active', ['Draft','Cancel'])
         ->select('employees.id', 
+        'employees.nip', 
         'employees.nik', 
-        'employees.no_ktp', 
         'nama', 
         'employee_status', 
         'status_active', 
         'jenis_kelamin',
         'position_id',
-        'no_ktp',
         'no_kk',
         'no_bpjs_ketenagakerjaan',
         'no_bpjs_kesehatan',
@@ -127,8 +126,8 @@ class EmployeeDataTable extends DataTable
     {
         return [
             // 'id',
+            'nip',
             'nik',
-            'no_ktp',
             'nama',
             // 'contract_date',
             // 'contract_number',
@@ -236,7 +235,7 @@ class EmployeeDataTable extends DataTable
                 'visible' => false
             ],
             [
-                'data' => 'no_ktp',
+                'data' => 'nik',
                 'title' => 'No KTP',
                 'visible' => false
             ],

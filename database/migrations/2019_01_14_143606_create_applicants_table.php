@@ -22,7 +22,7 @@ class CreateApplicantsTable extends Migration
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
             $table->string('kewarganegaraan');
-            $table->string('no_ktp');
+            $table->string('nik');
             $table->string('alamat_ktp');
             $table->string('rt');
             $table->string('rw');

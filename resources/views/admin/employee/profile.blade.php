@@ -22,10 +22,10 @@
         {{ $employee->nama }}
     </h3>
     <p class="text-center">
-        {{ $employee->nik }}
+        {{ $employee->nip }}
     </p>
     <p class="text-center">
-        {{ $employee->no_ktp }}
+        {{ $employee->nik }}
     </p>
     <p class="text-muted text-center">
         {{ $employee->position->name }}

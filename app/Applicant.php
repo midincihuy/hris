@@ -14,7 +14,7 @@ class Applicant extends Model
         'tempat_lahir',
         'tanggal_lahir',
         'kewarganegaraan',
-        'no_ktp',
+        'nik',
         'alamat_ktp',
         'rt',
         'rw',
