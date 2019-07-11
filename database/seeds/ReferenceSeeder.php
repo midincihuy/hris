@@ -275,63 +275,75 @@ class ReferenceSeeder extends Seeder
 
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Senayan City',
-        'value' => 'Senayan City',
+        'item' => 'SENAYAN CITY',
+        'value' => 'SENAYAN CITY',
         'sort' => '1',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Daan Mogot',
-        'value' => 'Daan Mogot',
+        'item' => 'DAAN MOGOT',
+        'value' => 'DAAN MOGOT',
         'sort' => '2',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Radio Dalam',
-        'value' => 'Radio Dalam',
+        'item' => 'RADIO DALAM',
+        'value' => 'RADIO DALAM',
         'sort' => '3',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Pulomas',
-        'value' => 'Pulomas',
+        'item' => 'PULOMAS',
+        'value' => 'PULOMAS',
         'sort' => '4',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Kebayoran',
-        'value' => 'Kebayoran',
+        'item' => 'KEBAYORAN',
+        'value' => 'KEBAYORAN',
         'sort' => '5',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Bandung',
-        'value' => 'Bandung',
+        'item' => 'BANDUNG',
+        'value' => 'BANDUNG',
         'sort' => '6',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Solo',
-        'value' => 'Solo',
+        'item' => 'SOLO',
+        'value' => 'SOLO',
         'sort' => '7',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Kalianda',
-        'value' => 'Kalianda',
+        'item' => 'KALIANDA',
+        'value' => 'KALIANDA',
         'sort' => '8',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Pontianak',
-        'value' => 'Pontianak',
+        'item' => 'PONTIANAK',
+        'value' => 'PONTIANAK',
         'sort' => '9',
       ]);
       Reference::create([
         'code' => 'LOKASI_KERJA',
-        'item' => 'Banjarmasin',
-        'value' => 'Banjarmasin',
+        'item' => 'BANJARMASIN',
+        'value' => 'BANJARMASIN',
         'sort' => '10',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'KELAPA GADING',
+        'value' => 'KELAPA GADING',
+        'sort' => '11',
+      ]);
+      Reference::create([
+        'code' => 'LOKASI_KERJA',
+        'item' => 'JOGLO',
+        'value' => 'JOGLO',
+        'sort' => '12',
       ]);
 
       Reference::create([
@@ -373,38 +385,38 @@ class ReferenceSeeder extends Seeder
 
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 200',
-        'value' => 'IP 200',
+        'item' => 'IP-200',
+        'value' => 'IP-200',
         'sort' => '1',
       ]);
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 350',
-        'value' => 'IP 350',
+        'item' => 'IP-350',
+        'value' => 'IP-350',
         'sort' => '2',
       ]);
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 450',
-        'value' => 'IP 450',
+        'item' => 'IP-450',
+        'value' => 'IP-450',
         'sort' => '3',
       ]);
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 650',
-        'value' => 'IP 650',
+        'item' => 'IP-650',
+        'value' => 'IP-650',
         'sort' => '4',
       ]);
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 800',
-        'value' => 'IP 800',
+        'item' => 'IP-800',
+        'value' => 'IP-800',
         'sort' => '5',
       ]);
       Reference::create([
         'code' => 'PLAN_ASURANSI',
-        'item' => 'IP 1050',
-        'value' => 'IP 1050',
+        'item' => 'IP-1050',
+        'value' => 'IP-1050',
         'sort' => '6',
       ]);
       

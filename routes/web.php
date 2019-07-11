@@ -140,6 +140,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('employee.documents', 'Admin\DocumentsController')
     ->middleware('can:employee_manage');
 
+    Route::post('employee/import', 'Admin\EmployeeController@import')
+    ->name('employee.import');
     Route::resource('employee.avatar', 'Admin\AvatarController')
     ->middleware('can:employee_manage');
 

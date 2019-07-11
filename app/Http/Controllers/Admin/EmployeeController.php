@@ -17,6 +17,10 @@ use App\Reference;
 use App\Employee;
 use App\Position;
 use App\Sk;
+use File;
+use Excel;
+use Auth;
+use Session;
 
 class EmployeeController extends Controller
 {
@@ -201,6 +205,11 @@ class EmployeeController extends Controller
 
       $employee->save();
 
+      // Do Nonaktif Contract
+      $contract = Contract::find($employee->contract_id);
+      $contract->status_active = "Resign";
+      $contract->save();
+
       return redirect(route('admin.employee.edit',$id));
     }
 
@@ -263,5 +272,104 @@ class EmployeeController extends Controller
       $employee->contract_id = $contract->id;
       $employee->save();
       return redirect(route('admin.employee.edit',$id));
+    }
+
+    public function import(Request $request)
+    {
+      $this->validate($request, array(
+        'file'      => 'required'
+    ));
+    if($request->hasFile('file')){
+        $extension = File::extension($request->file->getClientOriginalName());
+        if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
+          $username = Auth::user()->name;
+            $path = $request->file->getRealPath();
+            $data = Excel::load($path, function($reader) use ($username){
+              foreach ($reader->toArray() as $row) {
+                $position = Position::where('name', $row['jabatan'])
+                ->whereHas('division', function($query) use ($row){
+                    $query->where('company', $row['company']);
+                })
+                ->first();
+                $data = [
+                    'nip' => $row['nip'],
+                    'nama' => $row['nama'],
+                    'jenis_kelamin' => $row['jenis_kelamin'],
+                    'tempat_lahir' => $row['tempat_lahir'],
+                    'tanggal_lahir' => $row['tanggal_lahir']->toDateString(),
+                    'pendidikan_terakhir' => $row['pendidikan_terakhir'],
+                    'agama' => $row['agama'],
+                    'golongan_darah' => $row['gol._darah'],
+                    'nik' => $row['nik'],
+                    'no_kk' => $row['kk'],
+                    'no_bpjs_ketenagakerjaan' => $row['bpjstk'],
+                    'no_bpjs_kesehatan' => $row['bpjs_kesehatan'],
+                    'no_npwp' => $row['npwp'],
+                    'no_rek_bca' => $row['no_rek_bca'],
+                    'kelas' => $row['kelas'],
+                    'status_karyawan' => $row['status_karyawan'],
+                    'lokasi_kerja' => $row['lokasi_kerja'],
+                    'status_kawin' => $row['status_kawin'],
+                    'status_pajak' => $row['status_pajak'],
+                    'kode_faskes_tk_1' => $row['kode_faskes_tk_i'] != '' ? $row['kode_faskes_tk_i'] : '-',
+                    'faskes_tk_1' => $row['faskes_tk_i'] != '' ? $row['faskes_tk_i'] : '-',
+                    'plan_asuransi' => $row['plan_asuransi'] != '' ? $row['plan_asuransi'] : '-',
+                    'alamat' => $row['alamat'],
+                    'alamat_ktp' => $row['alamat'],
+                    'rt' => $row['rt'],
+                    'rw' => $row['rw'],
+                    'kelurahan' => $row['kelurahan'] != '' ? $row['kelurahan'] : '-',
+                    'kecamatan' => $row['kecamatan'] != '' ? $row['kecamatan'] : '-',
+                    'kode_pos' => $row['kode_pos'] != '' ? $row['kode_pos'] : '-',
+
+                    'tanggal_penetapan' => $row['tanggal_masuk']->toDateString(),
+                    'tmt' => ($row['tanggal_real_masuk'] != '') ? $row['tanggal_real_masuk']->toDateString() : $row['tanggal_masuk']->toDateString(),
+                    'employee_status' => $row['status_karyawan'],
+                    'status_active' => 'Aktif',
+                    'position_id' => (count($position) == 1) ? $position->id : '-',
+                    'contract_number' => ($row['last_contract_number'] == "" ? $row['nip'] : $row['last_contract_number']),
+                    // 'head_nik' => $head_nik,
+                ];
+                $employee = Employee::create($data);
+
+                $data_contract = [
+                    'employee_id' => $employee->id,
+                    'contract_number' => $data['contract_number'],
+                    'nip' => $data['nip'],
+                    'name' => $data['nama'],
+                    'gender' => $data['jenis_kelamin'],
+                    'contract_date' => $data['tanggal_penetapan'],
+                    'position_id' => $data['position_id'],
+                    'tmt' => $data['tmt'],
+                    'upload_by' => $username,
+                    'employee_status' => $row['status_karyawan'],
+                    'status_active' => 'Aktif',
+                ];
+
+                $contract = Contract::create($data_contract);
+                $contract_id = $contract->id;
+
+                $employee->contract_id = $contract_id;
+                $employee->save();
+              }
+            });
+            Excel::load($path, function($reader) use ($username){
+              foreach ($reader->toArray() as $row) {
+                if($row['nama_atasan'] != ""){
+                  $employee = Employee::where('nip', $row['nip'])->first();
+                  $head_nik = Employee::where('nama', $row['nama_atasan'])->first()->nik;
+                  print_r($row);
+                  $employee->head_nik = $head_nik;
+                  $employee->save();
+              }
+              }
+            });
+            return back();
+
+        }else {
+            Session::flash('error', 'File is a '.$extension.' file.!! Please upload a valid xls/csv file..!!');
+            return back();
+        }
+    }
     }
 }

@@ -13,41 +13,25 @@
   @endif
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3>Employee List</h3>
+      <h3>Import Employee From XLS</h3>
     </div>
     <div class="panel-body">
-      {{-- {!! Form::open(['method' => 'POST', 'route' => ['admin.employee.mass_update']]) !!}
-        <div class="row">
-          <input type="hidden" name="update_nik" id="hide_nik" value="">
-
-          <div class="col-xs-3 form-group">
-            {!! Form::label('employee_status', 'Employee Status', ['class' => 'control-label']) !!}
-            {!! Form::select('employee_status', $employee_status, '', ['class' => 'form-control']) !!}
+      <form action="{{ route('admin.employee.import') }}" method="POST" enctype="multipart/form-data">
+          <div class="row">
+              <div class="col-xs-5 form-group">
+                {{ csrf_field() }}
+                <input type="file" name="file" class="form-control" length=>
+            </div>
           </div>
-          <div class="col-xs-3 form-group">
-            {!! Form::label('status_active', 'Status Active', ['class' => 'control-label']) !!}
-            {!! Form::select('status_active', $status_active, '', ['class' => 'form-control']) !!}
+          <div class="row">
+            <div class="col-md-2 form-group">
+              <button type="submit" class="btn btn-primary" style="margin-top: 3%" ><i class="fa fa-upload"></i>&nbsp;Import</button>
+            </div>
+            <div class="col-md-2 form-group">
+              <a href="/uploads/employee_template.xls"><button class="btn btn-success" style="margin-top: 3%" type="button"><i class="fa fa-download"></i>&nbsp;Download Template</button></a>
+            </div>
           </div>
-          <div class="col-xs-3 form-group">
-            {!! Form::label('reminder_hr', 'Reminder HR', ['class' => 'control-label']) !!}
-            {!! Form::select('reminder_hr', $reminder_status, '', ['class' => 'form-control']) !!}
-          </div>
-          <div class="col-xs-3 form-group">
-            {!! Form::label('reminder_user', 'Reminder User', ['class' => 'control-label']) !!}
-            {!! Form::select('reminder_user', $reminder_status, '', ['class' => 'form-control']) !!}
-          </div>
-          <div class="col-xs-1 form-group">
-            <button type="button" name="button" class="btn btn-primary" onclick="$('#dataTableBuilder tbody tr').each(function(){ $(this).not('*.selected').click() });">Select All</button>
-          </div>
-          <div class="col-xs-2 form-group">
-            <button type="button" name="button" class="btn btn-primary" onclick="$('#dataTableBuilder tbody tr').each(function(){ $('[class~=\'selected\']').click() });">Deselect All</button>
-          </div>
-          <div class="col-xs-8 form-group">
-            <span id="total_nik">0</span> Selected
-            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
-          </div>
-        </div>
-      {!! Form::close() !!} --}}
+      </form>
     </div>
   </div>
 {!! $dataTable->table([], true) !!}

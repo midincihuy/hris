@@ -112,7 +112,13 @@ class ContractsDataTable extends DataTable
         return [
             // 'id',
             'nip',
-            'name',
+            [
+                'data' => 'name',
+                'name' => 'contracts.name',
+                'title' => 'Name',
+                'searchable' => true,
+                'orderable' => false,
+            ],
             'contract_number', 
             'contract_date',
             'contract_expire_date',
