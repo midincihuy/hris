@@ -342,14 +342,14 @@ class EmployeeController extends Controller
                     'position_id' => $data['position_id'],
                     'tmt' => $data['tmt'],
                     'upload_by' => $username,
-                    'employee_status' => $row['status_karyawan'],
+                    'employee_status' => $data['status_karyawan'],
                     'status_active' => 'Aktif',
                 ];
 
-                if($row['status_karyawan'] == 'KK'){
+                if($data['status_karyawan'] == 'KK'){
                   $contract_date = $data_contract['contract_date'];
 
-                  $pos = strrpos($contract_number, '/');
+                  $pos = strrpos($data['contract_number'], '/');
                   if($pos){
                     $year = substr($contract_number, $pos+1);
                     if(strlen($year) == 2){
