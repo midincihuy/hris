@@ -346,6 +346,21 @@ class EmployeeController extends Controller
                     'status_active' => 'Aktif',
                 ];
 
+                if($row['status_karyawan'] == 'KK'){
+                  $contract_date = $data_contract['contract_date'];
+
+                  $pos = strrpos($contract_number, '/');
+                  if($pos){
+                    $year = substr($contract_number, $pos+1);
+                    if(strlen($year) == 2){
+                      $year = "20".$year;
+                    }
+                    $expire_year = $year+1;
+                  }
+                  $contract_expire_date = $expire_year.substr($contract_date, 4);
+                  $data_contract['contract_expire_date'] = $contract_expire_date;
+                }
+
                 $contract = Contract::create($data_contract);
                 $contract_id = $contract->id;
 
