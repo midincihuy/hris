@@ -349,7 +349,8 @@ class EmployeeController extends Controller
                 if($data['status_karyawan'] == 'KK'){
                   $contract_date = $data_contract['contract_date'];
 
-                  $pos = strrpos($data['contract_number'], '/');
+                  $contract_number = $data['contract_number'];
+                  $pos = strrpos($contract_number, '/');
                   if($pos){
                     $year = substr($contract_number, $pos+1);
                     if(strlen($year) == 2){
