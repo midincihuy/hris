@@ -328,6 +328,7 @@ class EmployeeController extends Controller
                     'status_active' => 'Aktif',
                     'position_id' => (count($position) == 1) ? $position->id : '-',
                     'contract_number' => ($row['last_contract_number'] == "" ? $row['nip'] : $row['last_contract_number']),
+                    'email' => $row['email'],
                     // 'head_nik' => $head_nik,
                 ];
                 $employee = Employee::create($data);
@@ -347,6 +348,8 @@ class EmployeeController extends Controller
                 ];
 
                 if($data['status_karyawan'] == 'KK'){
+
+                  // get contract_expire_date
                   $contract_date = $data_contract['contract_date'];
 
                   $contract_number = $data['contract_number'];
@@ -360,6 +363,14 @@ class EmployeeController extends Controller
                   }
                   $contract_expire_date = $expire_year.substr($contract_date, 4);
                   $data_contract['contract_expire_date'] = $contract_expire_date;
+
+                  // get contract_type
+                  $arr = explode('/', $data['contract_number']);
+                  if(count($arr) > 1){
+                    // PKWTII / PKWT / Add-I
+                    $contract_type = strtolower(str_replace('-', '', substr($arr[3],0,4)));
+                    $data_contract['contract_type'] = $contract_type;
+                  }
                 }
 
                 $contract = Contract::create($data_contract);
