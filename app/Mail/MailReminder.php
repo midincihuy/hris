@@ -8,20 +8,19 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Contract;
-class Reminder extends Mailable
+class MailReminder extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $contract;
+    protected $details;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($contract)
+    public function __construct($details)
     {
-        $this->contract = array("contract" => $contract);
-        \Log::info(json_encode($this->contract));
+        $this->details = $details;
     }
 
     /**
@@ -31,10 +30,9 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        // return $this->view('view.name');
-        return $this->from('hamidin.hidayat@oshop.co.id')
-        // ->attach('./storage/exports/SKU_Checking_'.date("Y_m_d").".xls")
-        ->with('contract', $this->contract)
+        return $this->subject($this->details['subject'])
+        ->attach('public/uploads/form_usulan_status.pdf')
+        ->with('details', $this->details)
         ->view('emails.contract');
     }
 }

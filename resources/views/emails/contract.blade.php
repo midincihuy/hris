@@ -1,28 +1,27 @@
 Dengan hormat,
 <br/>
 <br/>
-Dengan ini kami sampaikan nama karyawan di unit kerja Saudara yang akan berakhir
-Masa Kontrak pada bulan {{ date("M Y") }}, sebagai berikut:
+Dengan ini kami sampaikan nama karyawan di unit kerja Saudara yang akan segera berakhir, sebagai berikut:
 <br/>
 <br/>
-{{-- {{ json_encode($contract['contract']) }} --}}
+{{-- {{json_encode($details['contract'])}} --}}
 <table border=1 cellspacing=1 cellpadding=1>
+  <thead>
   <tr>
-      <td>No</td>
-      <td>EM</td>
-      <td>Nama</td>
-      <td>Jabatan</td>
-      <td>Masa Kontrak (Mulai)</td>
-      <td>Masa Kontrak (Berakhir)</td>
+      <th>EM</th>
+      <th>Nama</th>
+      <th>Jabatan</th>
+      <th>Masa Kontrak (Mulai)</th>
+      <th>Masa Kontrak (Berakhir)</th>
   </tr>
-    @foreach ($contract['contract'] as $key => $value)
+  </thead>
+    @foreach ($details['message'] as $key => $value)
       <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $value->nik }}</td>
-        <td>{{ $value->name }}</td>
-        <td>{{ $value->position }}</td>
-        <td>{{ $value->contract_date }}</td>
-        <td>{{ $value->contract_date }}</td>
+        <td>{{ $value['nip'] }}</td>
+        <td>{{ $value['nama'] }}</td>
+        <td>{{ $value['position'] }}</td>
+        <td>{{ $value['contract_date'] }}</td>
+        <td>{{ $value['contract_expire_date'] }}</td>
       </tr>
     @endforeach
 </table>
@@ -32,8 +31,9 @@ Kami mohon agar Saudara dapat melengkapi Form Penilaian Kinerja atas karyawan
 Bersangkutan dan mengisi Form Usulan Status Karyawan (terlampir).
 <br/>
 <br/>
-Form Penilaian Kinerjanya,  kami harapkan dikembalikan ke HRD  paling lambat tanggal
-<strong>16 April 2018</strong>, untuk kemudian dapat segera kami tindaklanjuti.
+Form Penilaian Kinerjanya,  kami harapkan dikembalikan ke HRD <strong>SEGERA</strong>, untuk kemudian dapat segera kami tindaklanjuti.
+{{-- Form Penilaian Kinerjanya,  kami harapkan dikembalikan ke HRD  paling lambat tanggal
+<strong>{{ $details['no_later_than'] }}</strong>, untuk kemudian dapat segera kami tindaklanjuti. --}}
 <br/>
 Atas perhatian dan kerja samanya, terima kasih.
 <br/>

@@ -45,7 +45,7 @@ class MenuSeeder extends Seeder
       ]);
       Menu::create([
           'text' => 'Contracts',
-          'label' => 'upload',
+          'label' => '',
           'url' => 'admin/contracts',
           'can' => 'contracts_manage',
           'icon' => 'file',
@@ -53,7 +53,7 @@ class MenuSeeder extends Seeder
       ]);
       Menu::create([
           'text' => 'Employee',
-          'label' => '',
+          'label' => 'upload',
           'url' => 'admin/employee',
           'can' => 'employee_manage',
           'icon' => 'address-book',
